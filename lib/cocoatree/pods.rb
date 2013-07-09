@@ -26,6 +26,10 @@ module Cocoatree
         github_data.join '/'
       end
 
+      def stars
+        Octokit.stargazers(github).size
+      end
+
     private
 
       def github_data

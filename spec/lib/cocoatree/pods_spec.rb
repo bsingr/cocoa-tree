@@ -9,9 +9,6 @@ describe Cocoatree::Pods do
   let(:repository) do
     subject.repository subject.source.pods.first
   end
-  let(:stars) do
-    Octokit.stargazers(repository.github).size
-  end
 
   it 'lists pods' do
     subject.source.pods.should_not be_empty
@@ -26,6 +23,6 @@ describe Cocoatree::Pods do
   end
 
   it 'counts stars' do
-    stars.should > 1
+    repository.stars.should > 1
   end
 end
