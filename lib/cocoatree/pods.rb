@@ -9,6 +9,10 @@ module Cocoatree
       @source = Pod::Source.new(source_path)
     end
 
-
+    def repository name
+      if spec_set = source.set(name)
+        spec_set.specification.source[:git]
+      end
+    end
   end
 end

@@ -7,9 +7,7 @@ describe Cocoatree::Pods do
   end
 
   let(:repository) do
-    spec_set = subject.source.set(subject.source.pods.first)
-    spec_set.should_not be_nil
-    spec_set.specification.source[:git]
+    subject.repository subject.source.pods.first
   end
   let(:github) do
     matchdata = /github.com\/(\w+)\/([\w-]+)/.match repository
