@@ -9,12 +9,8 @@ describe Cocoatree::Pods do
   let(:repository) do
     subject.repository subject.source.pods.first
   end
-  let(:github) do
-    matchdata = /github.com\/(\w+)\/([\w-]+)/.match repository
-    matchdata.captures.join('/')
-  end
   let(:stars) do
-    Octokit.stargazers(github).size
+    Octokit.stargazers(repository.github).size
   end
 
   it 'lists pods' do
@@ -22,11 +18,11 @@ describe Cocoatree::Pods do
   end
 
   it 'shows single pod' do
-    repository.should include('github')
+    repository.should be_github
   end
 
   it 'extracts github' do
-    github.should == '500px/500px-iOS-api'
+    repository.github.should == '500px/500px-iOS-api'
   end
 
   it 'counts stars' do

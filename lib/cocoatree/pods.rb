@@ -11,7 +11,26 @@ module Cocoatree
 
     def repository name
       if spec_set = source.set(name)
-        spec_set.specification.source[:git]
+        if url = spec_set.specification.source[:git]
+          Repository.new(url)
+        end
+      end
+    end
+
+    class Repository < Struct.new(:url)
+      def github?
+        !github_data.empty?
+      end
+
+      def github
+        github_data.join '/'
+      end
+
+    private
+
+      def github_data
+        matchdata = /github.com\/(\w+)\/([\w-]+)/.match url
+        matchdata.captures
       end
     end
   end
