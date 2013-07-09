@@ -15,3 +15,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 end
+
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+PROJECT_ROOT = File.join(File.dirname(__FILE__), '..')

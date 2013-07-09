@@ -22,4 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "guard-rspec"
+
+  spec.add_dependency "cocoapods-core"
+  spec.add_dependency "octokit"
 end
