@@ -1,12 +1,13 @@
 require 'spec_helper'
-require 'cocoatree'
-require 'cocoapods-core'
-require 'octokit'
+require 'cocoatree/pods'
 
-describe Cocoatree do
-  let(:source) { Pod::Source.new(File.join(PROJECT_ROOT, 'Specs')) }
+describe Cocoatree::Pods do
+  before do
+    subject.source_path = File.join(PROJECT_ROOT, 'Specs')
+  end
+
   let(:repository) do
-    spec_set = source.set(source.pods.first)
+    spec_set = subject.source.set(subject.source.pods.first)
     spec_set.should_not be_nil
     spec_set.specification.source[:git]
   end
@@ -19,7 +20,7 @@ describe Cocoatree do
   end
 
   it 'lists pods' do
-    source.pods.should_not be_empty
+    subject.source.pods.should_not be_empty
   end
 
   it 'shows single pod' do
