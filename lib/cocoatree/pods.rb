@@ -22,7 +22,7 @@ module Cocoatree
         .map { |p|
           begin
             self.pod(p)
-          rescue Pod::DSLError => e
+          rescue ::Pod::DSLError => e
             nil
           end
         }\
