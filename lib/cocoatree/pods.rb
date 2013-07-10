@@ -18,7 +18,6 @@ module Cocoatree
     end
 
     def repositories
-
       source.pods\
         .map { |p|
           begin
