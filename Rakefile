@@ -19,3 +19,5 @@ task :site do
   rendered = website.render('list.html')
   File.open('list.html', 'w') { |f| f.puts rendered }
 end
+
+task :default => :spec
