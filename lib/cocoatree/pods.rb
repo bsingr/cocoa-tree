@@ -17,7 +17,17 @@ module Cocoatree
       end
     end
 
-    class Repository < Struct.new(:url)
+    def by_stars
+      source.pods[0..50].map{|p| self.repository(p) }.compact.sort_by(&:stars)
+    end
+
+    class Repository
+      attr_reader :url
+
+      def initialize url
+        @url = url
+      end
+
       def github?
         !github_data.empty?
       end
@@ -28,6 +38,8 @@ module Cocoatree
 
       def stars
         Octokit.stargazers(github).size
+      rescue Octokit::NotFound => e
+        -1
       end
 
     private
