@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title Cocoatree
+    meta name="keywords" content="cocoapods"
+    meta name="author" content="Jens Bissinger"
+  body
+    h1 Cocoatree
+    ul
+      - pods.each do |pod|
+        li = "#{pod.name} #{pod.stars}"
+    div id="footer"
+      | Copyright © 2013 Jens Bissinger
