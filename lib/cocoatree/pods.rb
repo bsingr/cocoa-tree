@@ -37,12 +37,16 @@ module Cocoatree
       end
 
       def stars
-        Octokit.stargazers(github).size
-      rescue Octokit::NotFound => e
-        -1
+        @stars ||= (fetch_stars || -1)
       end
 
     private
+
+      def fetch_stars
+        Octokit.stargazers(github).size
+      rescue Octokit::NotFound => e
+        nil
+      end
 
       def github_data
         matchdata = /github.com\/(.+)\/(.+).git/.match url
