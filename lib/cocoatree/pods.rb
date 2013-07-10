@@ -18,8 +18,15 @@ module Cocoatree
     end
 
     def repositories
-      source.pods[0..11]\
-        .map{|p| self.repository(p) }\
+
+      source.pods\
+        .map { |p|
+          begin
+            self.repository(p)
+          rescue Pod::DSLError => e
+            nil
+          end
+        }\
         .compact\
         .keep_if(&:github?)
     end
