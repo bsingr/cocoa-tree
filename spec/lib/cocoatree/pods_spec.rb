@@ -2,8 +2,9 @@ require 'spec_helper'
 require 'cocoatree/pods'
 
 describe Cocoatree::Pods do
+  subject(:pods) { Cocoatree::Pods.new }
   before do
-    subject.source_path = File.join(PROJECT_ROOT, 'Specs')
+    pods.source_path = File.join(Cocoatree.root, 'Specs')
     Octokit.stub(:stargazers) do
       Array.new(rand(100))
     end

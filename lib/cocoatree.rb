@@ -1,5 +1,7 @@
 require "cocoatree/version"
 
 module Cocoatree
-  # Your code goes here...
+  def self.root
+    File.join(File.dirname(__FILE__), '..')
+  end
 end
