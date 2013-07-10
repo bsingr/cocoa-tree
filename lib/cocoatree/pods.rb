@@ -1,5 +1,6 @@
 require 'cocoapods-core'
 require 'octokit'
+require 'yaml'
 
 module Cocoatree
   class Pods
@@ -18,7 +19,7 @@ module Cocoatree
     end
 
     def pods
-      source.pods[0..4]\
+      source.pods\
         .map { |p|
           begin
             self.pod(p)
@@ -65,8 +66,37 @@ module Cocoatree
 
     private
 
+      def github_cache
+        hash = YAML.load_file('github_cache.yml')
+        hash.is_a?(Hash) ? hash : {}
+      rescue => e
+        return {}
+      end
+
+      def github_cache=data
+        File.open('github_cache.yml', 'w') {|f| f.puts YAML.dump(data)}
+      end
+
       def fetch_stars
-        Octokit.stargazers(github).size
+        cache = github_cache
+
+        # try to read cache
+        if cache_data = cache[github]
+          if cache_data['expires_at'] > Time.now
+            if stars_count = cache_data['stars_count']
+              return stars_count
+            end
+          end
+        end
+
+        # fetch + update cache
+        stars_count = Octokit.stargazers(github).size
+        puts "CACHE SET #{github} {stars_count: #{stars_count}}"
+        cache[github] ||= {}
+        cache[github]['stars_count'] = stars_count
+        cache[github]['expires_at'] = Time.now + 1*60*60*24
+        self.github_cache = cache
+        return stars_count
       rescue Octokit::NotFound => e
         nil
       end
