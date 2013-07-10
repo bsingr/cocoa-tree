@@ -66,7 +66,7 @@ module Cocoatree
 
       def fetch_stars
         Cocoatree.github_cache.fetch(github, 'stars_count') do
-          Octokit.stargazers(github).size
+          Octokit.repository(github)['watchers_count']
         end
       rescue Octokit::NotFound => e
         nil
