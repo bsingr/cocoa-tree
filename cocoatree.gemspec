@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "cocoapods-core"
   spec.add_dependency "octokit"
+  spec.add_dependency "slim"
 end
