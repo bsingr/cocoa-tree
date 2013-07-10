@@ -31,7 +31,7 @@ module Cocoatree
     end
 
     def pods_by_stars
-      pods.sort_by(&:stars)
+      pods.sort_by(&:stars).reverse
     end
 
     class Pod
