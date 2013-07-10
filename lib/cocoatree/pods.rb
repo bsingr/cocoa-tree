@@ -30,7 +30,7 @@ module Cocoatree
         .keep_if(&:github?)
     end
 
-    def by_stars
+    def pods_by_stars
       pods.sort_by(&:stars)
     end
 
