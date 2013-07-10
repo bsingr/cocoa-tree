@@ -46,6 +46,7 @@ module Cocoatree
 
       def github_data
         matchdata = /github.com\/(\w+)\/([\w-]+)/.match url
+        raise "broken #{url}" unless matchdata
         matchdata.captures
       end
     end
