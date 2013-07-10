@@ -17,8 +17,15 @@ module Cocoatree
       end
     end
 
+    def repositories
+      source.pods[0..11]\
+        .map{|p| self.repository(p) }\
+        .compact\
+        .keep_if(&:github?)
+    end
+
     def by_stars
-      source.pods[0..50].map{|p| self.repository(p) }.compact.sort_by(&:stars)
+      repositories.sort_by(&:stars)
     end
 
     class Repository
@@ -50,7 +57,7 @@ module Cocoatree
 
       def github_data
         matchdata = /github.com\/(.+)\/(.+).git/.match url
-        raise "broken #{url}" unless matchdata
+        return [] unless matchdata
         matchdata.captures
       end
     end

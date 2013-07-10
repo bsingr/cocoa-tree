@@ -13,9 +13,9 @@ describe Cocoatree::Pods do
     subject.repository subject.source.pods.first
   end
 
-  it 'lists pods' do
-    subject.source.pods.should_not be_empty
-  end
+  its(:repositories) { should_not be_empty }
+
+  its('repositories.first') { should be_github }
 
   it 'shows single pod' do
     repository.should be_github
