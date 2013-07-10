@@ -19,6 +19,10 @@ describe Cocoatree::Pods do
   its('pods.first.url') { should include('github.com') }
   its('pods.first') { should be_github }
 
+  it 'shows name' do
+    pod.name.should_not == ''
+  end
+
   it 'shows single pod' do
     pod.should be_github
   end

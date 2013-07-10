@@ -41,6 +41,12 @@ module Cocoatree
         @spec = spec
       end
 
+      def method_missing method_name, *args
+        if spec.respond_to? method_name
+          spec.send(method_name, *args)
+        end
+      end
+
       def url
         spec.source[:git]
       end
