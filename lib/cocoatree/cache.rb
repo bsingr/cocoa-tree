@@ -6,6 +6,7 @@ module Cocoatree
 
     def initialize filename
       @path = File.join(Cocoatree.root, filename + '.yml')
+      reload
     end
 
     def fetch item_id, item_attr_name
@@ -33,16 +34,25 @@ module Cocoatree
       return item_attr_value
     end
 
+    def reload
+      @memory_cache = nil
+    end
+
   private
 
     def read
-      hash = YAML.load_file(path)
-      hash.is_a?(Hash) ? hash : {}
+      if @memory_cache
+        @memory_cache
+      else
+        hash = YAML.load_file(path)
+        @memory_cache = hash.is_a?(Hash) ? hash : {}
+      end
     rescue => e
       return {}
     end
 
     def write! data
+      @memory_cache = data
       File.open(path, 'w') {|f| f.puts YAML.dump(data)}
     end
   end
