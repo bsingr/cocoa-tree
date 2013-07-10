@@ -10,24 +10,25 @@ describe Cocoatree::Pods do
     end
   end
 
-  let(:repository) do
-    subject.repository subject.source.pods.first
+  let(:pod) do
+    subject.pod subject.source.pods.first
   end
 
-  its(:repositories) { should_not be_empty }
+  its(:pods) { should_not be_empty }
 
-  its('repositories.first') { should be_github }
+  its('pods.first.url') { should include('github.com') }
+  its('pods.first') { should be_github }
 
   it 'shows single pod' do
-    repository.should be_github
+    pod.should be_github
   end
 
   it 'extracts github' do
-    repository.github.should == '500px/500px-iOS-api'
+    pod.github.should == '500px/500px-iOS-api'
   end
 
   it 'counts stars' do
-    repository.stars.should > 1
+    pod.stars.should > 1
   end
 
   it 'sorts by stars' do

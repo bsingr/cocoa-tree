@@ -6,22 +6,22 @@ module Cocoatree
     attr_reader :source
 
     def source_path=source_path
-      @source = Pod::Source.new(source_path)
+      @source = ::Pod::Source.new(source_path)
     end
 
-    def repository name
+    def pod name
       if spec_set = source.set(name)
-        if url = spec_set.specification.source[:git]
-          Repository.new(url)
+        if url = spec_set.specification
+          Pod.new(spec_set.specification)
         end
       end
     end
 
-    def repositories
-      source.pods\
+    def pods
+      source.pods[0..4]\
         .map { |p|
           begin
-            self.repository(p)
+            self.pod(p)
           rescue Pod::DSLError => e
             nil
           end
@@ -31,14 +31,18 @@ module Cocoatree
     end
 
     def by_stars
-      repositories.sort_by(&:stars)
+      pods.sort_by(&:stars)
     end
 
-    class Repository
-      attr_reader :url
+    class Pod
+      attr_reader :spec
 
-      def initialize url
-        @url = url
+      def initialize spec
+        @spec = spec
+      end
+
+      def url
+        spec.source[:git]
       end
 
       def github?
