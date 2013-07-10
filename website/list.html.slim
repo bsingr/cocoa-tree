@@ -7,7 +7,7 @@ html
   body
     h1 Cocoatree
     ul
-      - pods.each do |pod|
+      - pods_by_stars.each do |pod|
         li = "#{pod.name} #{pod.stars}"
     div id="footer"
       | Copyright © 2013 Jens Bissinger
