@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Cocoatree::VERSION
   spec.authors       = ["Jens Bissinger"]
   spec.email         = ["mail@jens-bissinger.de"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Cocoapods Index}
+  spec.summary       = %q{Cocoapods Index}
   spec.homepage      = ""
   spec.license       = "MIT"
 
