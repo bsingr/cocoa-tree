@@ -30,8 +30,8 @@ describe Cocoatree::Pods do
   end
 
   it 'sorts by stars' do
-    a = subject.by_stars.first.stars
-    b = subject.by_stars.last.stars
-    a.should > b
+    first = subject.by_stars.first
+    last = subject.by_stars.last
+    first.stars.should < last.stars
   end
 end
