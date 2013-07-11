@@ -9,8 +9,13 @@ html
     script type="text/javascript" src="bootstrap/js/bootstrap.min.js"
   body
     h1 Cocoatree
-    ul
-      - pods_by_stars.each do |pod|
-        li = "#{pod.name} #{pod.stars}"
+    .container-fluid
+      .row-fluid
+        .span-12
+          table
+            - pods_by_stars.each do |pod|
+              tr
+                td = pod.name
+                td = pod.stars
     div id="footer"
       | Copyright © 2013 Jens Bissinger
