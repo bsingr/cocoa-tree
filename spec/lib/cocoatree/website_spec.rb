@@ -13,7 +13,7 @@ describe Cocoatree::Website do
 
   it do
     website.pods = pods
-    rendered = website.render('list.html')
+    rendered = website.render('index.html')
     rendered.should include('<html>')
     rendered.should include('<li>')
   end

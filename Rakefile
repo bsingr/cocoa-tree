@@ -16,8 +16,10 @@ task :site do
   pods.source_path = File.join(Cocoatree.root, 'Specs')
   website = Cocoatree::Website.new
   website.pods = pods
-  rendered = website.render('list.html')
-  File.open('list.html', 'w') { |f| f.puts rendered }
+  rendered = website.render('index.html')
+  File.open(File.join(Cocoatree.root, 'website', 'index.html'), 'w') do |f|
+    f.puts rendered
+  end
 end
 
 task :default => :spec
