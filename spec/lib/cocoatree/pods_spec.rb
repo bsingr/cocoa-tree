@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'cocoatree/pod'
 require 'cocoatree/pods'
 
 describe Cocoatree::Pods do
