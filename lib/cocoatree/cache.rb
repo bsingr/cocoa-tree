@@ -27,7 +27,7 @@ module Cocoatree
       # fetch + update cache
       puts "CACHE UPDATE #{item_id}"
       data[item_id] ||= {}
-      data[item_id]['expires_at'] = Time.now + 1*60*60*24
+      data[item_id]['expires_at'] = Time.now + 14*60*60*24 # 14 days
       data[item_id][item_attr_name] = item_attr_value
       
       write! data
