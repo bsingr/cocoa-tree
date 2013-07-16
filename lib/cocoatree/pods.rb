@@ -14,17 +14,13 @@ module Cocoatree
           Pod.new(spec_set.specification)
         end
       end
+    rescue ::Pod::DSLError => e
+      nil
     end
 
     def pods
       source.pods\
-        .map { |p|
-          begin
-            self.pod(p)
-          rescue ::Pod::DSLError => e
-            nil
-          end
-        }\
+        .map { |p| self.pod(p) }\
         .compact\
         .keep_if(&:github?)
     end
