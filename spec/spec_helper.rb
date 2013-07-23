@@ -16,5 +16,11 @@ RSpec.configure do |config|
   config.order = 'random'
 end
 
+# add library path
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+# load support files
+Dir.glob(File.join(File.dirname(__FILE__), 'support', '**', '*')).each do |f|
+  require f
+end
