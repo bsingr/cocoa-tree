@@ -8,6 +8,10 @@ describe Cocoatree::Cache do
 
   subject('cache') { described_class.new 'example_cache' }
 
+  before do
+    File.delete subject.path if File.exists? subject.path
+  end
+
   its(:path) { should include('example_cache') }
 
   it 'fetches once' do
