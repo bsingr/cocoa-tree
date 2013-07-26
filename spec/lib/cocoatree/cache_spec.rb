@@ -15,5 +15,9 @@ describe Cocoatree::Cache do
       'exampleData'
     end
     result.should == 'exampleData'
+    second_result = cache.fetch('exampleId', 'exampleAttrName') do
+      'newExampleData'
+    end
+    second_result.should == 'exampleData'
   end
 end
