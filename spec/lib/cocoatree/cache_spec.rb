@@ -9,4 +9,11 @@ describe Cocoatree::Cache do
   subject('cache') { described_class.new 'example_cache' }
 
   its(:path) { should include('example_cache') }
+
+  it 'fetches once' do
+    result = cache.fetch('exampleId', 'exampleAttrName') do
+      'exampleData'
+    end
+    result.should == 'exampleData'
+  end
 end
