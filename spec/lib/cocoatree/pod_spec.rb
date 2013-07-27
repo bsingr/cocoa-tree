@@ -49,6 +49,11 @@ describe Cocoatree::Pod do
       end
 
       its('stars') { should == -1 }
+
+      it 'calls octokit' do
+        Octokit.should_receive('repository').with('')
+        pod.stars
+      end
     end
   end
 end
