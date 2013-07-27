@@ -15,23 +15,25 @@ module Cocoatree
       # try to read cache
       if item = data[item_id]
         if item['expires_at'] > Time.now
-          if item_attr_value = item[item_attr_name]
-            puts "READ CACHE #{item_id}"
-            return item_attr_value
+          if item_data = item['data']
+            if item_attr_value = item_data[item_attr_name]
+              puts "READ CACHE #{item_id}"
+              return item_attr_value
+            end
           end
         end
       end
 
-      item_attr_value = yield
+      item_data = yield
 
       # fetch + update cache
       puts "CACHE UPDATE #{item_id}"
       data[item_id] ||= {}
       data[item_id]['expires_at'] = Time.now + 14*60*60*24 # 14 days
-      data[item_id][item_attr_name] = item_attr_value
+      data[item_id]['data'] = item_data
       
       write! data
-      return item_attr_value
+      return item_data[item_attr_name]
     end
 
     def reload

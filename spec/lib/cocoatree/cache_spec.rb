@@ -16,11 +16,11 @@ describe Cocoatree::Cache do
 
   it 'fetches once' do
     result = cache.fetch('exampleId', 'exampleAttrName') do
-      'exampleData'
+      {'exampleAttrName' => 'exampleData'}
     end
     result.should == 'exampleData'
     second_result = cache.fetch('exampleId', 'exampleAttrName') do
-      'newExampleData'
+      {'exampleAttrName' => 'newExampleData'}
     end
     second_result.should == 'exampleData'
   end

@@ -31,8 +31,8 @@ module Cocoatree
   private
 
     def fetch_stars
-      Cocoatree.github_cache.fetch(github, 'stars_count') do
-        Octokit.repository(github)['watchers_count']
+      Cocoatree.github_cache.fetch(github, 'watchers_count') do
+        Octokit.repository(github)
       end
     rescue Octokit::Forbidden => e
       puts "GITHUB rate limit temporarily exceeded, ignoring"
