@@ -54,6 +54,12 @@ describe Cocoatree::Pod do
         Octokit.should_receive('repository').with('')
         pod.stars
       end
+
+      it 'calls octokit with success' do
+        spec.source[:git] = 'https://github.com/dpree/cocoatree.git'
+        Octokit.should_receive('repository').with('dpree/cocoatree')
+        pod.stars
+      end
     end
   end
 end
