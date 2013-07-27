@@ -10,6 +10,8 @@ describe Cocoatree::Pod do
 
   subject('pod') { described_class.new spec }
 
+  its('source') { should == spec.source }
+
   its('url') { should == 'git-url' }
   its('github') { should == '' }
   its('github?') { should be_false }
