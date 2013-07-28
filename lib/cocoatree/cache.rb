@@ -24,23 +24,32 @@ module Cocoatree
       end
     end
 
-    def fetch item_id, item_attr_name
-      # try to read cache
-      if item_attr_value = get(item_id, item_attr_name)
-        return item_attr_value
-      end
-      
+    def set item_id, item_attr_name, item_attr_value
       data = read
-      item_data = yield
 
-      # fetch + update cache
       puts "CACHE UPDATE #{item_id}"
       data[item_id] ||= {}
       data[item_id]['expires_at'] = Time.now + 14*60*60*24 # 14 days
-      data[item_id]['data'] = item_data
-      
+      data[item_id]['data'] ||= {}
+      data[item_id]['data'][item_attr_name] = item_attr_value
       write! data
-      return item_data[item_attr_name]
+
+      true
+    end
+
+    def fetch item_id, item_attr_name
+      # try to get cache
+      if item_attr_value = get(item_id, item_attr_name)
+        return item_attr_value
+      end
+
+      # set
+      item_data = yield
+      item_attr_value = item_data[item_attr_name]
+      set item_id, item_attr_name, item_attr_value
+
+      # get
+      return item_attr_value
     end
 
     def reload

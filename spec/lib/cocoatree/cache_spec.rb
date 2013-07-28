@@ -29,6 +29,12 @@ describe Cocoatree::Cache do
     cache.get('exampleId', 'exampleAttrName').should == nil
   end
 
+  it 'sets and gets' do
+    cache.get('exampleId', 'exampleAttrName').should == nil
+    cache.set('exampleId', 'exampleAttrName', 'foo').should be_true
+    cache.get('exampleId', 'exampleAttrName').should == 'foo'
+  end
+
   context 'cached' do
     before do
       cache.stub('read').and_return 'exampleId' => {
