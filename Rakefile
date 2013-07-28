@@ -12,6 +12,7 @@ task :site do
     c.login = github_config['login']
     c.oauth_token = github_config['oauth_token']
   end
+  Cocoatree.github_cache.ignore_expiry!
   pods = Cocoatree::Pods.new
   pods.source_path = File.join(Cocoatree.root, 'Specs')
   website = Cocoatree::Website.new

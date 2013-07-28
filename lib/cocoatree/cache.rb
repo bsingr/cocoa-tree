@@ -5,16 +5,21 @@ module Cocoatree
     attr_reader :path
 
     def initialize filename, logger=nil
+      @ignore_expiry = false
       @logger = logger
       @path = File.join(Cocoatree.root, filename + '.yml')
       reload
+    end
+
+    def ignore_expiry!
+      @ignore_expiry = true
     end
 
     def get key
       data = read
 
       if entry = data[key]
-        if entry['expires_at'] > Time.now
+        if @ignore_expiry || entry['expires_at'] > Time.now
           log "READ CACHE #{key}"
           return entry['value']
         end
@@ -51,7 +56,6 @@ module Cocoatree
       @memory_cache = nil
     end
 
-  private
 
     def log msg
       @logger.info msg if @logger
