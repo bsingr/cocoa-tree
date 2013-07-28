@@ -3,6 +3,7 @@ require "cocoatree/pod"
 require "cocoatree/pods"
 require "cocoatree/website"
 require "cocoatree/cache"
+require "logger"
 
 module Cocoatree
   def self.root
@@ -10,6 +11,6 @@ module Cocoatree
   end
 
   def self.github_cache
-    @github_cache ||= Cache.new 'github_cache'
+    @github_cache ||= Cache.new 'github_cache', Logger.new(STDOUT)
   end
 end
