@@ -5,6 +5,7 @@ module Cocoatree
     attr_reader :path
 
     def initialize filename, logger=nil
+      @do_not_update_on_fetch = false
       @ignore_expiry = false
       @logger = logger
       @path = File.join(Cocoatree.root, filename + '.yml')
@@ -13,6 +14,10 @@ module Cocoatree
 
     def ignore_expiry!
       @ignore_expiry = true
+    end
+
+    def do_not_update_on_fetch!
+      @do_not_update_on_fetch = true
     end
 
     def get key
@@ -43,6 +48,8 @@ module Cocoatree
       if value = get(key)
         return value
       end
+
+      return if @do_not_update_on_fetch
 
       # set
       value = yield
