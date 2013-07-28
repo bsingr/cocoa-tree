@@ -31,10 +31,20 @@ module Cocoatree
   private
 
     def fetch_stars
-      data = Cocoatree.github_cache.fetch(github) do
+      data = fetch_github_repository_data
+      data['watchers_count'] if data
+    end
+
+    def github_data
+      matchdata = /github.com\/(.+)\/(.+).git/.match url
+      return [] unless matchdata
+      matchdata.captures
+    end
+
+    def fetch_github_repository_data
+      Cocoatree.github_cache.fetch(github) do
         Octokit.repository(github)
       end
-      data['watchers_count'] if data
     rescue  Octokit::BadRequest,
             Octokit::Unauthorized,
             Octokit::Forbidden,
@@ -47,12 +57,6 @@ module Cocoatree
             Octokit::ServiceUnavailable => e
       p e
       nil
-    end
-
-    def github_data
-      matchdata = /github.com\/(.+)\/(.+).git/.match url
-      return [] unless matchdata
-      matchdata.captures
     end
   end
 end
