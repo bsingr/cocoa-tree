@@ -9,10 +9,9 @@ module Cocoatree
       reload
     end
 
-    def fetch item_id, item_attr_name
+    def get item_id, item_attr_name
       data = read
 
-      # try to read cache
       if item = data[item_id]
         if item['expires_at'] > Time.now
           if item_data = item['data']
@@ -23,7 +22,15 @@ module Cocoatree
           end
         end
       end
+    end
 
+    def fetch item_id, item_attr_name
+      # try to read cache
+      if item_attr_value = get(item_id, item_attr_name)
+        return item_attr_value
+      end
+      
+      data = read
       item_data = yield
 
       # fetch + update cache

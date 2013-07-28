@@ -24,4 +24,21 @@ describe Cocoatree::Cache do
     end
     second_result.should == 'exampleData'
   end
+
+  it 'gets nothing' do
+    cache.get('exampleId', 'exampleAttrName').should == nil
+  end
+
+  context 'cached' do
+    before do
+      cache.stub('read').and_return 'exampleId' => {
+        'expires_at' => Time.now + 3600,
+        'data' => {'exampleAttrName' => 'someValue'}
+      }
+    end
+
+    it 'gets item' do
+      cache.get('exampleId', 'exampleAttrName').should == 'someValue'
+    end
+  end
 end
