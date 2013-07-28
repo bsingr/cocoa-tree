@@ -11,10 +11,10 @@ describe Cocoatree::Website do
     end
   end
 
-  it do
+  it 'renders html' do
     website.pods = pods
     rendered = website.render('index.html')
     rendered.should include('<html>')
-    rendered.should include('<li>')
+    rendered.should include('<td>500px-iOS-api</td>')
   end
 end
