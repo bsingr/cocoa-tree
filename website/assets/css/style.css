@@ -2,7 +2,7 @@
   background: #eee;
   padding-left: 5px;
   padding-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .pod:hover
@@ -28,4 +28,13 @@
 .stars .glyphicon {
   font-size: 0.6em;
   margin-left: 3px;
+}
+
+.pod-details {
+  background: #ccc;
+}
+
+.pod-details .row {
+  margin-left: 5px;
+  margin-top: 5px;
 }
