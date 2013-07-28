@@ -9,47 +9,41 @@ module Cocoatree
       reload
     end
 
-    def get item_id, item_attr_name
+    def get key
       data = read
 
-      if item = data[item_id]
-        if item['expires_at'] > Time.now
-          if item_data = item['data']
-            if item_attr_value = item_data[item_attr_name]
-              puts "READ CACHE #{item_id}"
-              return item_attr_value
-            end
-          end
+      if entry = data[key]
+        if entry['expires_at'] > Time.now
+          puts "READ CACHE #{key}"
+          return entry['value']
         end
       end
     end
 
-    def set item_id, item_attr_name, item_attr_value
+    def set key, value
       data = read
 
-      puts "CACHE UPDATE #{item_id}"
-      data[item_id] ||= {}
-      data[item_id]['expires_at'] = Time.now + 14*60*60*24 # 14 days
-      data[item_id]['data'] ||= {}
-      data[item_id]['data'][item_attr_name] = item_attr_value
+      puts "CACHE UPDATE #{key}"
+      data[key] ||= {}
+      data[key]['expires_at'] = Time.now + 14*60*60*24 # 14 days
+      data[key]['value'] = value
       write! data
 
       true
     end
 
-    def fetch item_id, item_attr_name
+    def fetch key
       # try to get cache
-      if item_attr_value = get(item_id, item_attr_name)
-        return item_attr_value
+      if value = get(key)
+        return value
       end
 
       # set
-      item_data = yield
-      item_attr_value = item_data[item_attr_name]
-      set item_id, item_attr_name, item_attr_value
+      value = yield
+      set key, value
 
       # get
-      return item_attr_value
+      return value
     end
 
     def reload

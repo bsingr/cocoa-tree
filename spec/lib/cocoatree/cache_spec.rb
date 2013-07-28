@@ -15,36 +15,36 @@ describe Cocoatree::Cache do
   its(:path) { should include('example_cache') }
 
   it 'fetches once' do
-    result = cache.fetch('exampleId', 'exampleAttrName') do
-      {'exampleAttrName' => 'exampleData'}
+    result = cache.fetch('exampleKey') do
+      1337
     end
-    result.should == 'exampleData'
-    second_result = cache.fetch('exampleId', 'exampleAttrName') do
-      {'exampleAttrName' => 'newExampleData'}
+    result.should == 1337
+    second_result = cache.fetch('exampleKey') do
+      42
     end
-    second_result.should == 'exampleData'
+    second_result.should == 1337
   end
 
   it 'gets nothing' do
-    cache.get('exampleId', 'exampleAttrName').should == nil
+    cache.get('exampleKey').should == nil
   end
 
   it 'sets and gets' do
-    cache.get('exampleId', 'exampleAttrName').should == nil
-    cache.set('exampleId', 'exampleAttrName', 'foo').should be_true
-    cache.get('exampleId', 'exampleAttrName').should == 'foo'
+    cache.get('exampleKey').should == nil
+    cache.set('exampleKey', 'foo').should be_true
+    cache.get('exampleKey').should == 'foo'
   end
 
   context 'cached' do
     before do
-      cache.stub('read').and_return 'exampleId' => {
+      cache.stub('read').and_return 'exampleKey' => {
         'expires_at' => Time.now + 3600,
-        'data' => {'exampleAttrName' => 'someValue'}
+        'value' => 'someValue'
       }
     end
 
     it 'gets item' do
-      cache.get('exampleId', 'exampleAttrName').should == 'someValue'
+      cache.get('exampleKey').should == 'someValue'
     end
   end
 end

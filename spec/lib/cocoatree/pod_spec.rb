@@ -30,7 +30,7 @@ describe Cocoatree::Pod do
   describe 'stars' do
     let('github_cache') do
       double('GithubCache').tap do |c|
-        c.stub('fetch') do |id, key, &block|
+        c.stub('fetch') do |key, &block|
           1337
         end
       end
@@ -43,7 +43,7 @@ describe Cocoatree::Pod do
 
     context 'not cached' do
       before do
-        github_cache.stub('fetch') do |id, key, &block|
+        github_cache.stub('fetch') do |key, &block|
           block.call
         end
       end
