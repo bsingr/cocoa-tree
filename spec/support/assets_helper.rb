@@ -1,6 +1,6 @@
 module AssetsHelper
   def assets_path *parts
-    File.join(File.dirname(__FILE__), '..', 'assets', *parts)
+    spec_root_path 'assets', *parts
   end
 end
 
