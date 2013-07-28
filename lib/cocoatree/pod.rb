@@ -35,9 +35,17 @@ module Cocoatree
         Octokit.repository(github)
       end
       data['watchers_count'] if data
-    rescue Octokit::Forbidden => e
-      puts "GITHUB rate limit temporarily exceeded, ignoring"
-    rescue Octokit::NotFound => e
+    rescue  Octokit::BadRequest,
+            Octokit::Unauthorized,
+            Octokit::Forbidden,
+            Octokit::NotFound,
+            Octokit::NotAcceptable,
+            Octokit::UnprocessableEntity,
+            Octokit::InternalServerError,
+            Octokit::NotImplemented,
+            Octokit::BadGateway,
+            Octokit::ServiceUnavailable => e
+      p e
       nil
     end
 
