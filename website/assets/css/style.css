@@ -18,3 +18,8 @@
   font-size: 2em;
   color: #fff;
 }
+
+.stars .glyphicon {
+  font-size: 0.6em;
+  margin-left: 3px;
+}
