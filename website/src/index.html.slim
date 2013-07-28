@@ -8,16 +8,14 @@ html
     link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"
     script type="text/javascript" src="bootstrap/js/bootstrap.min.js"
   body
-    h1
-      | Cocoatree
-      = pods.count
-    .container-fluid
-      .row-fluid
-        .span-12
-          table
-            - pods_by_stars.each do |pod|
-              tr
-                td = pod.name
-                td = pod.stars
+    .container
+      h1 = "#{pods.count} Pods"
+    .container
+      - pods_by_stars.each do |pod|
+        .row.pod
+          .col-lg-9
+            .row.title = pod.name
+            .row.summary = pod.spec.summary
+          .col-3.stars = pod.stars
     div id="footer"
       | Copyright © 2013 Jens Bissinger
