@@ -31,7 +31,7 @@ describe Cocoatree::Pod do
     let('github_cache') do
       double('GithubCache').tap do |c|
         c.stub('fetch') do |key, &block|
-          1337
+          {'watchers_count' => 1337}
         end
       end
     end
