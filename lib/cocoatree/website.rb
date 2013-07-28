@@ -5,7 +5,7 @@ module Cocoatree
     attr_accessor :pods
 
     def render filename
-      Slim::Template.new(template(filename)).render(pods)
+      Slim::Template.new(template(filename), :pretty => true).render(pods)
     end
 
   private
