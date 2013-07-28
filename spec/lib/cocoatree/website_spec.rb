@@ -5,9 +5,9 @@ describe Cocoatree::Website do
   let(:website) { described_class.new }
   let(:pods) { Cocoatree::Pods.new }
   before do
-    pods.source_path = File.join(Cocoatree.root, 'Specs')
-    Octokit.stub(:stargazers) do
-      Array.new(rand(100))
+    pods.source_path = assets_path('example-pod-specs')
+    Cocoatree::Pod.any_instance.stub(:stars) do
+      rand(100)
     end
   end
 
