@@ -4,7 +4,8 @@ module Cocoatree
   class Cache
     attr_reader :path
 
-    def initialize filename
+    def initialize filename, logger=nil
+      @logger = logger
       @path = File.join(Cocoatree.root, filename + '.yml')
       reload
     end
@@ -14,7 +15,7 @@ module Cocoatree
 
       if entry = data[key]
         if entry['expires_at'] > Time.now
-          puts "READ CACHE #{key}"
+          log "READ CACHE #{key}"
           return entry['value']
         end
       end
@@ -23,7 +24,7 @@ module Cocoatree
     def set key, value
       data = read
 
-      puts "CACHE UPDATE #{key}"
+      log "CACHE UPDATE #{key}"
       data[key] ||= {}
       data[key]['expires_at'] = Time.now + 14*60*60*24 # 14 days
       data[key]['value'] = value
@@ -51,6 +52,10 @@ module Cocoatree
     end
 
   private
+
+    def log msg
+      @logger.info msg if @logger
+    end
 
     def read
       if @memory_cache
