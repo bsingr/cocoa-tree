@@ -5,12 +5,18 @@
   margin-bottom: 5px;
 }
 
+.pod:hover
+{
+  background: #ddd;
+}
+
 .title {
 
 }
 
 .summary {
   color: #999;
+  font-size: 0.8em;
 }
 
 .stars {

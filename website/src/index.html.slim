@@ -14,12 +14,13 @@ html
       h1 = "#{pods.count} Pods"
     .container
       - pods_by_stars.each do |pod|
-        .row.pod
-          .col-lg-9
-            .row.title = pod.name
-            .row.summary = pod.spec.summary
-          .col-3.stars
-            = pod.stars
-            span.glyphicon.glyphicon-star
+        a href="#!/pods/#{pod.name}"
+          .row.pod
+            .col-lg-9
+              .row.title = pod.name
+              .row.summary = pod.spec.summary
+            .col-3.stars
+              = pod.stars
+              span.glyphicon.glyphicon-star
     div id="footer"
       | Copyright © 2013 Jens Bissinger
