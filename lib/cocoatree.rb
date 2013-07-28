@@ -3,6 +3,7 @@ require "cocoatree/pod"
 require "cocoatree/pods"
 require "cocoatree/website"
 require "cocoatree/cache"
+require "hashie"
 require "logger"
 
 module Cocoatree
