@@ -24,8 +24,9 @@ html
               .row.title = pod.name
               .row.summary = pod.spec.summary
             .col-3.stars
-              = pod.stars
-              span.glyphicon.glyphicon-star
+              - if pod.stars > -1
+                = pod.stars
+                span.glyphicon.glyphicon-star
         .row.collapse.pod-details id="pod-#{pod.name}"
           .row
             a href=pod.url target="_blank" = pod.url
