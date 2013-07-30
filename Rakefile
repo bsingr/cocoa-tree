@@ -6,6 +6,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'cocoatree'
 
 class SiteGenerator
+  attr_accessor :mock
+
   def initialize
     configure_github_cache
     configure_octokit
@@ -25,9 +27,20 @@ class SiteGenerator
   end
 
   def build_pods
-    pods = Cocoatree::Pods.new
-    pods.source_path = File.join(Cocoatree.root, 'Specs')
-    pods
+    if mock
+      pod = Hashie::Mash.new name: "YetAnoPod",
+                             spec: {
+                              summary: "Yet Another Pod is a just another Pod."
+                             },
+                             stars: 1349,
+                             url: 'http://foo.com'
+      Hashie::Mash.new pods: [pod],
+                       pods_by_stars: [pod]
+    else
+      pods = Cocoatree::Pods.new
+      pods.source_path = File.join(Cocoatree.root, 'Specs')
+      pods
+    end
   end
 
   def build_website
@@ -47,7 +60,9 @@ end
 
 desc "build website"
 task :site do
-  SiteGenerator.new.generate!
+  generator = SiteGenerator.new
+  generator.mock = true
+  generator.generate!
 end
 
 task :default => :spec
