@@ -12,5 +12,6 @@ guard 'rspec' do
 end
 
 guard 'rake', :task => 'site' do
+  watch(%r{^Rakefile$})
   watch(%r{^website/src/.+$})
 end
