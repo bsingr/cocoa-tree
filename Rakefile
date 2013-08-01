@@ -33,7 +33,15 @@ class SiteGenerator
                               summary: "Yet Another Pod is a just another Pod."
                              },
                              stars: 1349,
-                             url: 'http://foo.com'
+                             url: 'http://foo.com',
+                             activity: "#{rand(10)} days ago",
+                             category: 'Database Adapter',
+                             platforms: %w[ios osx],
+                             version: 'v3.0.9',
+                             dependencies: [
+                              {name: 'Ponderosa', version: 'v1.2.3'},
+                              {name: 'Meatballz', version: 'v0.9.1'}
+                             ]
       Hashie::Mash.new pods: [pod],
                        pods_by_stars: [pod]
     else
