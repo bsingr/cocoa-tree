@@ -37,13 +37,13 @@ class SiteGenerator
                              activity: "#{rand(10)} days ago",
                              category: 'Database Adapter',
                              platforms: %w[ios osx],
-                             version: 'v3.0.9',
+                             version: '3.0.9',
                              dependencies: [
-                              {name: 'Ponderosa', version: 'v1.2.3'},
-                              {name: 'Meatballz', version: 'v0.9.1'}
+                              {name: 'Ponderosa', version: '1.2.3'},
+                              {name: 'Meatballz', version: '0.9.1'}
                              ]
-      Hashie::Mash.new pods: [pod],
-                       pods_by_stars: [pod]
+      Hashie::Mash.new pods: [pod, pod, pod],
+                       pods_by_stars: [pod, pod, pod]
     else
       pods = Cocoatree::Pods.new
       pods.source_path = File.join(Cocoatree.root, 'Specs')
