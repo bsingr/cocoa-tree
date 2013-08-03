@@ -52,8 +52,8 @@ html
             .col-12
               - pod.dependencies.each do |dependency|
                 .row.dependency
-                  .col-6 = dependency.name
-                  .col-6 = dependency.version
+                  .col-6.name = dependency.name
+                  .col-6.version = dependency.version
     #footer.container
       .row
         .col-sm-12 Copyright &copy; 2013 Jens Bissinger
