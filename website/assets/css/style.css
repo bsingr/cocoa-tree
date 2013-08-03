@@ -1,8 +1,6 @@
 .pod {
-  background: #eee;
-  padding-left: 5px;
-  padding-top: 5px;
-  margin-top: 5px;
+  background: #eeeeee;
+  margin-top: 1px;
   cursor: pointer;
 }
 
@@ -11,28 +9,53 @@
   background: #ddd;
 }
 
-.title {
+.part {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
+.title {
+  font-size: 1.4em;
 }
 
 .summary {
   color: #999;
-  font-size: 0.8em;
+  font-size: 0.7em;
+}
+
+.category {
+  color: #bbb;
+  font-size: 0.7em;
+}
+
+.version {
+  text-align: center;
+  font-size: 1.5em;
+  color: #ccc;
 }
 
 .stars {
-  text-align: right;
-  font-size: 2em;
-  color: #fff;
+  text-align: center;
+  font-size: 1.5em;
+  color: #ccc;
 }
 
 .stars .glyphicon {
-  font-size: 0.6em;
-  margin-left: 3px;
+  color: #ccc;
+}
+
+.activity {
+  text-align: center;
+  color: #ccc;
+  font-size: 1.5em;
+}
+
+.activity .glyphicon {
+  color: #ccc;
 }
 
 .pod-details {
-  background: #ccc;
+  background: #ddd;
 }
 
 .pod-details .row {
