@@ -54,13 +54,26 @@
   color: #ccc;
 }
 
-.pod-details {
+.pod-details > .row {
   background: #ddd;
 }
 
-.pod-details .row {
-  margin-left: 5px;
-  margin-top: 5px;
+.pod-details .links {
+  background: #ccc;
+}
+
+.pod-details .links div {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;  
+}
+
+.pod-details .dependencies {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.pod-details .dependency {
 }
 
 #footer {

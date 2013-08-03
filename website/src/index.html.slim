@@ -41,19 +41,19 @@ html
                 span.glyphicon.glyphicon-time
               .row
                 = pod.activity
-        .row.collapse.pod-details id="pod-#{pod.name}"
-          .row
+        .collapse.pod-details id="pod-#{pod.name}"
+          .row.links
             .col-3
               a href=pod.url target="_blank" Website
             .col-3 Doc
             .col-3 Wiki
             .col-3 Source
-          .row
+          .row.dependencies
             .col-12
               - pod.dependencies.each do |dependency|
-                .row
-                  .col-sm-6 = dependency.name
-                  .col-sm-6 = dependency.version
+                .row.dependency
+                  .col-6 = dependency.name
+                  .col-6 = dependency.version
     #footer.container
       .row
         .col-sm-12 Copyright &copy; 2013 Jens Bissinger
