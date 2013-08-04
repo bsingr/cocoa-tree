@@ -44,10 +44,21 @@ html
         .collapse.pod-details id="pod-#{pod.name}"
           .row.links
             .col-3
+              span.glyphicon.glyphicon-home
+              '
               a href=pod.url target="_blank" Website
-            .col-3 Doc
-            .col-3 Wiki
-            .col-3 Source
+            .col-3
+              span.glyphicon.glyphicon-book
+              '
+              a Doc
+            .col-3
+              span.glyphicon.glyphicon-list-alt
+              '
+              a Wiki
+            .col-3
+              span.glyphicon.glyphicon-inbox
+              '
+              a Source
           .row.dependencies
             .col-12
               - pod.dependencies.each do |dependency|
