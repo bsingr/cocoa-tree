@@ -19,7 +19,7 @@ html
       .row.tags
     .container
       - pods_by_stars.each do |pod|
-        a data-toggle="collapse" data-target="#pod-#{pod.name}"
+        div data-toggle="collapse" data-target="#pod-#{pod.name}"
           .row.pod
             .col-12.col-lg-6.meta.part
               .title = pod.name
@@ -50,15 +50,15 @@ html
             .col-3
               span.glyphicon.glyphicon-book
               '
-              a Doc
+              a href=pod.doc_url Doc
             .col-3
               span.glyphicon.glyphicon-list-alt
               '
-              a Wiki
+              a href=pod.wiki_url Wiki
             .col-3
               span.glyphicon.glyphicon-inbox
               '
-              a Source
+              a href=pod.source_url Source
           .row.dependencies
             .col-12
               - pod.dependencies.each do |dependency|

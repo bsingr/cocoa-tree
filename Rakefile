@@ -33,7 +33,10 @@ class SiteGenerator
                               summary: "Yet Another Pod is a just another Pod."
                              },
                              stars: 1349,
-                             url: 'http://foo.com',
+                             url: 'http://wwww.example.com',
+                             doc_url: 'http://doc.example.com',
+                             wiki_url: 'http://wiki.example.com',
+                             source_url: 'http://source.example.com',
                              activity: "#{rand(10)} days ago",
                              category: 'Database Adapter',
                              platforms: %w[ios osx],
