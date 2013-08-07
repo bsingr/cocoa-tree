@@ -70,7 +70,15 @@
   border: 2px solid transparent;
 }
 
-.pod-details .links a:hover {
+.pod-details .links a[href=''] * {
+  color: #ddd;
+}
+
+.pod-details .links a:hover[href=''] * {
+  cursor: normal;
+}
+
+.pod-details .links a:hover:not([href='']) {
   border-top-color: #999;
 }
 
