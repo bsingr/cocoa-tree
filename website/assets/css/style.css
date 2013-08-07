@@ -6,7 +6,7 @@
 
 .pod:hover
 {
-  background: #ddd;
+  background: #f6f6f6;
 }
 
 .part {
@@ -62,21 +62,27 @@
   background: #ccc;
 }
 
-.pod-details .links div {
+.pod-details .links a {
   padding-top: 5px;
   padding-bottom: 5px;
   text-align: center;
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+.pod-details .links a:hover {
+  border-top-color: #999;
 }
 
 .pod-details .links a {
   text-transform: uppercase;
   font-size: 0.9em;
-  font-weight: bold;
-  color: #666;
+  letter-spacing: 0.2em;
+  color: #fff;
 }
 
 .pod-details .links .glyphicon {
-  color: #999;
+  color: #fff;
   font-size: 0.8em;
 }
 
