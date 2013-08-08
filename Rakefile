@@ -68,12 +68,12 @@ class SiteGenerator
   end
 end
 
-
 desc "build website"
 task :site do
   generator = SiteGenerator.new
   generator.mock = true
   generator.generate!
+  sh 'scss website/src/assets/stylesheets/* website/assets/css/style.css'
 end
 
 task :default => :spec

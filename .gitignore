@@ -16,3 +16,5 @@ test/tmp
 test/version_tmp
 tmp
 spec/assets/example_cache.yml
+website/index.html
+website/assets/css/style.css
