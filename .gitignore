@@ -18,3 +18,4 @@ tmp
 spec/assets/example_cache.yml
 website/index.html
 website/assets/css/style.css
+.sass-cache
