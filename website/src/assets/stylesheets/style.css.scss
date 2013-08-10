@@ -48,57 +48,60 @@ $badgeTextCol: #ccc;
   }
 }
 
-.pod-details > .row {
-  background: #ddd;
-}
+.pod-details {
 
-.pod-details .links {
-  background: #ccc;
-}
+  & > .row {
+    background: #ddd;
+  }
 
-.pod-details .links a {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  text-align: center;
-  text-decoration: none;
-  border: 2px solid transparent;
-}
+  .links {
+    background: #ccc;
+  }
 
-.pod-details .links a:not([href]) * {
-  color: #ddd;
-}
+  .links a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid transparent;
+  }
 
-.pod-details .links a:hover:not([href]) * {
-  cursor: default;
-}
+  .links a:not([href]) * {
+    color: #ddd;
+  }
 
-.pod-details .links a:hover[href] {
-  border-top-color: #999;
-}
+  .links a:hover:not([href]) * {
+    cursor: default;
+  }
 
-.pod-details .links a {
-  text-transform: uppercase;
-  font-size: 0.9em;
-  letter-spacing: 0.2em;
-  color: #fff;
-}
+  .links a:hover[href] {
+    border-top-color: #999;
+  }
 
-.pod-details .links .glyphicon {
-  color: #fff;
-  font-size: 0.8em;
-}
+  .links a {
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.2em;
+    color: #fff;
+  }
 
-.pod-details .dependencies {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
+  .links .glyphicon {
+    color: #fff;
+    font-size: 0.8em;
+  }
 
-.pod-details .dependency {
-  color: #999;
-}
+  .dependencies {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 
-.pod-details .dependency .version {
-  text-align: right;
+  .dependency {
+    color: #999;
+  }
+
+  .dependency .version {
+    text-align: right;
+  }
 }
 
 #footer {
