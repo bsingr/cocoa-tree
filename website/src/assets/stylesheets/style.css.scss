@@ -56,38 +56,36 @@ $badgeTextCol: #ccc;
 
   .links {
     background: #ccc;
-  }
 
-  .links a {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    text-align: center;
-    text-decoration: none;
-    border: 2px solid transparent;
-  }
+    a {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 0.9em;
+      letter-spacing: 0.2em;
+      color: #fff;
+      border: 2px solid transparent;
 
-  .links a:not([href]) * {
-    color: #ddd;
-  }
+      &:not([href]) * {
+        color: #ddd;
+      }
 
-  .links a:hover:not([href]) * {
-    cursor: default;
-  }
+      &:hover:not([href]) * {
+        cursor: default;
+      }
 
-  .links a:hover[href] {
-    border-top-color: #999;
-  }
+      &:hover[href] {
+        border-top-color: #999;
+      }
 
-  .links a {
-    text-transform: uppercase;
-    font-size: 0.9em;
-    letter-spacing: 0.2em;
-    color: #fff;
-  }
-
-  .links .glyphicon {
-    color: #fff;
-    font-size: 0.8em;
+      .glyphicon {
+        color: #fff;
+        font-size: 0.8em;
+      }
+    }
+    
   }
 
   .dependencies {
