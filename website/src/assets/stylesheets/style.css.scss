@@ -72,12 +72,14 @@ $badgeTextCol: #ccc;
         color: #ddd;
       }
 
-      &:hover:not([href]) * {
-        cursor: default;
-      }
+      &:hover {
+        &:not([href]) * {
+          cursor: default;
+        }
 
-      &:hover[href] {
-        border-top-color: #999;
+        &:[href] {
+          border-top-color: #999;
+        }
       }
 
       .glyphicon {
