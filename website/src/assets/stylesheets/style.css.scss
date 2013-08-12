@@ -65,11 +65,18 @@ $badgeTextCol: #ccc;
       text-transform: uppercase;
       font-size: 0.9em;
       letter-spacing: 0.2em;
-      color: #fff;
-      border: 2px solid transparent;
+
+      &,
+      & .glyphicon {
+        color: #fff;
+      }
 
       &:not([href]) * {
         color: #ddd;
+      }
+
+      .glyphicon {
+        font-size: 0.8em;
       }
 
       &:hover {
@@ -78,13 +85,10 @@ $badgeTextCol: #ccc;
         }
 
         &[href] {
-          border-top-color: #999;
+          &, .glyphicon {
+            color: #999;
+          }
         }
-      }
-
-      .glyphicon {
-        color: #fff;
-        font-size: 0.8em;
       }
     }
     
