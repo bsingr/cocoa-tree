@@ -93,14 +93,14 @@ $badgeTextCol: #ccc;
   .dependencies {
     padding-top: 10px;
     padding-bottom: 10px;
-  }
-
-  .dependency {
-    color: #999;
-  }
-
-  .dependency .version {
-    text-align: right;
+  
+    .dependency {
+      color: #999;
+      
+      .version {
+        text-align: right;
+      }
+    }
   }
 }
 
