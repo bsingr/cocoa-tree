@@ -12,6 +12,10 @@ module Cocoatree
       end
     end
 
+    def version
+      spec.version
+    end
+
     def url
       spec.source[:git]
     end
