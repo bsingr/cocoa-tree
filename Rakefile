@@ -37,7 +37,7 @@ class SiteGenerator
                              doc_url: 'http://doc.example.com',
                              wiki_url: 'http://wiki.example.com',
                              source_url: 'http://source.example.com',
-                             activity: "#{rand(10)} days ago",
+                             pushed_at: Time.now,
                              category: 'Database Adapter',
                              platforms: %w[ios osx],
                              version: '3.0.9',
