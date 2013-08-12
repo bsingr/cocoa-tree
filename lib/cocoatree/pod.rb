@@ -25,14 +25,20 @@ module Cocoatree
     end
 
     def stars
-      @stars ||= (fetch_stars || -1)
+      ensure_data
+      @data['watchers_count'] || -1
+    end
+
+    def pushed_at
+      ensure_data
+      timestr = @data['pushed_at']
+      timestr ? Time.new(timestr) : nil
     end
 
   private
 
-    def fetch_stars
-      data = fetch_github_repository_data
-      data['watchers_count'] if data
+    def ensure_data
+      @data ||= (fetch_github_repository_data || {})
     end
 
     def github_data

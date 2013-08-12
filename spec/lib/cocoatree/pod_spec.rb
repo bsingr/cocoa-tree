@@ -27,11 +27,12 @@ describe Cocoatree::Pod do
     its('github') { should be_true}
   end
 
-  describe 'stars' do
+  describe 'github api data' do
     let('github_cache') do
       double('GithubCache').tap do |c|
         c.stub('fetch') do |key, &block|
-          {'watchers_count' => 1337}
+          {'watchers_count' => 1337,
+           'pushed_at' => "2011-01-26T19:06:43Z"}
         end
       end
     end
@@ -40,6 +41,7 @@ describe Cocoatree::Pod do
     end
 
     its('stars') { should == 1337 }
+    its('pushed_at.to_s') { should == '2011-01-01 00:00:00 +0100' }
 
     context 'not cached' do
       before do
@@ -49,6 +51,7 @@ describe Cocoatree::Pod do
       end
 
       its('stars') { should == -1 }
+      its('pushed_at') { should == nil }
 
       it 'calls octokit' do
         Octokit.should_receive('repository').with('')
