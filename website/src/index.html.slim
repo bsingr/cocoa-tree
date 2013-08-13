@@ -40,7 +40,10 @@ html
               .row
                 span.glyphicon.glyphicon-time
               .row
-                = time_ago_in_words pod.pushed_at
+                - if pod.pushed_at
+                  = time_ago_in_words pod.pushed_at
+                - else
+                  = "-"
         .collapse.pod-details id="pod-#{pod.name}"
           .row.links
             a.col-3 href=pod.url
