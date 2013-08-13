@@ -1,10 +1,10 @@
+require "hashie"
+require "logger"
 require "cocoatree/version"
 require "cocoatree/pod"
 require "cocoatree/pods"
 require "cocoatree/website"
 require "cocoatree/cache"
-require "hashie"
-require "logger"
 
 module Cocoatree
   def self.root
