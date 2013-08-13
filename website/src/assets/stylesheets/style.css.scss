@@ -11,7 +11,7 @@ $podLinksEnabledTextCol: #fff;
 $podLinksDisabledTextCol: #ddd;
 $podLinksHoverTextCol: #999;
 $dependencyTextCol: #999;
-$noDependenciesTextCol: #aaa;
+$noDependenciesTextCol: #ccc;
 $footerTextCol: #999;
 
 @mixin badge {
@@ -67,11 +67,6 @@ a {
 }
 
 .pod-details {
-
-  & > .row {
-    background: $podBg;
-  }
-
   .links {
     background: $podLinksBg;
 
@@ -113,8 +108,9 @@ a {
   }
 
   .dependencies {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+    font-size: 0.8em;
   
     .dependency {
       color: $dependencyTextCol;
