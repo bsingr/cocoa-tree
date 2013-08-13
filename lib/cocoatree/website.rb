@@ -1,4 +1,5 @@
 require 'slim'
+require 'active_support/core_ext/string'
 require 'action_view'
 include ActionView::Helpers::DateHelper
 

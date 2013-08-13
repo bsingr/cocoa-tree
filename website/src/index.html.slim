@@ -22,7 +22,8 @@ html
         div data-toggle="collapse" data-target="#pod-#{pod.name}"
           .row.pod
             .col-12.col-lg-6.meta.part
-              .title = pod.name
+              .title
+                a name=pod.name.parameterize = pod.name
               .summary = pod.spec.summary
               .category = pod.category
             .col-4.col-lg-2.version.part
@@ -64,10 +65,14 @@ html
               span Source
           .row.dependencies
             .col-12
-              - pod.dependencies.each do |dependency|
-                .row.dependency
-                  .col-6.name = dependency.name
-                  .col-6.version = dependency.requirement
+              - if pod.dependencies.empty?
+                span.no-dependencies No Dependencies.
+              - else
+                - pod.dependencies.each do |dependency|
+                  .row.dependency
+                    .col-6.name
+                      a href="##{dependency.name.parameterize}" = dependency.name
+                    .col-6.version = dependency.requirement
     #footer.container
       .row
         .col-sm-12 Copyright &copy; 2013 Jens Bissinger
