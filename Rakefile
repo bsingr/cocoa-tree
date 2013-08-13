@@ -37,7 +37,7 @@ class SiteGenerator
                              doc_url: 'http://doc.example.com',
                              wiki_url: 'http://wiki.example.com',
                              source_url: 'http://source.example.com',
-                             pushed_at: Time.now,
+                             pushed_at: Time.gm(Time.now.year, 06, 06),
                              category: 'Database Adapter',
                              platforms: %w[ios osx],
                              version: '3.0.9',

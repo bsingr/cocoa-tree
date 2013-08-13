@@ -1,11 +1,14 @@
 require 'slim'
+require 'action_view'
+include ActionView::Helpers::DateHelper
 
 module Cocoatree
   class Website
     attr_accessor :pods
 
     def render filename
-      Slim::Template.new(template(filename), :pretty => true).render(pods)
+      template = Slim::Template.new(template(filename), :pretty => true)
+      template.render(pods)
     end
 
   private
