@@ -1,8 +1,18 @@
 $headBg: #eee;
-$headHoverBg: #f6f6f6;
+$headHoverBg: #f5f5f5;
+$linkCol: #cc9999;
+$linkHoverCol: darken($linkCol, 20%);
 $emphasizeTextCol: #999;
-$lightTextCol: #bbb;
+$lightTextCol: #F5A9BC;
 $badgeTextCol: #ccc;
+$podBg: #ddd;
+$podLinksBg: #ccc;
+$podLinksEnabledTextCol: #fff;
+$podLinksDisabledTextCol: #ddd;
+$podLinksHoverTextCol: #999;
+$dependencyTextCol: #999;
+$noDependenciesTextCol: #aaa;
+$footerTextCol: #999;
 
 @mixin badge {
   text-align: center;
@@ -10,6 +20,14 @@ $badgeTextCol: #ccc;
 
   &, .glyphicon {
     color: $badgeTextCol;
+  }
+}
+
+a {
+  color: $linkCol;
+
+  &:hover {
+    color: $linkHoverCol;
   }
 }
 
@@ -51,11 +69,11 @@ $badgeTextCol: #ccc;
 .pod-details {
 
   & > .row {
-    background: #ddd;
+    background: $podBg;
   }
 
   .links {
-    background: #ccc;
+    background: $podLinksBg;
 
     a {
       padding-top: 5px;
@@ -68,11 +86,11 @@ $badgeTextCol: #ccc;
 
       &,
       & .glyphicon {
-        color: #fff;
+        color: $podLinksEnabledTextCol;
       }
 
       &:not([href]) * {
-        color: #ddd;
+        color: $podLinksDisabledTextCol;
       }
 
       .glyphicon {
@@ -86,7 +104,7 @@ $badgeTextCol: #ccc;
 
         &[href] {
           &, .glyphicon {
-            color: #999;
+            color: $podLinksHoverTextCol;
           }
         }
       }
@@ -99,7 +117,7 @@ $badgeTextCol: #ccc;
     padding-bottom: 10px;
   
     .dependency {
-      color: #999;
+      color: $dependencyTextCol;
       
       .version {
         text-align: right;
@@ -107,13 +125,13 @@ $badgeTextCol: #ccc;
     }
 
     .no-dependencies {
-      color: #aaa;
+      color: $noDependenciesTextCol;
     }
   }
 }
 
 #footer {
-  color: #999;
+  color: $footerTextCol;
   text-align: center;
   margin: 10px;
 }
