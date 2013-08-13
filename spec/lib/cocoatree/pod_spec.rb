@@ -43,7 +43,7 @@ describe Cocoatree::Pod do
     end
 
     its('stars') { should == 1337 }
-    its('pushed_at.to_s') { should == '2011-01-01 00:00:00 +0100' }
+    its('pushed_at.to_s') { should == "2011-01-26 19:06:43 UTC" }
     
     context 'not cached' do
       before do

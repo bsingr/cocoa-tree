@@ -1,3 +1,5 @@
+require 'time'
+
 module Cocoatree
   class Pod
     attr_reader :spec
@@ -36,7 +38,7 @@ module Cocoatree
     def pushed_at
       ensure_data
       timestr = @data['pushed_at']
-      timestr ? Time.new(timestr) : nil
+      timestr ? Time.parse(timestr) : nil
     end
 
   private
