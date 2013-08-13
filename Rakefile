@@ -42,8 +42,8 @@ class SiteGenerator
                              platforms: %w[ios osx],
                              version: '3.0.9',
                              dependencies: [
-                              {name: 'Ponderosa', version: '1.2.3'},
-                              {name: 'Meatballz', version: '0.9.1'}
+                              {name: 'Ponderosa', requirement: '>= 0.5 < 0.7'},
+                              {name: 'Meatballz', requirement: nil}
                              ]
       Hashie::Mash.new pods: [pod, pod, pod],
                        pods_by_stars: [pod, pod, pod]
