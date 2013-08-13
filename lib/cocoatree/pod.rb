@@ -1,5 +1,8 @@
+require "action_view"
+
 module Cocoatree
   class Pod
+    include ActionView::Helpers::DateHelper
     attr_reader :spec
 
     def initialize spec
@@ -37,6 +40,10 @@ module Cocoatree
       ensure_data
       timestr = @data['pushed_at']
       timestr ? Time.new(timestr) : nil
+    end
+
+    def pushed_at_ago
+      time_ago_in_words(pushed_at)
     end
 
   private

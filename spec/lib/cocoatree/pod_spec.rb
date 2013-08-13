@@ -44,6 +44,7 @@ describe Cocoatree::Pod do
 
     its('stars') { should == 1337 }
     its('pushed_at.to_s') { should == '2011-01-01 00:00:00 +0100' }
+    its('pushed_at_ago') { should == 'over 2 years' }
 
     context 'not cached' do
       before do
