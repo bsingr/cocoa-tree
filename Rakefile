@@ -70,7 +70,7 @@ end
 
 desc "compile stylesheets"
 task :style do
-  sh 'scss website/src/assets/stylesheets/* website/assets/css/style.css'
+  sh 'scss website-src/assets/stylesheets/* website/assets/css/style.css'
 end
 
 desc "build website"

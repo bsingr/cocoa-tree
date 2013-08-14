@@ -15,7 +15,7 @@ module Cocoatree
   private
 
     def template filename
-      File.join(Cocoatree.root, 'website', 'src', filename + '.slim')
+      File.join(Cocoatree.root, 'website-src', filename + '.slim')
     end
   end
 end
