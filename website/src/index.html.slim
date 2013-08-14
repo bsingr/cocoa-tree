@@ -10,7 +10,7 @@ html
     link href="assets/css/style.css" rel="stylesheet"
     script type="text/javascript" src="assets/js/jquery.min.js"
     script type="text/javascript" src="bootstrap/js/bootstrap.min.js"
-    script type="text/javascript" src="assets/js/app.js"
+    //script type="text/javascript" src="assets/js/app.js"
   body
     .container
       h1 = "#{pods.count} Pods"
@@ -48,7 +48,7 @@ html
         .row.collapse.pod-details id="pod-#{pod.name}"
           .col-12
             .row.links
-              a.col-3 href=pod.url
+              a.col-3 href=pod.website
                 span.glyphicon.glyphicon-home
                 '
                 span Website
@@ -60,7 +60,7 @@ html
                 span.glyphicon.glyphicon-list-alt
                 '
                 span Wiki
-              a.col-3 href=pod.source_url
+              a.col-3 href=pod.url
                 span.glyphicon.glyphicon-inbox
                 '
                 span Source
