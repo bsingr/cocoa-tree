@@ -19,7 +19,7 @@ describe Cocoatree::Pod do
   its('url') { should == 'git-url' }
   its('github') { should == '' }
   its('github?') { should be_false }
-  its('homepage') { should = 'http://example.com' }
+  its('homepage') { should == 'http://example.com' }
 
   context 'github' do
     before do
