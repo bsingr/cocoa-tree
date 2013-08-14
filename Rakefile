@@ -68,12 +68,23 @@ class SiteGenerator
   end
 end
 
+desc "compile stylesheets"
+task :style do
+  sh 'scss website/src/assets/stylesheets/* website/assets/css/style.css'
+end
+
 desc "build website"
-task :site do
+task :site => :style do
+  generator = SiteGenerator.new
+  generator.mock = false
+  generator.generate!
+end
+
+desc "build website using mock data"
+task :mocksite => :style do
   generator = SiteGenerator.new
   generator.mock = true
   generator.generate!
-  sh 'scss website/src/assets/stylesheets/* website/assets/css/style.css'
 end
 
 task :default => :spec
