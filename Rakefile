@@ -87,4 +87,10 @@ task :mocksite => :style do
   generator.generate!
 end
 
+desc "deploy to cocoatree-site"
+task :deploy => :site do
+  sh "cp -R website/* website-deploy/"
+  sh "pushd website-deploy && git add . && git commit -m 'Update site' && git push origin gh-pages"
+end
+
 task :default => :spec
