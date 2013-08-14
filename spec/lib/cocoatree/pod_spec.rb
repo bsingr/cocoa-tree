@@ -7,6 +7,7 @@ describe Cocoatree::Pod do
     double('Spec').tap do |s|
       s.stub('source').and_return git: 'git-url'
       s.stub('version').and_return '1.2.3'
+      s.stub('website').and_return 'http://example.com'
     end
   end
 
@@ -18,6 +19,7 @@ describe Cocoatree::Pod do
   its('url') { should == 'git-url' }
   its('github') { should == '' }
   its('github?') { should be_false }
+  its('website') { should = 'http://example.com' }
 
   context 'github' do
     before do
