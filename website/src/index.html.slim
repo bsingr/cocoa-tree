@@ -13,7 +13,11 @@ html
     //script type="text/javascript" src="assets/js/app.js"
   body
     .container
-      h1 = "#{pods.count} Pods"
+      .row
+        h1.col-12
+          span = "#{pods.count} Pods"
+          span.glyphicon.glyphicon-leaf
+          span Cocoatree
     .container
       .row.categories
       .row.tags

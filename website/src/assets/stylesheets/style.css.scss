@@ -1,9 +1,10 @@
+$headerTextCol: #ddd;
 $headBg: #eee;
 $headHoverBg: #f5f5f5;
 $linkCol: #cc9999;
 $linkHoverCol: darken($linkCol, 20%);
 $emphasizeTextCol: #999;
-$lightTextCol: #F5A9BC;
+$lightTextCol: #bbb;
 $badgeTextCol: #ccc;
 $podBg: #ddd;
 $podLinksBg: #ccc;
@@ -19,7 +20,18 @@ $footerTextCol: #999;
   font-size: 1.5em;
 
   &, .glyphicon {
-    color: $badgeTextCol;
+    color: $headerTextCol;
+  }
+}
+
+h1 {
+  text-align: center;
+  color: $headerTextCol;
+
+  .glyphicon {
+    font-size: 0.7em;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
   }
 }
 
