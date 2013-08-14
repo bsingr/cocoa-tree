@@ -33,7 +33,7 @@ class SiteGenerator
                               summary: "Yet Another Pod is a just another Pod."
                              },
                              stars: 1349,
-                             website: 'http://wwww.example.com',
+                             homepage: 'http://wwww.example.com',
                              doc_url: 'http://doc.example.com',
                              wiki_url: 'http://wiki.example.com',
                              url: 'http://source.example.com',
