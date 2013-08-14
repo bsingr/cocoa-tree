@@ -41,6 +41,10 @@ module Cocoatree
       timestr ? Time.parse(timestr) : nil
     end
 
+    def doc_url
+      "http://cocoadocs.org/docsets/#{name}/#{version}"
+    end
+
   private
 
     def ensure_data
