@@ -22,6 +22,13 @@ describe Cocoatree::Pod do
   its('github?') { should be_false }
   its('homepage') { should == 'http://example.com' }
   its('doc_url') { should == 'http://cocoadocs.org/docsets/my-spec/1.2.3' }
+  its('serializable_hash') { should == {
+    version: '1.2.3',
+    source_url: 'git-url',
+    using_github: false,
+    website_url: 'http://example.com',
+    doc_url: 'http://cocoadocs.org/docsets/my-spec/1.2.3'
+  } }
 
   context 'github' do
     before do

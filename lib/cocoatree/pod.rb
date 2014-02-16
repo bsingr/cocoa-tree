@@ -44,6 +44,14 @@ module Cocoatree
     def doc_url
       "http://cocoadocs.org/docsets/#{name}/#{version}"
     end
+    
+    def serializable_hash
+      {using_github: github?,
+       doc_url: doc_url,
+       website_url: homepage,
+       version: version,
+       source_url: url}
+    end
 
   private
 
