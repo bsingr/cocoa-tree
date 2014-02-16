@@ -14,4 +14,10 @@ module Cocoatree
   def self.github_cache
     @github_cache ||= Cache.new 'github_cache', Logger.new(STDOUT)
   end
+  
+  def self.pods
+    pods = Cocoatree::Pods.new
+    pods.source_path = File.join(Cocoatree.root, 'Specs')
+    pods
+  end
 end

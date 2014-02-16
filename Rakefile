@@ -48,9 +48,7 @@ class SiteGenerator
       Hashie::Mash.new pods: [pod, pod, pod],
                        pods_by_stars: [pod, pod, pod]
     else
-      pods = Cocoatree::Pods.new
-      pods.source_path = File.join(Cocoatree.root, 'Specs')
-      pods
+      Cocoatree.pods
     end
   end
 
