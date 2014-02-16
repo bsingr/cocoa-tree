@@ -70,6 +70,7 @@ end
 
 desc "compile stylesheets"
 task :style do
+  mkdir_p 'website/assets/css'
   sh 'scss website-src/assets/stylesheets/* website/assets/css/style.css'
 end
 
