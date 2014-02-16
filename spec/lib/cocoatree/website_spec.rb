@@ -15,6 +15,6 @@ describe Cocoatree::Website do
     website.pods = pods
     rendered = website.render('index.html')
     rendered.should include('<html>')
-    rendered.should include('<div class="title">500px-iOS-api</div>')
+    rendered.should include('<a name="500px-ios-api">500px-iOS-api</a>')
   end
 end
