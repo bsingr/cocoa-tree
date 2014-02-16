@@ -22,7 +22,7 @@ class SiteGenerator
     github_config = YAML.load_file('github_config.yml')
     Octokit.configure do |c|
       c.login = github_config['login']
-      c.oauth_token = github_config['oauth_token']
+      c.access_token = github_config['oauth_token']
     end
   end
 
