@@ -37,8 +37,14 @@ module Cocoatree
 
     def pushed_at
       ensure_data
-      timestr = @data['pushed_at']
-      timestr ? Time.parse(timestr) : nil
+      time = @data['pushed_at']
+      if time.kind_of? Time
+        time
+      elsif time.kind_of? String
+        Time.parse(time)
+      else
+        nil
+      end
     end
 
     def doc_url
