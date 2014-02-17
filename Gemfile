@@ -44,6 +44,9 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'rspec-rails'
+gem 'slim-rails'
+
 gem 'cocoapods-core', git: 'https://github.com/dpree/Core.git' # rails 4 compatibility
 gem 'rspec'
 gem 'guard-rspec'
