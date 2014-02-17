@@ -1,5 +1,7 @@
 # Cocoatree
 
+[![Code Climate](https://codeclimate.com/github/dpree/cocoatree.png)](https://codeclimate.com/github/dpree/cocoatree)
+
 TODO: Write a gem description
 
 ## Installation
