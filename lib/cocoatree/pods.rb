@@ -27,7 +27,7 @@ module Cocoatree
     end
 
     def pods_by_stars
-      pods.sort_by(&:stars).reverse
+      pods.sort_by(&:stars)
     end
   end
 end
