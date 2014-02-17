@@ -58,3 +58,5 @@ gem 'hashie'
 gem 'sass'
 gem 'actionpack'
 gem 'activesupport'
+
+gem 'actionpack-page_caching'
