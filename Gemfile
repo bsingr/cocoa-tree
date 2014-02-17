@@ -43,3 +43,15 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'cocoapods-core', git: 'https://github.com/dpree/Core.git' # rails 4 compatibility
+gem 'rspec'
+gem 'guard-rspec'
+gem 'guard-rake'
+gem 'guard-sass'
+gem 'octokit'
+gem 'slim'
+gem 'hashie'
+gem 'sass'
+gem 'actionpack'
+gem 'activesupport'
