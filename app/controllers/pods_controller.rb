@@ -1,3 +1,5 @@
+require 'cocoatree'
+
 class PodsController < ApplicationController
   caches_page :index
   
@@ -7,5 +9,6 @@ class PodsController < ApplicationController
       .map { |p| pods.pod(p) }\
       .compact\
       .keep_if(&:github?)
+    @pods.keep_if{|p| p.name =~ /#{params[:filter]}/}
   end
 end
