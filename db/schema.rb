@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20140218080319) do
 
   create_table "cocoa_pods", force: true do |t|
     t.string   "name"
-    t.string   "url"
+    t.string   "website_url"
     t.string   "doc_url"
     t.string   "source_url"
     t.integer  "stars"
