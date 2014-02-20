@@ -7,12 +7,5 @@ html
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-    link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"
-    link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"
-    link href="bootstrap-glyphicons/css/bootstrap-glyphicons.css" rel="stylesheet"
-    link href="assets/css/style.css" rel="stylesheet"
-    script type="text/javascript" src="assets/js/jquery.min.js"
-    script type="text/javascript" src="bootstrap/js/bootstrap.min.js"
-    //script type="text/javascript" src="assets/js/app.js"
-  body
-    = yield
+    body
+      = yield
