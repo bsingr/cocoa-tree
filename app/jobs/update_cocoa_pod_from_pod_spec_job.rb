@@ -1,12 +1,12 @@
 class UpdateCocoaPodFromPodSpecJob
   def run
-    Cocoatree.pods.pods.each do |pod|
-      cocoa_pod = CocoaPod.find_by name: pod.name
-      unless cocoa_pod
-        cocoa_pod = CocoaPod.new name: pod.name
-      end
-      cocoa_pod.version = pod.version
-      cocoa_pod.save!
+    pod_spec_updater = PodSpecUpdater.new
+    pod_spec_decorator = PodSpecDecorator.new
+    pod_spec_index = PodSpecIndex.new
+    pod_spec_index.source_path = File.join(Rails.root, 'Specs')
+    pod_spec_index.pod_specs.each do |pod_spec|
+      pod_spec_decorator.pod_spec = pod_spec
+      pod_spec_updater.update pod
     end
   end
 end
