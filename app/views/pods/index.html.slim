@@ -1,3 +1,69 @@
-- @pods.each do |pod|
-  = pod.name
-  br
+.container
+  .row
+    h1.col-12
+      span = "#{@pods.count} Pods"
+      span.glyphicon.glyphicon-leaf
+      span Cocoatree
+.container
+  .row.categories
+  .row.tags
+.container
+  - @pods.each do |pod|
+    div data-toggle="collapse" data-target="#pod-#{pod.name}"
+      .row.pod
+        .col-12.col-lg-6.meta.part
+          .title
+            a name=pod.name.parameterize = pod.name
+          .summary = pod.summary
+          .category = pod.category
+        .col-4.col-lg-2.version.part
+          .row
+            span.glyphicon.glyphicon-flag
+          .row
+            = pod.version
+        .col-4.col-lg-2.stars.part
+          .row
+            span.glyphicon.glyphicon-heart
+          .row
+            - if pod.stars > -1
+              = pod.stars
+        .col-4.col-lg-2.activity.part
+          .row
+            span.glyphicon.glyphicon-time
+          .row
+            - if pod.pushed_at
+              = time_ago_in_words pod.pushed_at
+            - else
+              = "-"
+    .row.collapse.pod-details id="pod-#{pod.name}"
+      .col-12
+        .row.links
+          a.col-3 href=pod.website_url
+            span.glyphicon.glyphicon-home
+            '
+            span Website
+          a.col-3 href=pod.doc_url
+            span.glyphicon.glyphicon-book
+            '
+            span Doc
+          a.col-3 href=pod.wiki_url 
+            span.glyphicon.glyphicon-list-alt
+            '
+            span Wiki
+          a.col-3 href=pod.source_url
+            span.glyphicon.glyphicon-inbox
+            '
+            span Source
+        .row.dependencies
+          .col-12
+            - if pod.dependencies.empty?
+              span.no-dependencies No Dependencies.
+            - else
+              - pod.dependencies.each do |dependency|
+                .row.dependency
+                  .col-6.name
+                    a href="##{dependency.name.parameterize}" = dependency.name
+                  .col-6.version = dependency.requirement
+.container
+  .row
+    #footer.col-12 Copyright &copy; 2013 Jens Bissinger
