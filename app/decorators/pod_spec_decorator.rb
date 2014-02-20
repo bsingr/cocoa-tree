@@ -20,4 +20,8 @@ class PodSpecDecorator
   def doc_url
     "http://cocoadocs.org/docsets/#{name}/#{version}"
   end
+  
+  def github
+    GithubUrl.new.shortcut(source_url)
+  end
 end
