@@ -9,8 +9,16 @@ class PodSpecDecorator
     pod_spec.version.to_s
   end
   
+  def summary
+    pod_spec.summary
+  end
+  
   def website_url
     pod_spec.homepage
+  end
+  
+  def wiki_url
+    pod_spec.wiki_url
   end
   
   def source_url
