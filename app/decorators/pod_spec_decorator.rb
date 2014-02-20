@@ -6,7 +6,7 @@ class PodSpecDecorator
   end
   
   def version
-    pod_spec.version
+    pod_spec.version.to_s
   end
   
   def website_url

@@ -6,7 +6,7 @@ class UpdateCocoaPodFromPodSpecJob
     pod_spec_index.source_path = File.join(Rails.root, 'Specs')
     pod_spec_index.pod_specs.each do |pod_spec|
       pod_spec_decorator.pod_spec = pod_spec
-      pod_spec_updater.update pod_spec
+      pod_spec_updater.update pod_spec_decorator
     end
   end
 end
