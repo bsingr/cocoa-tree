@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 20140220203214) do
     t.string   "version"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "wiki_url"
     t.string   "summary"
     t.string   "category"
-    t.string   "wiki_url"
   end
 
 end

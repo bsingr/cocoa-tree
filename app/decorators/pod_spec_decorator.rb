@@ -17,10 +17,6 @@ class PodSpecDecorator
     pod_spec.homepage
   end
   
-  def wiki_url
-    pod_spec.wiki_url
-  end
-  
   def source_url
     pod_spec.source[:git]
   end
