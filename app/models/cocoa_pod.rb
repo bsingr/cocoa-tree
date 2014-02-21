@@ -13,9 +13,9 @@ class CocoaPod < ActiveRecord::Base
   
   def serializable_hash context
     h = super
-    h['pushed_at'] = h['pushed_at'].to_i
-    h['created_at'] = h['created_at'].to_i
-    h['updated_at'] = h['updated_at'].to_i
+    h['pushed_at'] = h['pushed_at']
+    h['created_at'] = h['created_at']
+    h['updated_at'] = h['updated_at']
     h
   end
 end

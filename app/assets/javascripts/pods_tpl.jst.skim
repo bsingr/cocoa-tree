@@ -21,10 +21,8 @@
         .row
           span.glyphicon.glyphicon-time
         .row
-          - if pod.pushed_at
+          time.timeago datetime=pod.pushed_at
             = pod.pushed_at
-          - else
-            = "-"
   .row.collapse.pod-details id="pod-#{pod.name}"
     .col-12
       .row.links
