@@ -36,4 +36,4 @@ website/index.html
 website/assets/css/style.css
 .sass-cache
 
-config/github_config.yml
+config/github.yml
