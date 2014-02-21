@@ -30,6 +30,6 @@ class PodSpecDecorator
   end
 
   def dependencies
-    pod_spec.dependencies.map &:name
+    pod_spec.dependencies
   end
 end

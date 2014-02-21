@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140221205606) do
+ActiveRecord::Schema.define(version: 20140221213253) do
 
   create_table "cocoa_pod_dependencies", force: true do |t|
     t.integer  "cocoa_pod_id"
     t.integer  "dependent_cocoa_pod_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "requirement"
   end
 
   add_index "cocoa_pod_dependencies", ["cocoa_pod_id"], name: "index_cocoa_pod_dependencies_on_cocoa_pod_id"
