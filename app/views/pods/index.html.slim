@@ -1,3 +1,5 @@
+script#list_template type='text/html'
+  = render 'list'
 .container
   .row
     h1.col-12
@@ -8,6 +10,7 @@
   .row.categories
   .row.tags
 .container
+  #list_placeholder
   - @pods.each do |pod|
     div data-toggle="collapse" data-target="#pod-#{pod.name}"
       .row.pod
