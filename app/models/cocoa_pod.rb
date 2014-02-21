@@ -16,6 +16,7 @@ class CocoaPod < ActiveRecord::Base
   def serializable_hash context=nil
     h = super
     {
+      'id' => id,
       'name' => name,
       'stars' => stars,
       'pushed_at' => pushed_at.try(:iso8601).to_s,
@@ -24,8 +25,8 @@ class CocoaPod < ActiveRecord::Base
       'doc_url' => doc_url,
       'version' => version,
       'summary' => summary,
-      'dependencies' => dependencies.map{|d| {'name' => d.name,
-                                              'param' => d.name.parameterize}}
+      'dependencies' => dependencies.map{|d| {'id' => d.id,
+                                              'name' => d.name }}
     }
   end
 end

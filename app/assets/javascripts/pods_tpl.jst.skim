@@ -1,9 +1,9 @@
 - for pod in @pods
-  div data-toggle="collapse" data-target="#pod-#{pod.name}"
+  div data-toggle="collapse" data-target="#pod-#{pod.id}"
     .row.pod
       .col-12.col-lg-6.meta.part
         .title
-          a name=pod.name.parameterize = pod.name
+          a name=pod.id = pod.name
         .summary = pod.summary
         .category = pod.category
       .col-4.col-lg-2.version.part
@@ -23,7 +23,7 @@
         .row
           time.timeago datetime=pod.pushed_at
             = pod.pushed_at
-  .row.collapse.pod-details id="pod-#{pod.name}"
+  .row.collapse.pod-details id="pod-#{pod.id}"
     .col-12
       .row.links
         a.col-3 href=pod.website_url
@@ -46,7 +46,7 @@
             - for dependency in pod.dependencies
               .row.dependency
                 .col-6.name
-                  a href="##{dependency.param}"
+                  a href="##{dependency.id}"
                     = dependency.name
                 .col-6.version
                   = dependency.name
