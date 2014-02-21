@@ -21,6 +21,8 @@ class GithubUpdater
   
   def get_github_repository repository
     Octokit.repository(repository)
+  rescue Octokit::TooManyRequests => e
+    raise "STOP: Rate Limit Exceed #{e.inspect}"
   rescue  Octokit::BadRequest,
           Octokit::Unauthorized,
           Octokit::Forbidden,
