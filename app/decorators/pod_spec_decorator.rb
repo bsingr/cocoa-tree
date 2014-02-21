@@ -28,4 +28,8 @@ class PodSpecDecorator
   def github
     GithubUrl.new.shortcut(source_url)
   end
+
+  def dependencies
+    pod_spec.dependencies.map &:name
+  end
 end
