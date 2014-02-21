@@ -26,7 +26,8 @@ class CocoaPod < ActiveRecord::Base
       'website_url' => website_url,
       'source_url' => source_url,
       'doc_url' => doc_url,
-      'version' => version
+      'version' => version,
+      'summary' => summary
     }
   end
 end
