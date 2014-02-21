@@ -22,7 +22,7 @@
           span.glyphicon.glyphicon-time
         .row
           - if pod.pushed_at
-            = time_ago_in_words pod.pushed_at
+            = pod.pushed_at
           - else
             = "-"
   .row.collapse.pod-details id="pod-#{pod.name}"

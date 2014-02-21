@@ -6,7 +6,7 @@ class PodsController < ApplicationController
     @pods.keep_if{|p| p.name =~ /#{params[:filter]}/}
     respond_to do |format|
       format.mpac { render :text => MessagePack.dump(@pods.map{|p| MessagePack.dump(p.serializable_hash)})}
-      format.json
+      format.json { render json: @pods }
       format.html
     end
   end
