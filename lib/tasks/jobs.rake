@@ -1,11 +1,16 @@
 namespace :jobs do
   desc 'Sync Spec'
-  task :sync_spec => :environment do
+  task :spec => :environment do
     UpdateCocoaPodFromPodSpecJob.new.run
+  end
+
+  desc 'Sync Spec Dependencies'
+  task :dependency => :environment do
+    UpdateCocoaPodDependencyFromPodSpecJob.new.run
   end
   
   desc 'Sync Github'
-  task :sync_github => :environment do
+  task :github => :environment do
     UpdateCocoaPodFromGithubJob.new.run
   end
 end
