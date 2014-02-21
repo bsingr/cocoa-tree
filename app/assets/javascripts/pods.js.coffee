@@ -4,7 +4,9 @@
 
 ready = ->
   $.getJSON '/pods.json', (pods) ->
-    template = doT.template($('#list_template').html())
-    $('#list_placeholder').html(template({pods: pods}))
+    html = JST['pods_tpl']
+      pods: pods
+    $('#list_placeholder').html(html)
+    window.load_categories()
 $(document).ready(ready)
 $(document).on('page:load', ready)

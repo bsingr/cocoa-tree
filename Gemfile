@@ -64,4 +64,4 @@ gem 'bootstrap-sass'
 gem 'squeel' # ActiveRecord Queries
 
 gem 'msgpack'
-
+gem 'skim'

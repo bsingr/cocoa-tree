@@ -1,4 +1,4 @@
-$(document).ready(function(){
+window.load_categories = function(){
   var categories = {
     "xml": [],
     "json": [],
@@ -64,7 +64,9 @@ $(document).ready(function(){
   var html = [];
   for (var i = 0; i < 100; i++) {
     var stats = sortedWordList[i];
-    html.push("<a href='#!/filter/"+stats.word+"'>"+stats.word+"</a>");
+    if (stats) {
+      html.push("<a href='#!/filter/"+stats.word+"'>"+stats.word+"</a>");
+    }
   }
   $('.tags').html(html.join(' '));
 
@@ -74,4 +76,4 @@ $(document).ready(function(){
     var stats = wordStats[word];
     $(wordStats[word].elements).show();
   });
-});
+};
