@@ -1,4 +1,10 @@
 class CocoaPod < ActiveRecord::Base
+  class ActiveSupport::TimeWithZone
+    def to_msgpack context=nil
+      to_s
+    end
+  end
+
   default_scope { order('stars DESC') }
   
   after_initialize :init_stars
@@ -11,11 +17,16 @@ class CocoaPod < ActiveRecord::Base
     []
   end
   
-  def serializable_hash context
+  def serializable_hash context=nil
     h = super
-    h['pushed_at'] = h['pushed_at']
-    h['created_at'] = h['created_at']
-    h['updated_at'] = h['updated_at']
-    h
+    {
+      'name' => name,
+      'stars' => stars,
+      'pushed_at' => pushed_at.try(:iso8601).to_s,
+      'website_url' => website_url,
+      'source_url' => source_url,
+      'doc_url' => doc_url,
+      'version' => version
+    }
   end
 end
