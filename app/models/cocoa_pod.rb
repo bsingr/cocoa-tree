@@ -23,7 +23,9 @@ class CocoaPod < ActiveRecord::Base
       'source_url' => source_url,
       'doc_url' => doc_url,
       'version' => version,
-      'summary' => summary
+      'summary' => summary,
+      'dependencies' => dependencies.map{|d| {'name' => d.name,
+                                              'param' => d.name.parameterize}}
     }
   end
 end
