@@ -4,9 +4,7 @@
 
 ready = ->
   render_response = (response) ->
-    console.log response
     pods = msgpack.decode(response)
-    console.log pods
     html = JST['pods_tpl']
       pods: pods
     $('#list_placeholder').html(html)
