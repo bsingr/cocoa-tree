@@ -63,3 +63,5 @@ gem 'actionpack-page_caching'
 gem 'bootstrap-sass'
 gem 'squeel' # ActiveRecord Queries
 
+gem 'msgpack'
+

@@ -10,4 +10,12 @@ class CocoaPod < ActiveRecord::Base
   def dependencies
     []
   end
+  
+  def serializable_hash
+    h = super
+    h['pushed_at'] = h['pushed_at'].to_s
+    h['created_at'] = h['created_at'].to_s
+    h['updated_at'] = h['updated_at'].to_s
+    h
+  end
 end
