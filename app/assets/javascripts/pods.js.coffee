@@ -7,15 +7,18 @@ ready = ->
     pods = msgpack.decode(response)
     html = JST['pods_tpl']
       pods: pods
-    $('#list_placeholder').html(html)
+    $('#list_placeholder').append(html)
     window.load_categories()
     $(".timeago").timeago()
-  xhr = new XMLHttpRequest()
-  xhr.open('GET', '/pods/2.mpac', true)
-  xhr.responseType = 'arraybuffer'
-  xhr.onload = (e) ->
-    render_response(@.response)
-  xhr.send()
-    
+  request_pods = (chunk_id) ->
+    xhr = new XMLHttpRequest()
+    xhr.open('GET', '/pods/'+chunk_id+'.mpac', true)
+    xhr.responseType = 'arraybuffer'
+    xhr.onload = (e) ->
+      render_response(@.response)
+    xhr.send()
+  for chunk in gon.pods_index
+    request_pods(chunk[0])
+
 $(document).ready(ready)
 $(document).on('page:load', ready)

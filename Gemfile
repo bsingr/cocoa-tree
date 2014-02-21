@@ -65,3 +65,4 @@ gem 'squeel' # ActiveRecord Queries
 
 gem 'msgpack'
 gem 'skim'
+gem 'gon'

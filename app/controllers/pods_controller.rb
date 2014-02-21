@@ -3,14 +3,10 @@ class PodsController < ApplicationController
   
   def index
     @pods = CocoaPod.all
-    @data = CocoaPod.all.each_slice(100).each_with_index.map do |pods, index|
+    pods_index = CocoaPod.all.each_slice(100).each_with_index.map do |pods, index|
       [index, pods.map(&:name)]
     end
-    respond_to do |format|
-      format.mpac { render :text => MessagePack.dump(@data) }
-      format.json { render json: @data }
-      format.html
-    end
+    gon.push(pods_index: pods_index)
   end
 
   def show

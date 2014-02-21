@@ -64,6 +64,9 @@ GEM
     ffi (1.9.3)
     formatador (0.2.4)
     fuzzy_match (2.0.4)
+    gon (5.0.4)
+      actionpack (>= 2.3.0)
+      json
     guard (2.4.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -219,6 +222,7 @@ DEPENDENCIES
   bootstrap-sass
   cocoapods-core!
   coffee-rails (~> 4.0.0)
+  gon
   guard-rake
   guard-rspec
   guard-sass
