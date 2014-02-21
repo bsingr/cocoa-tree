@@ -49,4 +49,5 @@
                   a href="##{dependency.id}"
                     = dependency.name
                 .col-6.version
-                  = dependency.name
+                  = dependency.requirement
+                  

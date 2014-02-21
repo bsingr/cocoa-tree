@@ -1,6 +1,7 @@
 class CocoaPod < ActiveRecord::Base
   default_scope { order('stars DESC') }
 
+  has_many :cocoa_pod_dependencies, foreign_key: :dependent_cocoa_pod_id
   has_and_belongs_to_many :dependencies,
                           class_name: 'CocoaPod',
                           join_table: 'cocoa_pod_dependencies',
@@ -25,8 +26,9 @@ class CocoaPod < ActiveRecord::Base
       'doc_url' => doc_url,
       'version' => version,
       'summary' => summary,
-      'dependencies' => dependencies.map{|d| {'id' => d.id,
-                                              'name' => d.name }}
+      'dependencies' => cocoa_pod_dependencies.map{|d| {'id' => d.cocoa_pod.id,
+                                                        'name' => d.cocoa_pod.name,
+                                                        'requirement' => d.requirement }}
     }
   end
 end
