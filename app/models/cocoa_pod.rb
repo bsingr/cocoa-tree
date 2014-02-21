@@ -1,10 +1,4 @@
 class CocoaPod < ActiveRecord::Base
-  class ActiveSupport::TimeWithZone
-    def to_msgpack context=nil
-      to_s
-    end
-  end
-
   default_scope { order('stars DESC') }
   
   after_initialize :init_stars
