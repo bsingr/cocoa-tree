@@ -1,5 +1,9 @@
 class PodSpecIndex
   attr_reader :source
+
+  def initialize
+    self.source_path = File.join(Rails.root, 'Specs')
+  end
   
   def source_path=source_path
     @source = ::Pod::Source.new(source_path)
