@@ -8,7 +8,10 @@ ready = ->
     html = JST['pods_tpl']
       pods: pods
     $('#list_placeholder').append(html)
+    progress = (chunk_id / (gon.pods_index.length - 1)) * 100
+    $('.progress-bar').css('width', progress + '%')
     if (gon.pods_index[gon.pods_index.length - 1][0] == chunk_id)
+      $('.progress').slideUp(1000)
       window.load_categories()
       $(".timeago").timeago()
   request_pods = (chunk_id) ->
