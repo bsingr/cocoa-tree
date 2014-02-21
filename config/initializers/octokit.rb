@@ -5,6 +5,6 @@ if File.exists?(github_conf_file)
   puts "Using github login = #{github_config['login']}"
   Octokit.configure do |c|
     c.login = github_config['login']
-    c.access_token = github_config['oauth_token']
+    c.access_token = github_config['access_token']
   end
 end
