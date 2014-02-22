@@ -11,19 +11,19 @@ namespace :deploy do
   desc 'Clone target repository'
   task :clone do
     sh "rm -rf #{repo}"
-    sh "git clone git@github.com:cocoa-tree/#{repo}.git"
+    sh "#{git_cmd} clone git@github.com:cocoa-tree/#{repo}.git"
   end
 
   desc 'Provision target repository with content of tmp/public'
   task :provision do
     sh "rm -rf #{repo}/*"
     sh "mv -f tmp/public/* #{repo}/"
-    sh "pushd #{repo} && git add --all . && popd"
+    sh "pushd #{repo} && #{git_cmd} add --all . && popd"
   end
   
   desc 'Push to target repository'
   task :push do
-    sh "pushd #{repo} && git commit -m 'Deploy Site.' && #{git_cmd} push --force origin master && popd"
+    sh "pushd #{repo} && #{git_cmd} commit -m 'Deploy Site.' && #{git_cmd} push --force origin master && popd"
   end
 end
 
