@@ -1,6 +1,3 @@
 [submodule "Specs"]
 	path = Specs
 	url = https://github.com/CocoaPods/Specs.git
-[submodule "website-deploy"]
-	path = website-deploy
-	url = https://github.com/cocoa-tree/cocoa-tree.github.io.git
