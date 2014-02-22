@@ -14,3 +14,6 @@ namespace :jobs do
     UpdateCocoaPodFromGithubJob.new.run
   end
 end
+
+desc 'All Jobs'
+task :jobs => ['jobs:spec', 'jobs:dependency', 'jobs:github']
