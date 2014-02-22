@@ -3,4 +3,4 @@
 	url = https://github.com/CocoaPods/Specs.git
 [submodule "website-deploy"]
 	path = website-deploy
-	url = git@github.com:cocoa-tree/cocoa-tree.github.io.git
+	url = https://github.com/cocoa-tree/cocoa-tree.github.io.git
