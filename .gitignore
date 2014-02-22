@@ -37,3 +37,6 @@ website/assets/css/style.css
 .sass-cache
 
 config/github.yml
+public/index.html
+public/pods
+public/assets
