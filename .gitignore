@@ -40,3 +40,4 @@ config/github.yml
 public/index.html
 public/pods
 public/assets
+public.tar
