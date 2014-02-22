@@ -5,6 +5,7 @@ class DeploysController < ApplicationController
   end
   
   def index
-    render :text => :download
+    system 'tar -cf public.tar public/'
+    send_file File.new('public.tar')
   end
 end
