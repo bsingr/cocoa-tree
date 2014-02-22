@@ -16,7 +16,7 @@ ready = ->
       $(".timeago").timeago()
   request_pods = (chunk_id) ->
     xhr = new XMLHttpRequest()
-    xhr.open('GET', './pods/'+chunk_id+'.mpac', true)
+    xhr.open('GET', '/pods/'+chunk_id+'.mpac', true)
     xhr.responseType = 'arraybuffer'
     xhr.onload = (e) ->
       render_response(@.response, chunk_id)
