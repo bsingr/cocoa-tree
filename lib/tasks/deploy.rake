@@ -1,5 +1,6 @@
 namespace :deploy do
   repo = "cocoa-tree.github.io"
+  git_cmd = ENV.has_key?('GITHUB_SSH') ? './bin/git-github' : 'git'
 
   desc 'Extract public.tar to tmp/public'
   task :extract do
@@ -22,7 +23,7 @@ namespace :deploy do
   
   desc 'Push to target repository'
   task :push do
-    sh "pushd #{repo} && git commit -m 'Deploy Site.' && git push --force origin master && popd"
+    sh "pushd #{repo} && git commit -m 'Deploy Site.' && #{git_cmd} push --force origin master && popd"
   end
 end
 
