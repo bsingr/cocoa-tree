@@ -15,4 +15,4 @@ namespace :deploy do
 end
 
 desc 'Render and export Site to website-deploy'
-task :deploy => ['site', 'deploy:extract', 'deploy:push']
+task :deploy => ['deploy:extract', 'deploy:push']
