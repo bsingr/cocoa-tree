@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+set -u
+
+SCRIPTS_DIR=$(dirname $0)
+
+echo $GITHUB_SSH | sed -e 's/\s*;\s*/\n/g' /dev/stdin > cocoatree.pkey
+
+$SCRIPTS_DIR/git-as cocoatree.pkey $@
