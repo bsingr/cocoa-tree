@@ -2,6 +2,11 @@ Cocoatree::Application.routes.draw do
   root 'pods#index'
   
   resources :pods, only: [:index, :show]
+  resources :deploys, only: [:index] do
+    collection do
+      get 'clear' => 'deploys#clear'
+    end
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
