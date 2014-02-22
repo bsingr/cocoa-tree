@@ -1,7 +1,8 @@
 class DeploysController < ApplicationController
   def clear
-    Rails.cache.clear
-    render :text => :ok
+    ActionController::Base::expire_page '/'
+    system 'rm -rf public/pods'
+    head :ok
   end
   
   def index
