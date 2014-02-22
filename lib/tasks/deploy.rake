@@ -1,6 +1,7 @@
 namespace :deploy do
   repo = "cocoa-tree.github.io"
-  git_cmd = ENV.has_key?('GITHUB_SSH') ? './bin/git-github' : 'git'
+  root = File.join(File.dirname(__FILE__), '..', '..')
+  git_cmd = ENV.has_key?('GITHUB_SSH') ? "#{root}/bin/git-github" : 'git'
 
   desc 'Extract public.tar to tmp/public'
   task :extract do
