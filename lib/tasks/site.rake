@@ -2,6 +2,9 @@ class Remote
   def initialize
     require 'capybara/dsl'
     require 'capybara/poltergeist'
+    Capybara.register_driver :poltergeist do |app|
+      Capybara::Poltergeist::Driver.new(app, {:timeout => 120})
+    end
     Capybara.javascript_driver = :poltergeist
     Capybara.default_driver = :poltergeist
     if Rails.env.development?
