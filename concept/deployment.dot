@@ -1,10 +1,8 @@
 digraph deployment
 {
-  developer -> "github.com/cocoa-tree/cocoa-tree.git" [label="push"]
-  "github.com/cocoa-tree/cocoa-tree.git" -> rails [label="deploy"]
-  rails -> scheduler [arrowhead=none,arrowtail=none]
-  rails -> "cocoa-tree.example.com" [arrowhead=none,arrowtail=none]
-
+  developer -> "github.com\n/cocoa-tree/cocoa-tree.git" [label="push"]
+  "github.com\n/cocoa-tree/cocoa-tree.git" -> rails [label="deploy"]
+  
   subgraph cluster_0 {
     "spec.job" -> "dependency.job" -> "github.job"
   }
@@ -17,10 +15,17 @@ digraph deployment
     "reset.site" -> "build.site" -> "download.site"
   }
 
+  subgraph cluster_3 {
+    rails -> scheduler [arrowhead=none,arrowtail=none]
+    rails -> "cocoa-tree.example.com" [arrowhead=none,arrowtail=none]
+  }
+
   scheduler -> "jobs.worker"
 
   "jobs.worker" -> "spec.job"
   "github.job" -> "jobs.worker"
+  "github.com\n/CocoaPods/Specs.git" -> "spec.job"
+  "api.github.com" -> "github.job"
 
   "site.worker" -> "reset.site"
   "download.site" -> "site.worker"
@@ -29,7 +34,7 @@ digraph deployment
   "cocoa-tree.example.com" -> "build.site"
   "cocoa-tree.example.com" -> "download.site"
 
-  "deploy.worker" -> "github.com/cocoa-tree/cocoa-tree.github.io.git" [label="push"]
+  "deploy.worker" -> "github.com\n/cocoa-tree/cocoa-tree.github.io.git" [label="push"]
 
-  "github.com/cocoa-tree/cocoa-tree.github.io.git" -> "cocoa-tree.github.io" [label="publish"]
+  "github.com\n/cocoa-tree/cocoa-tree.github.io.git" -> "cocoa-tree.github.io" [label="publish"]
 }
