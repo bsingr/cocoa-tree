@@ -13,13 +13,21 @@ digraph deployment
     "jobs.worker" -> "site.worker" -> "deploy.worker"
   }
 
+  subgraph cluster_2 {
+    "reset.site" -> "build.site" -> "download.site"
+  }
+
   scheduler -> "jobs.worker"
 
   "jobs.worker" -> "spec.job"
   "github.job" -> "jobs.worker"
 
-  "site.worker" -> "cocoa-tree.example.com" [label="build"]
-  "cocoa-tree.example.com" -> "site.worker" [label="download"]
+  "site.worker" -> "reset.site"
+  "download.site" -> "site.worker"
+
+  "cocoa-tree.example.com" -> "reset.site"
+  "cocoa-tree.example.com" -> "build.site"
+  "cocoa-tree.example.com" -> "download.site"
 
   "deploy.worker" -> "github.com/cocoa-tree/cocoa-tree.github.io.git" [label="push"]
 
