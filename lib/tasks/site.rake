@@ -4,7 +4,11 @@ class Remote
     require 'capybara/poltergeist'
     Capybara.javascript_driver = :poltergeist
     Capybara.default_driver = :poltergeist
-    Capybara.app_host = 'http://localhost:3000'
+    if Rails.env.development?
+      Capybara.app_host = 'http://localhost:3000'
+    else
+      Capybara.app_host = 'http://cocoatree.herokuapp.com'
+    end
   end
   
   def clear
