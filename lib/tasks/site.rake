@@ -23,7 +23,7 @@ class Remote
   end
   
   def render
-    Capybara.visit '/pods'
+    Capybara.visit '/' # pods
   end
 end
 
