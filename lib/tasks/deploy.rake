@@ -27,7 +27,7 @@ namespace :deploy do
   desc 'Push to target repository'
   task :push do
     Dir.chdir(repo) do
-      sh "#{git_cmd} commit -m \"Deploy Site.\" && #{git_cmd} push --force origin master"
+      sh "#{git_cmd} commit -m \"Deploy.\" && #{git_cmd} push --force origin master"
     end
   end
 end
