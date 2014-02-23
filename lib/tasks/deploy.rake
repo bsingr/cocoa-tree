@@ -10,30 +10,31 @@ namespace :deploy do
   end
 
   desc 'Clone target repository'
-  task :clone do
+  task :prepare do
     sh "rm -rf #{repo}"
-    sh "#{git_cmd} clone git@github.com:cocoa-tree/#{repo}.git"
+    sh "mkdir -p #{repo}"
   end
 
   desc 'Provision target repository with content of tmp/public'
   task :provision do
     sh "rm -rf #{repo}/*"
     sh "mv -f tmp/public/* #{repo}/"
-    Dir.chdir(repo) do
-      sh "#{git_cmd} add --all ."
-    end
   end
   
   desc 'Push to target repository'
   task :push do
     Dir.chdir(repo) do
-      sh "#{git_cmd} commit -m \"Deploy.\" && #{git_cmd} push --force origin master"
+      sh "#{git_cmd} init"
+      sh "#{git_cmd} remote add origin git@github.com:cocoa-tree/#{repo}.git"
+      sh "#{git_cmd} add --all ."
+      sh "#{git_cmd} commit -m \"Deploy.\""
+      sh "#{git_cmd} push -u --force origin master"
     end
   end
 end
 
 desc 'Render and export Site to website-deploy'
-task :deploy => ['deploy:clone',
+task :deploy => ['deploy:prepare',
                  'deploy:extract',
                  'deploy:provision',
                  'deploy:push']
