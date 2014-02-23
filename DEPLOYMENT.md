@@ -12,4 +12,6 @@
 - Site cache is downloaded
 - Site cache is pushed to gh-pages
 
+## Concept
 
+![Deployment](./concept/deployment.png)

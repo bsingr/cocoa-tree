@@ -1,0 +1,27 @@
+digraph deployment
+{
+  developer -> "github.com/cocoa-tree/cocoa-tree.git" [label="push"]
+  "github.com/cocoa-tree/cocoa-tree.git" -> rails [label="deploy"]
+  rails -> scheduler [arrowhead=none,arrowtail=none]
+  rails -> "cocoa-tree.example.com" [arrowhead=none,arrowtail=none]
+
+  subgraph cluster_0 {
+    "spec.job" -> "dependency.job" -> "github.job"
+  }
+
+  subgraph cluster_1 {
+    "jobs.worker" -> "site.worker" -> "deploy.worker"
+  }
+
+  scheduler -> "jobs.worker"
+
+  "jobs.worker" -> "spec.job"
+  "github.job" -> "jobs.worker"
+
+  "site.worker" -> "cocoa-tree.example.com" [label="build"]
+  "cocoa-tree.example.com" -> "site.worker" [label="download"]
+
+  "deploy.worker" -> "github.com/cocoa-tree/cocoa-tree.github.io.git" [label="push"]
+
+  "github.com/cocoa-tree/cocoa-tree.github.io.git" -> "cocoa-tree.github.io" [label="publish"]
+}
