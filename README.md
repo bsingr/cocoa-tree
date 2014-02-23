@@ -3,7 +3,9 @@
 [![Build Status](https://travis-ci.org/dpree/cocoatree.png)](https://travis-ci.org/dpree/cocoatree)
 [![Code Climate](https://codeclimate.com/github/dpree/cocoatree.png)](https://codeclimate.com/github/dpree/cocoatree)
 
-TODO: Write a gem description
+## Deployment
+
+![Deployment](./concept/deployment.png)
 
 ## Installation
 
