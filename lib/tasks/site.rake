@@ -16,7 +16,7 @@ class Remote
   end
   
   def download
-    Capybara.visit '/deploys'
+    sh "curl #{Capybara.app_host}/deploys > public.tar"
   end
   
   def render
