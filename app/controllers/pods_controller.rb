@@ -1,7 +1,7 @@
 class PodsController < ApplicationController
   caches_page :index, :show
   
-  CHUNK_SIZE = 100
+  CHUNK_SIZE = 500
   
   def index
     @pods = CocoaPod.all
