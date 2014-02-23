@@ -19,12 +19,16 @@ namespace :deploy do
   task :provision do
     sh "rm -rf #{repo}/*"
     sh "mv -f tmp/public/* #{repo}/"
-    sh "pushd #{repo} && #{git_cmd} add --all . && popd"
+    Dir.chdir(repo) do
+      sh "#{git_cmd} add --all ."
+    end
   end
   
   desc 'Push to target repository'
   task :push do
-    sh "pushd #{repo} && #{git_cmd} commit -m 'Deploy Site.' && #{git_cmd} push --force origin master && popd"
+    Dir.chdir(repo) do
+      sh "#{git_cmd} commit -m 'Deploy Site.' && #{git_cmd} push --force origin master"
+    end
   end
 end
 
