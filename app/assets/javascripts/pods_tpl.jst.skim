@@ -4,6 +4,9 @@
       .title
         a name=pod.id = pod.name
       .summary = pod.summary
+      .dependencies
+        = pod.dependencies.length
+        = " Dependencies"
       .category = pod.category
     .col-4.col-lg-2.version.part
       .row
@@ -37,14 +40,25 @@
         '
         span Source
     .col-xs-12.dependencies
-      - if !pod.dependencies.length
-        span.no-dependencies No Dependencies.
-      - else
-        - for dependency in pod.dependencies
-          .row.dependency
-            .col-xs-6.name
-              a href="##{dependency.id}"
-                = dependency.name
-            .col-xs-6.version
-              = dependency.requirement
-                
+      .col-xs-6
+        - if !pod.dependencies.length
+          span.no-dependencies No Dependencies.
+        - else
+          - for dependency in pod.dependencies
+            .row.dependency
+              .col-xs-6.name
+                a href="##{dependency.id}"
+                  = dependency.name
+              .col-xs-6.version
+                = dependency.requirement
+      .col-xs-6
+        - if pod.dependents.length
+          - for dependent in pod.dependents
+            .row.dependency
+              .col-xs-6.name
+                a href="##{dependent.id}"
+                  = dependent.name
+              .col-xs-6.version
+                = dependent.requirement
+        - else
+          span.no-dependencies No Dependents
