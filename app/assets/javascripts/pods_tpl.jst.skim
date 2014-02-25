@@ -36,16 +36,15 @@
         span.glyphicon.glyphicon-inbox
         '
         span Source
-    .col-12.dependencies
-      .col-12
-        - if !pod.dependencies.length
-          span.no-dependencies No Dependencies.
-        - else
-          - for dependency in pod.dependencies
-            .row.dependency
-              .col-6.name
-                a href="##{dependency.id}"
-                  = dependency.name
-              .col-6.version
-                = dependency.requirement
+    .col-xs-12.dependencies
+      - if !pod.dependencies.length
+        span.no-dependencies No Dependencies.
+      - else
+        - for dependency in pod.dependencies
+          .row.dependency
+            .col-xs-6.name
+              a href="##{dependency.id}"
+                = dependency.name
+            .col-xs-6.version
+              = dependency.requirement
                 
