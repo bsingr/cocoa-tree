@@ -23,16 +23,16 @@
         time.timeago datetime=pod.pushed_at
           = pod.pushed_at
   .row.collapse.pod-details id="pod-#{pod.id}"
-    .col-12.links
-      a.col-3 href=pod.website_url
+    .col-xs-12.links
+      a.col-xs-4 href=pod.website_url
         span.glyphicon.glyphicon-home
         '
         span Website
-      a.col-3 href=pod.doc_url
+      a.col-xs-4 href=pod.doc_url
         span.glyphicon.glyphicon-book
         '
         span Doc
-      a.col-3 href=pod.source_url
+      a.col-xs-4 href=pod.source_url
         span.glyphicon.glyphicon-inbox
         '
         span Source
