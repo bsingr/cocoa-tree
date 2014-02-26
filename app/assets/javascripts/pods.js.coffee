@@ -44,17 +44,48 @@ class @PodsController
     @pods = @pods.concat(pods)
   didLoadAll: ->
     $('.progress').slideUp(1000)
-    @renderPods(@pods)
   renderPods: (pods) ->
     html = JST['pods_tpl']
       pods: pods
-    $('#list_placeholder').append(html)
+    $('#list_placeholder').html(html)
     window.load_categories()
     $(".timeago").timeago()
-
+class @PodsNavigator
+  index: 0
+  max_size: 2
+  constructor: (podsController) ->
+    @podsController = podsController
+    @render()
+  render: ->
+    controller = @
+    html = JST['pods_navigator_tpl'](@)
+    $('#list_navigator').html(html)
+    $('#list_navigator a').click ->
+      href = $(@).attr('href')
+      command = href.replace('#!/pods/', '')
+      if command == 'next'
+        controller.next()
+      else
+        controller.prev()
+  has_next: ->
+    (@index + 1) < gon.pods_count
+  has_prev: ->
+    @index > 0
+  renderPods: ->
+    pods = @podsController.pods[@index..(@index+@max_size-1)]
+    @podsController.renderPods(pods)
+  next: ->
+    @index += @max_size
+    @renderPods()
+    @render()
+  prev: ->
+    @index -= @max_size
+    @renderPods()
+    @render()
 ready = ->
   podsController = new PodsController
   $("a[href='#!/reload").click ->
     podsController.loadPods()
+  window.podsNavigator = new PodsNavigator(podsController)
 $(document).ready(ready)
 $(document).on('page:load', ready)

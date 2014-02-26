@@ -1,0 +1,4 @@
+- if @has_prev()
+  a.col-xs-6 href="#!/pods/prev" Prev
+- if @has_next()
+  a.col-xs-6 href="#!/pods/next" Next

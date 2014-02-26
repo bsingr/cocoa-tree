@@ -8,7 +8,8 @@ class PodsController < ApplicationController
     pods_index = CocoaPod.all.each_slice(CHUNK_SIZE).each_with_index.map do |pods, index|
       [index, pods.map(&:name)]
     end
-    gon.push(pods_index: pods_index)
+    gon.push(pods_index: pods_index,
+             pods_count: @pods.size)
   end
 
   def show
