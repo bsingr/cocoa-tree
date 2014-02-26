@@ -9,6 +9,13 @@ class @PodsProgressBar
     $('.progress-container').hide().html($('.progress-tpl').html()).slideDown(1000)
   finish: ->
     $('.progress').slideUp(1000)
+class @PodsRenderer
+  renderPods: (pods) ->
+    html = JST['templates/pods']
+      pods: pods
+    $('#list_placeholder').html(html)
+    window.load_categories()
+    $(".timeago").timeago()
 class PodsLoader
   delegate: null
   requests: []
@@ -51,13 +58,6 @@ class @PodsController
     @pods = @pods.concat(pods)
   didLoadAll: ->
     @progressBar.finish()
-class @PodsRenderer
-  renderPods: (pods) ->
-    html = JST['templates/pods']
-      pods: pods
-    $('#list_placeholder').html(html)
-    window.load_categories()
-    $(".timeago").timeago()
 class @PodsNavigator
   index: 0
   max_size: 50
