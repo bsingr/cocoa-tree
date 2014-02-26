@@ -2,8 +2,19 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-ready = ->
-  render_response = (response, chunk_id) ->
+class @PodsController
+  loadPods: ->
+    for chunk in gon.pods_index
+      @.loadPodsChunk(chunk[0])
+  loadPodsChunk: (chunk_id) ->
+    controller = @
+    xhr = new XMLHttpRequest()
+    xhr.open('GET', '/pods/'+chunk_id+'.mpac', true)
+    xhr.responseType = 'arraybuffer'
+    xhr.onload = (e) ->
+      controller.renderPodsChunk(@.response, chunk_id)
+    xhr.send()
+  renderPodsChunk: (response, chunk_id) ->
     pods = msgpack.decode(response)
     html = JST['pods_tpl']
       pods: pods
@@ -14,15 +25,8 @@ ready = ->
       $('.progress').slideUp(1000)
       window.load_categories()
       $(".timeago").timeago()
-  request_pods = (chunk_id) ->
-    xhr = new XMLHttpRequest()
-    xhr.open('GET', '/pods/'+chunk_id+'.mpac', true)
-    xhr.responseType = 'arraybuffer'
-    xhr.onload = (e) ->
-      render_response(@.response, chunk_id)
-    xhr.send()
-  for chunk in gon.pods_index
-    request_pods(chunk[0])
 
+ready = ->
+  (new PodsController).loadPods()
 $(document).ready(ready)
 $(document).on('page:load', ready)
