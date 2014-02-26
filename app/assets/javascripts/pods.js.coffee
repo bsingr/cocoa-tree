@@ -37,6 +37,7 @@ class @PodsController
   pods: []
   loadPods: ->
     @fetcher.loadPods()
+    $('.progress-container').html($('.progress-tpl').html())
   didLoad: (chunk_id, pods) ->
     progress = (chunk_id / (gon.pods_index.length - 1)) * 100
     $('.progress-bar').css('width', progress + '%')
@@ -52,6 +53,8 @@ class @PodsController
     $(".timeago").timeago()
 
 ready = ->
-  (new PodsController).loadPods()
+  podsController = new PodsController
+  $("a[href='#!/reload").click ->
+    podsController.loadPods()
 $(document).ready(ready)
 $(document).on('page:load', ready)

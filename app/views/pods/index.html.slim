@@ -1,11 +1,15 @@
+script.progress-tpl type='text/html'
+  .progress-tpl.progress.progress-striped.active
+    .progress-bar role="progressbar" style="width: 0%"
 .container
   .row
     h1.col-12
       span = "#{@pods.count} Pods"
       span.glyphicon.glyphicon-leaf
       span Cocoatree
-    .progress.progress-striped.active
-      .progress-bar role="progressbar" style="width: 0%"
+      span
+        a href='#!/reload' Reload
+    .progress-container
   .row.categories
   .row.tags
   #list_placeholder.row
