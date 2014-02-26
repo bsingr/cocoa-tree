@@ -51,6 +51,7 @@ class @PodsController
     @pods = @pods.concat(pods)
   didLoadAll: ->
     @progressBar.finish()
+class @PodsRenderer
   renderPods: (pods) ->
     html = JST['templates/pods']
       pods: pods
@@ -80,7 +81,8 @@ class @PodsNavigator
     @index > 0
   renderPods: ->
     pods = @podsController.pods[@index..(@index+@max_size-1)]
-    @podsController.renderPods(pods)
+    renderer = new PodsRenderer
+    renderer.renderPods(pods)
   next: ->
     @index += @max_size
     @renderPods()
