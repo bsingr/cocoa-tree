@@ -45,7 +45,7 @@ class @PodsController
   didLoadAll: ->
     $('.progress').slideUp(1000)
   renderPods: (pods) ->
-    html = JST['pods_tpl']
+    html = JST['templates/pods']
       pods: pods
     $('#list_placeholder').html(html)
     window.load_categories()
@@ -58,7 +58,7 @@ class @PodsNavigator
     @render()
   render: ->
     controller = @
-    html = JST['pods_navigator_tpl'](@)
+    html = JST['templates/pods_navigator'](@)
     $('#list_navigator').html(html)
     $('#list_navigator a').click ->
       href = $(@).attr('href')
