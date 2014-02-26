@@ -52,7 +52,7 @@ class @PodsController
     $(".timeago").timeago()
 class @PodsNavigator
   index: 0
-  max_size: 2
+  max_size: 50
   constructor: (podsController) ->
     @podsController = podsController
     @render()
