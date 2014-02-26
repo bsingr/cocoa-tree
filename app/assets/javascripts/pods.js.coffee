@@ -91,6 +91,7 @@ class @PodsNavigator
     @render()
 ready = ->
   podsController = new PodsController
+  podsController.loadPods()
   $("a[href='#!/reload").click ->
     podsController.loadPods()
   window.podsNavigator = new PodsNavigator(podsController)
