@@ -1,7 +1,14 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-
+class @PodsProgressBar
+  update: (chunk_id) ->
+    progress = (chunk_id / (gon.pods_index.length - 1)) * 100
+    $('.progress-bar').css('width', progress + '%')
+  start: ->
+    $('.progress-container').hide().html($('.progress-tpl').html()).slideDown(1000)
+  finish: ->
+    $('.progress').slideUp(1000)
 class PodsFetcher
   delegate: null
   requests: []
@@ -32,18 +39,18 @@ class PodsFetcher
           @delegate.didLoadAll()
 class @PodsController
   constructor: ->
+    @progressBar = new PodsProgressBar()
     @fetcher = new PodsFetcher()
     @fetcher.delegate = @
   pods: []
   loadPods: ->
     @fetcher.loadPods()
-    $('.progress-container').html($('.progress-tpl').html())
+    @progressBar.start()
   didLoad: (chunk_id, pods) ->
-    progress = (chunk_id / (gon.pods_index.length - 1)) * 100
-    $('.progress-bar').css('width', progress + '%')
+    @progressBar.update(chunk_id)
     @pods = @pods.concat(pods)
   didLoadAll: ->
-    $('.progress').slideUp(1000)
+    @progressBar.finish()
   renderPods: (pods) ->
     html = JST['templates/pods']
       pods: pods
