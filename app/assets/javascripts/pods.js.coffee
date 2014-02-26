@@ -9,7 +9,7 @@ class @PodsProgressBar
     $('.progress-container').hide().html($('.progress-tpl').html()).slideDown(1000)
   finish: ->
     $('.progress').slideUp(1000)
-class PodsFetcher
+class PodsLoader
   delegate: null
   requests: []
   cancel: ->
@@ -40,11 +40,11 @@ class PodsFetcher
 class @PodsController
   constructor: ->
     @progressBar = new PodsProgressBar()
-    @fetcher = new PodsFetcher()
-    @fetcher.delegate = @
+    @loader = new PodsLoader()
+    @loader.delegate = @
   pods: []
   loadPods: ->
-    @fetcher.loadPods()
+    @loader.loadPods()
     @progressBar.start()
   didLoad: (chunk_id, pods) ->
     @progressBar.update(chunk_id)
