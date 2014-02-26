@@ -12,10 +12,12 @@ class @PodsController
     xhr.open('GET', '/pods/'+chunk_id+'.mpac', true)
     xhr.responseType = 'arraybuffer'
     xhr.onload = (e) ->
-      controller.renderPodsChunk(@.response, chunk_id)
+      pods = msgpack.decode(@.response)
+      controller.podsChunkDidLoad(chunk_id, pods)
     xhr.send()
-  renderPodsChunk: (response, chunk_id) ->
-    pods = msgpack.decode(response)
+  podsChunkDidLoad: (chunk_id, pods) ->
+    @.renderPodsChunk(chunk_id, pods)
+  renderPodsChunk: (chunk_id, pods) ->
     html = JST['pods_tpl']
       pods: pods
     $('#list_placeholder').append(html)
