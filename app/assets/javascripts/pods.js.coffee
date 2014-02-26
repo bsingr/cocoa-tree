@@ -45,6 +45,7 @@ class PodsLoader
         if (gon.pods_index[gon.pods_index.length - 1][0] == chunk_id)
           @delegate.didLoadAll()
 class @PodsController
+  delegate: null
   constructor: ->
     @progressBar = new PodsProgressBar()
     @loader = new PodsLoader()
@@ -56,6 +57,8 @@ class @PodsController
   didLoad: (chunk_id, pods) ->
     @progressBar.update(chunk_id)
     @pods = @pods.concat(pods)
+    if @delegate && @delegate.podsDidChange
+      @delegate.podsDidChange()
   didLoadAll: ->
     @progressBar.finish()
 class @PodsNavigator
@@ -63,6 +66,7 @@ class @PodsNavigator
   max_size: 50
   constructor: (podsController) ->
     @podsController = podsController
+    @podsController.delegate = @
     @render()
   render: ->
     controller = @
@@ -89,6 +93,9 @@ class @PodsNavigator
     @render()
   prev: ->
     @index -= @max_size
+    @renderPods()
+    @render()
+  podsDidChange: ->
     @renderPods()
     @render()
 ready = ->
