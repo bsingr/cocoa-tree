@@ -7,11 +7,7 @@ class @PodsNavigator
     @render()
   render: ->
     @renderPods()
-    @renderNavigation()
-  renderNavigation: ->
-    controller = @
-    html = JST['templates/pods_navigator'](@)
-    $('#list_navigator').html(html)
+    (new PodsNavigationRenderer).render(@)
   has_next: ->
     (@index + 1) < gon.pods_count
   has_prev: ->
