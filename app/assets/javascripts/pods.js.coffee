@@ -2,8 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 class @PodsProgressBar
-  update: (chunk_id) ->
-    progress = (chunk_id / (gon.pods_index.length - 1)) * 100
+  update: (factor) ->
+    progress = factor * 100
     $('.progress-bar').css('width', progress + '%')
   start: ->
     $('.progress-container').hide().html($('.progress-tpl').html()).slideDown(1000)
@@ -19,10 +19,16 @@ class @PodsRenderer
 class PodsLoader
   delegate: null
   requests: []
+  running: 0
+  finished: 0
+  progress: ->
+    @finished / (@finished + @running)
   cancel: ->
     for request in @requests
       request.abort()
     @requests = []
+    @running = 0
+    @finished = 0
   loadPods: ->
     @cancel()
     for chunk in gon.pods_index
@@ -37,12 +43,15 @@ class PodsLoader
       controller.podsChunkDidLoad(chunk_id, pods)
     xhr.send()
     @requests.push(xhr)
+    @running += 1
   podsChunkDidLoad: (chunk_id, pods) ->
+    @running -= 1
+    @finished += 1
     if @delegate
       if @delegate.didLoad
         @delegate.didLoad(chunk_id, pods)
       if @delegate.didLoadAll
-        if (gon.pods_index[gon.pods_index.length - 1][0] == chunk_id)
+        if @progress() == 1
           @delegate.didLoadAll()
 class @PodsController
   delegate: null
@@ -55,7 +64,7 @@ class @PodsController
     @loader.loadPods()
     @progressBar.start()
   didLoad: (chunk_id, pods) ->
-    @progressBar.update(chunk_id)
+    @progressBar.update(@loader.progress())
     @pods = @pods.concat(pods)
     if @delegate && @delegate.podsDidChange
       @delegate.podsDidChange()
