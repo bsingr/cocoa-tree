@@ -1,8 +1,8 @@
 - if @has_prev()
-  a.col-xs-6 href="#pods/#{@previous_offset()}" Prev
+  a.col-xs-6 href="#pods/#{@pods_filter.filter}/#{@previous_offset()}" Prev
 - else
   .text-muted.col-xs-6 Prev
 - if @has_next()
-  a.col-xs-6 href="#pods/#{@next_offset()}" Next
+  a.col-xs-6 href="#pods/#{@pods_filter.filter}/#{@next_offset()}" Next
 - else
   .text-muted.col-xs-6 Next

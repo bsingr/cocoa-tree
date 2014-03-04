@@ -3,8 +3,9 @@ class @PodsList
   max_per_page: 50
   constructor: (pods_controller) ->
     @pods_controller = pods_controller
+    @pods_filter = new PodsFilter(pods_controller)
   all_pods: ->
-    @pods_controller.pods
+    @pods_filter.pods()
   pods: ->
     @all_pods()[@index..(@index+@max_per_page-1)]
   has_next: ->
@@ -15,6 +16,7 @@ class @PodsList
     @index + @max_per_page
   previous_offset: ->
     @index - @max_per_page
-  update: (idx) ->
+  update: (idx, filter) ->
     @index = idx
+    @pods_filter.filter = filter
     

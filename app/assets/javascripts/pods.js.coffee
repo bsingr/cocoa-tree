@@ -8,9 +8,9 @@ ready = ->
   AppRouter = Backbone.Router.extend
     routes:
       "reload": "reload"
-      "pods/:idx": "pods"
-    pods: (idx) ->
-      window.podsNavigation.pods(parseInt(idx))
+      "pods/:filter/:idx": "pods"
+    pods: (filter, idx) ->
+      window.podsNavigation.pods(parseInt(idx), filter)
     reload: ->
       podsController.loadPods()
   new AppRouter()

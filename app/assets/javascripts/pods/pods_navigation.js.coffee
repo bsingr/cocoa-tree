@@ -7,8 +7,8 @@ class @PodsNavigation
   render: ->
     (new PodsRenderer).renderPods(@pods_list.pods())
     (new PodsNavigationRenderer).render(@pods_list)
-  pods: (idx) ->
-    @pods_list.update(idx)
+  pods: (idx, filter) ->
+    @pods_list.update(idx, filter)
     @render()
   podsDidChange: ->
     @render()
