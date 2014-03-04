@@ -72,40 +72,40 @@ class @PodsController
     @progressBar.finish()
 class @PodsNavigator
   index: 0
-  max_size: 50
+  max_per_page: 50
   constructor: (podsController) ->
     @podsController = podsController
     @podsController.delegate = @
     @render()
   render: ->
+    @renderPods()
+    @renderNavigation()
+  renderNavigation: ->
     controller = @
     html = JST['templates/pods_navigator'](@)
     $('#list_navigator').html(html)
-    $('#list_navigator a').click ->
-      href = $(@).attr('href')
-      command = href.replace('#!/pods/', '')
-      if command == 'next'
-        controller.next()
-      else
-        controller.prev()
   has_next: ->
     (@index + 1) < gon.pods_count
   has_prev: ->
     @index > 0
   renderPods: ->
-    pods = @podsController.pods[@index..(@index+@max_size-1)]
+    pods = @podsController.pods[@index..(@index+@max_per_page-1)]
     renderer = new PodsRenderer
     renderer.renderPods(pods)
   next: ->
-    @index += @max_size
-    @renderPods()
+    @index += @max_per_page
     @render()
   prev: ->
-    @index -= @max_size
-    @renderPods()
+    @index -= @max_per_page
+    @render()
+  next_offset: ->
+    @index + @max_per_page
+  previous_offset: ->
+    @index - @max_per_page
+  pods: (idx) ->
+    @index = idx
     @render()
   podsDidChange: ->
-    @renderPods()
     @render()
 ready = ->
   podsController = new PodsController
@@ -114,6 +114,9 @@ ready = ->
   AppRouter = Backbone.Router.extend
     routes:
       "reload": "reload"
+      "pods/:idx": "pods"
+    pods: (idx) ->
+      window.podsNavigator.pods(parseInt(idx))
     reload: ->
       podsController.loadPods()
   new AppRouter()
