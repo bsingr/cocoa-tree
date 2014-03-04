@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require lib/jquery.timeago.js
+//= require lib/underscore.js
+//= require lib/backbone.js
+//= require lib/msgpack.js
 //= require_tree .
