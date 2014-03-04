@@ -1,4 +1,4 @@
-class @PodsNavigator
+class @PodsNavigation
   index: 0
   max_per_page: 50
   constructor: (podsController) ->
