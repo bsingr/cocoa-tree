@@ -13,7 +13,6 @@
 //= require lib/json2.js
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap
 //= require lib/jquery.timeago.js
 //= require lib/underscore.js
