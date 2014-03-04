@@ -101,8 +101,13 @@ class @PodsNavigator
 ready = ->
   podsController = new PodsController
   podsController.loadPods()
-  $("a[href='#!/reload").click ->
-    podsController.loadPods()
   window.podsNavigator = new PodsNavigator(podsController)
+  AppRouter = Backbone.Router.extend
+    routes:
+      "reload": "reload"
+    reload: ->
+      podsController.loadPods()
+  new AppRouter()
+  Backbone.history.start()
 $(document).ready(ready)
 $(document).on('page:load', ready)
