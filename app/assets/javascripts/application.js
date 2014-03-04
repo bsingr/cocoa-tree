@@ -10,12 +10,12 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require lib/msgpack.js
 //= require lib/json2.js
+//= require lib/underscore.js
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
 //= require lib/jquery.timeago.js
-//= require lib/underscore.js
 //= require lib/backbone.js
-//= require lib/msgpack.js
 //= require_tree .
