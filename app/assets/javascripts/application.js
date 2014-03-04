@@ -18,4 +18,5 @@
 //= require bootstrap
 //= require lib/jquery.timeago.js
 //= require lib/backbone.js
+//= require_tree ./pods
 //= require_tree .
