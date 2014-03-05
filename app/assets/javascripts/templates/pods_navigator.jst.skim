@@ -1,8 +1,0 @@
-- if @has_prev()
-  a.col-xs-6 href="#!/pods/prev" Prev
-- else
-  .text-muted.col-xs-6 Prev
-- if @has_next()
-  a.col-xs-6 href="#!/pods/next" Next
-- else
-  .text-muted.col-xs-6 Next

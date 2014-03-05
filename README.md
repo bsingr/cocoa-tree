@@ -1,6 +1,6 @@
 # Cocoatree
 
-[![Build Status](https://travis-ci.org/dpree/cocoatree.png)](https://travis-ci.org/dpree/cocoatree)
+[![Build Status](https://travis-ci.org/dpree/cocoa-tree.png)](https://travis-ci.org/dpree/cocoa-tree)
 [![Code Climate](https://codeclimate.com/github/dpree/cocoatree.png)](https://codeclimate.com/github/dpree/cocoatree)
 
 ## Deployment
