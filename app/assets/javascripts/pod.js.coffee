@@ -37,7 +37,7 @@ window.load_categories = ->
       i++
       if word.length > 2
         category = categoryForName(word)
-        category.push wordStats[word]  if category
+        category.push wordStats[word] if category
         if wordStats[word] is `undefined`
           wordStats[word] =
             word: word
@@ -46,12 +46,6 @@ window.load_categories = ->
           wordList.push wordStats[word]
         wordStats[word].count += 1
         wordStats[word].elements.push element
-
-  categoriesHtml = []
-  for categoryName of categories
-    categoryData = categories[categoryName]
-    categoriesHtml.push "<a href='#!/filter/" + categoryName + "'>" + categoryName + " " + categoryData.length + "</a>"
-  $(".categories").html categoriesHtml.join(" ")
   
   sortedWordList = wordList.sort((a, b) ->
     b.count - a.count
@@ -63,8 +57,3 @@ window.load_categories = ->
     i++
     html.push "<a href='#!/filter/" + stats.word + "'>" + stats.word + "</a>"  if stats
   $(".tags").html html.join(" ")
-  $(".categories, .tags").on "click", "a", ->
-    word = $(this).attr("href").replace("#!/filter/", "")
-    $(".pod").hide()
-    stats = wordStats[word]
-    $(wordStats[word].elements).show()
