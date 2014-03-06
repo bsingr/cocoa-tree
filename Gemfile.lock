@@ -200,6 +200,8 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+    shoulda-matchers (2.5.0)
+      activesupport (>= 3.0.0)
     skim (0.9.3)
       coffee-script
       coffee-script-source (>= 1.2.0)
@@ -276,6 +278,7 @@ DEPENDENCIES
   sass
   sass-rails (~> 4.0.0)
   sdoc
+  shoulda-matchers
   skim
   slim
   slim-rails

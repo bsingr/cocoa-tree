@@ -55,7 +55,6 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'rspec-rails'
 gem 'slim-rails'
 
 gem 'cocoapods-core', git: 'https://github.com/dpree/Core.git' # rails 4 compatibility
@@ -80,3 +79,8 @@ gem 'gon'
 
 gem 'capybara'
 gem 'poltergeist'
+
+group :test do
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+end
