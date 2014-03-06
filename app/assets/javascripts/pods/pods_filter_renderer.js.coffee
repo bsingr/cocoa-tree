@@ -22,9 +22,16 @@ class @PodsFilterRenderer
     "csv"
     "navigation"
   ]
-  render: ->
+  constructor: (pods_controller) ->
+    @pods_controller = pods_controller
+    @pods_controller.delegates.push(@)
+  render: (pods_word_stats) ->
     categoriesHtml = []
-    for categoryName in @categories
-      categoriesHtml.push "<a href='#pods/" + categoryName + "/0'>" + categoryName + " </a>"
+    for category_name in @categories
+      categoriesHtml.push "<a href='#pods/" + category_name + "/0'>" + category_name + " " + pods_word_stats.wordStats[category_name] + " </a>"
     $(".categories").html categoriesHtml.join(" ")
-    
+  podsDidChange: () ->
+    pods_word_stats = new PodsWordStats()
+    pods_word_stats.generate(@pods_controller.pods)
+    @render(pods_word_stats)
+  

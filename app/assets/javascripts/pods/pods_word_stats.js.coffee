@@ -1,0 +1,21 @@
+class @PodsWordStats
+  wordStats: {}
+  wordList: []
+  generate: (pods) ->
+    for pod in pods
+      words = pod.summary.split(" ")
+      i = 0
+      while i < words.length
+        word = words[i].toLowerCase()
+        i++
+        if word.length > 2
+          if @wordStats[word] is `undefined`
+            @wordStats[word] = 0
+          @wordStats[word] += 1
+    for word, count of @wordStats
+      @wordList.push
+        word: word
+        count: count
+    @wordList = @wordList.sort((a, b) ->
+      b.count - a.count
+    )
