@@ -1,8 +1,19 @@
 - if @has_prev()
-  a.col-xs-6 href="#pods/#{@pods_filter.filter}/#{@previous_offset()}" Prev
+  a href="#pods/#{@pods_filter.filter}/#{@previous_offset()}" Prev
 - else
-  .text-muted.col-xs-6 Prev
+  span.text-muted Prev
+' 
+- i = 0
+- index = 0
+- while index < @all_pods().length
+  - if index != @index
+    a href="#pods/#{@pods_filter.filter}/#{index}" = i+1
+  - else
+    span.text-muted = i+1
+  ' 
+  - i++
+  - index = i*@max_per_page
 - if @has_next()
-  a.col-xs-6 href="#pods/#{@pods_filter.filter}/#{@next_offset()}" Next
+  a href="#pods/#{@pods_filter.filter}/#{@next_offset()}" Next
 - else
-  .text-muted.col-xs-6 Next
+  span.text-muted Next

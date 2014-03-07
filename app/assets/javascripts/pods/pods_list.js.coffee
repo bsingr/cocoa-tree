@@ -19,4 +19,3 @@ class @PodsList
   update: (idx, filter) ->
     @index = idx
     @pods_filter.filter = filter
-    
