@@ -4,16 +4,9 @@
 ready = ->
   podsController = new PodsController
   podsController.loadPods()
+  window.podsController = podsController
   window.podsFilterRenderer = new PodsFilterRenderer(podsController)
   window.podsNavigation = new PodsNavigation(podsController)
-  AppRouter = Backbone.Router.extend
-    routes:
-      "reload": "reload"
-      "pods/:filter/:idx": "pods"
-    pods: (filter, idx) ->
-      window.podsNavigation.pods(parseInt(idx), filter)
-    reload: ->
-      podsController.loadPods()
   new AppRouter()
   Backbone.history.start()
 $(document).ready(ready)
