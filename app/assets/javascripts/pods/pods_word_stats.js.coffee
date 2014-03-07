@@ -5,12 +5,12 @@ class @PodsWordStats
     @wordStats = {}
     @wordList = []
     for pod in pods
-      words = pod.summary.split(" ")
+      words = pod.summary.toLowerCase().split(" ")
       i = 0
       while i < words.length
         word = words[i].toLowerCase()
         i++
-        if word.length > 2
+        if word.length > 1
           if @wordStats[word] is `undefined`
             @wordStats[word] = 0
           @wordStats[word] += 1

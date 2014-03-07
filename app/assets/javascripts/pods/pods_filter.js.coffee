@@ -8,6 +8,6 @@ class @PodsFilter
     else
       pods = []
       for pod in @pods_controller.pods
-        if pod.summary.match(@filter)
+        if pod.summary.toLowerCase().match(" "+@filter+" ")
           pods.push(pod)
       pods  
