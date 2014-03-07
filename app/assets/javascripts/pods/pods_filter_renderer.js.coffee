@@ -27,6 +27,7 @@ class @PodsFilterRenderer
     @pods_controller.delegates.push(@)
   render: (pods_word_stats) ->
     categoriesHtml = []
+    categoriesHtml.push "<a href='#pods/all/0'>all</a>"
     for category_name in @categories
       categoriesHtml.push "<a href='#pods/" + category_name + "/0'>" + category_name + " " + pods_word_stats.wordStats[category_name] + " </a>"
     $(".categories").html categoriesHtml.join(" ")
