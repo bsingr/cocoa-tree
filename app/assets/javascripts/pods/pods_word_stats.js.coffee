@@ -2,6 +2,8 @@ class @PodsWordStats
   wordStats: {}
   wordList: []
   generate: (pods) ->
+    @wordStats = {}
+    @wordList = []
     for pod in pods
       words = pod.summary.split(" ")
       i = 0

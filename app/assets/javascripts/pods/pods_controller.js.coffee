@@ -1,11 +1,12 @@
 class @PodsController
   delegates: []
+  pods: []
   constructor: ->
     @progressBar = new PodsProgressBar()
     @loader = new PodsLoader()
     @loader.delegate = @
-  pods: []
   loadPods: ->
+    @pods = []
     @loader.loadPods()
     @progressBar.start()
   didLoad: (chunk_id, pods) ->
