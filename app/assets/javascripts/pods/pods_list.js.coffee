@@ -9,7 +9,7 @@ class @PodsList
   pods: ->
     @all_pods()[@index..(@index+@max_per_page-1)]
   has_next: ->
-    (@index + 1) < @all_pods().length
+    @next_offset() < @all_pods().length
   has_prev: ->
     @index > 0
   next_offset: ->
