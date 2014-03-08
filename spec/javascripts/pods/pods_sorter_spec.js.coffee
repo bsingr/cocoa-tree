@@ -3,9 +3,11 @@ describe 'PodsSorter', ->
   beforeEach ->
      subject = new PodsSorter
   describe '#sort()', ->
-    it 'works without sort_by', ->
+    it 'empty input', ->
+      expect(subject.sort([])).to.eql([])
+    it 'without sort_by', ->
       expect(subject.sort([1,3,2])).to.eql([1,2,3])
-    it 'sorts by property', ->
+    it 'sorts by integer property', ->
       list = [
         {i: 1}
         {i: 3}
@@ -18,5 +20,36 @@ describe 'PodsSorter', ->
       ]
       subject.sort_by = 'i'
       expect(subject.sort(list)).to.eql(sorted_list)
-    it 'works with empty input', ->
-      expect(subject.sort([])).to.eql([])
+    it 'sorts by mixed property', ->
+      list = [
+        {i: null}
+        {i: 'not a number'}
+        {i: 2}
+        {i: null}
+        {i: 1}
+        {i: 'not a number'}
+      ]
+      sorted_list = [
+        {i: 1}
+        {i: 2}
+        {i: 'not a number'}
+        {i: 'not a number'}
+        {i: null}
+        {i: null} 
+      ]
+      subject.sort_by = 'i'
+      expect(subject.sort(list)).to.eql(sorted_list)
+    it 'sorts by string property', ->
+      list = [
+        {i: 'A'}
+        {i: 'C'}
+        {i: 'b'}
+      ]
+      sorted_list = [
+        {i: 'A'}
+        {i: 'b'}
+        {i: 'C'}
+      ]
+      subject.sort_by = 'i'
+      expect(subject.sort(list)).to.eql(sorted_list)
+
