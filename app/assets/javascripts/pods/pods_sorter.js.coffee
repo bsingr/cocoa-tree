@@ -3,26 +3,28 @@ class @PodsSorter
   sort: (pods) ->
     if @sort_by
       sort_by = @sort_by
+      sorter = @
       pods.sort (a,b) ->
-        a_value = a[sort_by]
-        b_value = b[sort_by]
-        if typeof(a_value) == 'string' && typeof(b_value) == 'string'
-          if a_value.toLowerCase() >= b_value.toLowerCase()
-            1
-          else
-            -1
-        else if typeof(a_value) == 'number' && typeof(b_value) == 'number'
-          a_value - b_value
-        else if typeof(a_value) == 'number' && typeof(b_value) == 'string'
-          -1
-        else if typeof(a_value) == 'string' && typeof(b_value) == 'number'
-          1
-        else if typeof(a_value) == 'object' && typeof(b_value) == 'object'
-          -1
-        else if typeof(a_value) == 'object'
-          1
-        else
-          -1
+        av = a[sort_by]
+        bv = b[sort_by]
+        sorter._sort(av, bv) * -1
     else
-      pods.sort (a,b) ->
-        a - b
+      pods.sort @._sort
+  _sort: (a,b) ->
+    if typeof(a) == 'string' && typeof(b) == 'string'
+      if a.toLowerCase() >= b.toLowerCase()
+        1
+      else
+        -1
+    else if typeof(a) == 'number' && typeof(b) == 'number'
+      a - b
+    else if typeof(a) == 'number' && typeof(b) == 'string'
+      -1
+    else if typeof(a) == 'string' && typeof(b) == 'number'
+      1
+    else if typeof(a) == 'object' && typeof(b) == 'object'
+      -1
+    else if typeof(a) == 'object'
+      1
+    else
+      -1
