@@ -1,4 +1,4 @@
-a href="#pods/all"
+a.col-xs-12.col-md-2 href="#pods/all" all
 - for category_name in @categories
   a.col-xs-12.col-md-2 href="#pods/#{category_name}"
     = category_name
