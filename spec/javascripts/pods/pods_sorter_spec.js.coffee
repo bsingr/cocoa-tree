@@ -6,7 +6,7 @@ describe 'PodsSorter', ->
     it 'empty input', ->
       expect(subject.sort([])).to.eql([])
     it 'without sort_by', ->
-      expect(subject.sort([1,3,2])).to.eql([1,2,3])
+      expect(subject.sort([1,3,2])).to.eql([3,2,1])
     it 'sorts by integer property', ->
       list = [
         {i: 1}
@@ -14,9 +14,9 @@ describe 'PodsSorter', ->
         {i: 2}
       ]
       sorted_list = [
-        {i: 1}
-        {i: 2}
         {i: 3}
+        {i: 2}
+        {i: 1}
       ]
       subject.sort_by = 'i'
       expect(subject.sort(list)).to.eql(sorted_list)
@@ -30,8 +30,8 @@ describe 'PodsSorter', ->
         {i: 'not a number'}
       ]
       sorted_list = [
-        {i: 1}
         {i: 2}
+        {i: 1}
         {i: 'not a number'}
         {i: 'not a number'}
         {i: null}
