@@ -1,6 +1,11 @@
 class @PodsSorter
-  sort_by: null
+  set_sort_by: (sort_by) ->
+    if sort_by != @sorty_by
+      @dirty = true
+      @sort_by = sort_by
+  dirty: true
   sort: (pods) ->
+    @dirty = false
     if @sort_by
       sort_by = @sort_by
       sorter = @

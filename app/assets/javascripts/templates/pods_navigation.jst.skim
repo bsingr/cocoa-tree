@@ -1,7 +1,7 @@
 ul.pagination.pagination-sm
   - if @has_prev()
     li
-      a href="#pods/#{@pods_filter.filter}/#{@previous_offset()}" &laquo;
+      a href="#pods/#{@pods_filter.filter}/#{@sorter.sort_by}/#{@previous_offset()}" &laquo;
   - else
     li.disabled
       a &laquo;
@@ -15,12 +15,12 @@ ul.pagination.pagination-sm
           span.sr-only (current)
     - else
       li
-        a href="#pods/#{@pods_filter.filter}/#{index}" = i+1
+        a href="#pods/#{@pods_filter.filter}/#{@sorter.sort_by}/#{index}" = i+1
     - i++
     - index = i*@max_per_page
   - if @has_next()
     li
-      a href="#pods/#{@pods_filter.filter}/#{@next_offset()}" &raquo;
+      a href="#pods/#{@pods_filter.filter}/#{@sorter.sort_by}/#{@next_offset()}" &raquo;
   - else
     li.disabled
       a &raquo;
