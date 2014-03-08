@@ -1,8 +1,8 @@
 # Teaspoon includes some support files, but you can use anything from your own support path too.
 # require support/expect
 # require support/sinon
-# require support/chai
 # require support/your-support-file
+#= require support/chai
 #
 # PhantomJS (Teaspoons default driver) doesn't have support for Function.prototype.bind, which has caused confusion. Use
 # this polyfill to avoid the confusion.
@@ -37,3 +37,5 @@
 #
 # You can require javascript files here. A good place to start is by requiring your application.js.
 #= require application
+
+window.expect = chai.expect
