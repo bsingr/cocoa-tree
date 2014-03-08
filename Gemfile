@@ -84,3 +84,7 @@ group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
 end
+
+group :test, :development do
+  gem 'teaspoon' # js
+end
