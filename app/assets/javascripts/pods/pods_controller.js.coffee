@@ -16,4 +16,4 @@ class @PodsController
       if delegate.podsDidChange
         delegate.podsDidChange()
   didLoadAll: ->
-    @progressBar.finish()
+    

@@ -1,8 +1,9 @@
 class @PodsProgressBar
   update: (factor) ->
     progress = factor * 100
-    $('.progress-bar').css('width', progress + '%')
+    @nanobar.go(progress)
   start: ->
-    $('.progress-container').hide().html($('.progress-tpl').html()).slideDown(1000)
-  finish: ->
-    $('.progress').slideUp(1000)
+    @nanobar = new Nanobar
+      target: $('.progress-container').get(0)
+      id: 'pods-progress'
+  
