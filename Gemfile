@@ -69,7 +69,6 @@ gem 'sass'
 gem 'actionpack'
 gem 'activesupport'
 
-gem 'actionpack-page_caching'
 gem 'bootstrap-sass'
 gem 'squeel' # ActiveRecord Queries
 
@@ -88,3 +87,5 @@ end
 group :test, :development do
   gem 'teaspoon' # js
 end
+
+gem 'rails-zero', '0.0.2'
