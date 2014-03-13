@@ -88,4 +88,4 @@ group :test, :development do
   gem 'teaspoon' # js
 end
 
-gem 'rails-zero', '0.0.3'
+gem 'rails-zero', '0.0.4'
