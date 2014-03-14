@@ -88,4 +88,4 @@ group :test, :development do
   gem 'teaspoon' # js
 end
 
-gem 'rails-zero'
+gem 'rails-zero', github: 'dpree/rails-zero'
