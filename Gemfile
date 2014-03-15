@@ -89,3 +89,7 @@ group :test, :development do
 end
 
 gem 'rails-zero', github: 'dpree/rails-zero'
+
+gem 'sprockets', '~> 2.11.0' # 2.12.0 doesnt work right now
+                             # https://github.com/sstephenson/sprockets/issues/540
+gem 'tilt', '~> 1.3.3'
