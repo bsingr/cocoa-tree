@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dpree/rails-zero.git
-  revision: 02889b1a703117fef375a1dd604ca36ac3d6df98
+  revision: 6a3fcc34647709d0c157544919d06de4d1c52f36
   specs:
     rails-zero (0.0.6)
       actionpack-page_caching
