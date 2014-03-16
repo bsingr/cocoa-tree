@@ -7,6 +7,12 @@
 
 ![Deployment](./concept/deployment.png)
 
+## TODO
+
+* use web worker to generate HTML from mpac
+* build categories system
+* categorize each pod manually
+
 ## Installation
 
 Add this line to your application's Gemfile:
