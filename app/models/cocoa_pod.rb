@@ -27,7 +27,7 @@ class CocoaPod < ActiveRecord::Base
       'source_url' => source_url,
       'doc_url' => doc_url,
       'version' => version,
-      'summary' => summary,
+      'summary' => summary || "",
       'dependencies' => cocoa_pod_dependencies.map{|d| {'id' => d.cocoa_pod.id,
                                                         'name' => d.cocoa_pod.name,
                                                         'requirement' => d.requirement }},
