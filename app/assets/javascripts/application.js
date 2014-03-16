@@ -20,4 +20,5 @@
 //= require backbone.js
 //= require nanobar.js
 //= require_tree ./pods
+//= require_tree ./application
 //= require_tree .
