@@ -1,4 +1,4 @@
-Copyright (c) 2013 Jens Bissinger
+Copyright (c) 2013 - 2014 Jens Bissinger
 
 MIT License
 

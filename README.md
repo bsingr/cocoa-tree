@@ -40,3 +40,6 @@ TODO: Write usage instructions here
 5. Create new Pull Request
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dpree/cocoatree/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
+This project uses [MIT-LICENSE](LICENSE.txt).
+
