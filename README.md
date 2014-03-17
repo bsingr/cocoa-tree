@@ -1,4 +1,6 @@
-# Cocoatree
+![Cocoa Tree](./app/assets/images/cocoa-tree-320.png)
+
+# Cocoa Tree
 
 [![Build Status](https://travis-ci.org/dpree/cocoa-tree.png)](https://travis-ci.org/dpree/cocoa-tree)
 [![Code Climate](https://codeclimate.com/github/dpree/cocoatree.png)](https://codeclimate.com/github/dpree/cocoatree)
@@ -43,3 +45,4 @@ TODO: Write usage instructions here
 
 This project uses [MIT-LICENSE](LICENSE.txt).
 
+Logo made with :heart: by [fabric8](http://fabric8.de/).
