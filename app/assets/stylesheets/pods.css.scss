@@ -31,14 +31,10 @@ $footerTextCol: #999;
 }
 
 h1 {
-  text-align: center;
   color: $headerTextCol;
 
-  .glyphicon {
-    font-size: 0.7em;
-    margin-right: 0.5em;
-    margin-left: 0.5em;
-  }
+  background: url('/assets/cocoa-tree-128.png') no-repeat;
+  height: 128px;
 }
 
 a {
