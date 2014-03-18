@@ -3,6 +3,8 @@ class @PodsLoader
   requests: []
   running: 0
   finished: 0
+  constructor: (chunk_index) ->
+    @chunk_index = chunk_index
   progress: ->
     @finished / (@finished + @running)
   cancel: ->
@@ -13,7 +15,7 @@ class @PodsLoader
     @finished = 0
   loadPods: ->
     @cancel()
-    for chunk in gon.pods_index
+    for chunk in @chunk_index
       @loadPodsChunk(chunk[0])
   loadPodsChunk: (chunk_id) ->
     controller = @

@@ -1,9 +1,9 @@
 class @PodsController
   delegates: []
   pods: []
-  constructor: ->
+  constructor: (loader) ->
     @progressBar = new PodsProgressBar()
-    @loader = new PodsLoader()
+    @loader = loader
     @loader.delegate = @
   loadPods: ->
     @pods = []
