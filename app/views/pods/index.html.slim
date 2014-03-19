@@ -4,7 +4,10 @@
     h1
       .logo.col-xs-12.col-md-4
       .col-xs-12.col-md-8
-        span = "#{@pods.count} Pods"
+        span
+          span.pods-count
+          ' 
+          span Pods
         ' 
         a href='#reload' Reload
   .row

@@ -34,5 +34,7 @@ class @PodsController
     @sortBy = sortBy
     @update()
   update: ->
+    @store.countAll (count) ->
+      $('.pods-count').text(count)
     @store.all().then (pods) =>
       @render(pods)
