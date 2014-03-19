@@ -11,6 +11,6 @@
       sort_by = 'stars'
     if !idx
       idx = 0
-    window.podsNavigation.pods(parseInt(idx), filter, sort_by)
+    window.podsController.changeScope(parseInt(idx), filter, sort_by)
   reload: ->
     window.podsController.loadPods()

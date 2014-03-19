@@ -14,7 +14,6 @@ boot = (index) ->
   podsController.loadPods()
   window.podsController = podsController
   podsFilterRenderer = new PodsFilterRenderer(podsController, podsStore)
-  window.podsNavigation = new PodsNavigation(podsController, podsStore)
   new AppRouter()
   Backbone.history.start()
 ready = ->
