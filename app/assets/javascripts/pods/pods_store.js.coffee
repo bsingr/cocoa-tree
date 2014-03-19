@@ -1,12 +1,24 @@
 class @PodsStore
-  records: []
-  all: ->
-    @records
   update: (new_records) ->
-    @records = @records.concat(new_records)
-    @countAll (c) ->
-      console.log c
     @writeObjects(new_records)
+  all: ->
+    records = []
+    promise = new Promise (resolve, reject) =>
+      @database (db) ->
+        t = db.transaction 'pods', 'readwrite'
+        store = t.objectStore('pods')
+        keyRange = IDBKeyRange.lowerBound(0)
+        r = store.openCursor(keyRange)
+        r.onsuccess = (e) ->
+          cursor = e.target.result
+          if cursor
+            records.push cursor.value
+            cursor.continue()
+          else
+            resolve(records)
+        r.onerror = (e) ->
+          reject(e)
+    promise
   writeObjects: (pods) ->
     @database (db) ->
       t = db.transaction 'pods', 'readwrite'

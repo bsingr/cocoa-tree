@@ -6,14 +6,11 @@ loadIndex = (callback) ->
     index = msgpack.decode(@response)
     callback(index)
   xhr.send()
-
 boot = (index) ->
   podsStore = new PodsStore()
   podsLoader = new PodsLoader(index)
-  podsController = new PodsController(podsLoader, podsStore)
-  podsController.loadPods()
-  window.podsController = podsController
-  podsFilterRenderer = new PodsFilterRenderer(podsController, podsStore)
+  window.podsController = new PodsController(podsLoader, podsStore)
+  window.podsController.loadPods()
   new AppRouter()
   Backbone.history.start()
 ready = ->

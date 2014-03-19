@@ -1,26 +1,26 @@
 ul.pagination.pagination-sm
-  - if @has_prev()
+  - if @podsList.has_prev()
     li
-      a href="#pods/#{@pods_filter.filter}/#{@sorter.sort_by}/#{@previous_offset()}" &laquo;
+      a href="#pods/#{@filterBy}/#{@sortBy}/#{@podsList.previous_offset()}" &laquo;
   - else
     li.disabled
       a &laquo;
   - i = 0
   - index = 0
-  - while index < @all_pods().length
-    - if index == @index
+  - while index < @podsList.allPods.length
+    - if index == @podsList.index
       li.active
         a
           = i+1
           span.sr-only (current)
     - else
       li
-        a href="#pods/#{@pods_filter.filter}/#{@sorter.sort_by}/#{index}" = i+1
+        a href="#pods/#{@filterBy}/#{@sortBy}/#{index}" = i+1
     - i++
-    - index = i*@max_per_page
-  - if @has_next()
+    - index = i*@podsList.max_per_page
+  - if @podsList.has_next()
     li
-      a href="#pods/#{@pods_filter.filter}/#{@sorter.sort_by}/#{@next_offset()}" &raquo;
+      a href="#pods/#{@filterBy}/#{@sortBy}/#{@podsList.next_offset()}" &raquo;
   - else
     li.disabled
       a &raquo;

@@ -1,27 +1,15 @@
 class @PodsList
   index: 0
   max_per_page: 50
-  dirty: true
-  constructor: (pods_filter) ->
-    @pods_filter = pods_filter
-    @sorter = new PodsSorter()
-  all_pods: ->
-    if @dirty || @sorter.dirty || @pods_filter.dirty
-      if @dirty || @pods_filter.dirty
-        @cached_filtered_pods = @pods_filter.pods()
-      @cached_sorted_pods = @sorter.sort(@cached_filtered_pods)
-    @cached_sorted_pods
+  constructor: (allPods) ->
+    @allPods = allPods
   pods: ->
-    @all_pods()[@index..(@index+@max_per_page-1)]
+    @allPods[@index..(@index+@max_per_page-1)]
   has_next: ->
-    @next_offset() < @all_pods().length
+    @next_offset() < @allPods.length
   has_prev: ->
     @index > 0
   next_offset: ->
     @index + @max_per_page
   previous_offset: ->
     @index - @max_per_page
-  update: (idx, filter, sort_by) ->
-    @index = idx
-    @pods_filter.set_filter(filter)
-    @sorter.set_sort_by(sort_by)

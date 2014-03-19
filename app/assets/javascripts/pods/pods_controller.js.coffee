@@ -1,30 +1,38 @@
 class @PodsController
   delegates: []
+  index: null
+  filterBy: "all"
+  sortBy: "stars"
   constructor: (loader, store) ->
     @store = store
     @progressBar = new PodsProgressBar()
     @loader = loader
     @loader.delegate = @
-    @pods_filter = new PodsFilter(store)
-    @pods_list = new PodsList(@pods_filter)
-    @render()
+    @update()
   loadPods: ->
     @loader.loadPods()
     @progressBar.start()
   didLoad: (chunk_id, pods) ->
     @progressBar.update(@loader.progress())
     @store.update pods
-    @pods_list.dirty = true
-    @render()
     for delegate in @delegates
       if delegate.podsDidChange
         delegate.podsDidChange()
   didLoadAll: ->
     
-  render: ->
-    (new PodsRenderer).renderPods(@pods_list.pods())
-    (new PodsNavigationRenderer).render(@pods_list)
-  changeScope: (idx, filter, sort_by) ->
-    @pods_list.update(idx, filter, sort_by)
-    @render()
-    
+  render: (pods) ->
+    filteredPods = new PodsFilter(@filterBy).filter(pods)
+    sortedPods = new PodsSorter(@sortBy).sort(filteredPods)
+    podsList = new PodsList(sortedPods)
+    podsList.index = @index
+    (new PodsRenderer).renderPods(podsList.pods())
+    (new PodsNavigationRenderer).render(podsList, @sortBy, @filterBy)
+    (new PodsFilterRenderer).render(pods)
+  changeScope: (index, filterBy, sortBy) ->
+    @index = index
+    @filterBy = filterBy
+    @sortBy = sortBy
+    @update()
+  update: ->
+    @store.all().then (pods) =>
+      @render(pods)

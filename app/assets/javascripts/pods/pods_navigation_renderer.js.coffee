@@ -1,4 +1,8 @@
 class @PodsNavigationRenderer
-  render: (pods_list) ->
-    html = JST['templates/pods_navigation'](pods_list)
+  render: (podsList, sortBy, filterBy) ->
+    obj = 
+      podsList: podsList
+      sortBy: sortBy
+      filterBy: filterBy
+    html = JST['templates/pods_navigation'](obj)
     $('#list_navigator').html(html)
