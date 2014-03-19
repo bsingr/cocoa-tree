@@ -1,17 +1,16 @@
 class @PodsController
   delegates: []
-  pods: []
-  constructor: (loader) ->
+  constructor: (loader, store) ->
+    @store = store
     @progressBar = new PodsProgressBar()
     @loader = loader
     @loader.delegate = @
   loadPods: ->
-    @pods = []
     @loader.loadPods()
     @progressBar.start()
   didLoad: (chunk_id, pods) ->
     @progressBar.update(@loader.progress())
-    @pods = @pods.concat(pods)
+    @store.update pods
     for delegate in @delegates
       if delegate.podsDidChange
         delegate.podsDidChange()

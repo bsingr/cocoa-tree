@@ -22,9 +22,10 @@ class @PodsFilterRenderer
     "csv"
     "navigation"
   ]
-  constructor: (pods_controller) ->
+  constructor: (pods_controller, podsStore) ->
     @pods_controller = pods_controller
     @pods_controller.delegates.push(@)
+    @podsStore = podsStore
   render: (pods_word_stats) ->
     html = JST['templates/pods_categories']
       categories: @categories
@@ -32,6 +33,6 @@ class @PodsFilterRenderer
     $(".categories").html html
   podsDidChange: () ->
     pods_word_stats = new PodsWordStats()
-    pods_word_stats.generate(@pods_controller.pods)
+    pods_word_stats.generate(@podsStore.all())
     @render(pods_word_stats)
   

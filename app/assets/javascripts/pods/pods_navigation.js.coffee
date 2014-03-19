@@ -1,8 +1,8 @@
 class @PodsNavigation
-  constructor: (podsController) ->
+  constructor: (podsController, store) ->
     @podsController = podsController
     @podsController.delegates.push(@)
-    @pods_filter = new PodsFilter(podsController)
+    @pods_filter = new PodsFilter(store)
     @pods_list = new PodsList(@pods_filter)
     @render()
   render: ->

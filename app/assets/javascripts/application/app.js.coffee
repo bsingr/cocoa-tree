@@ -8,12 +8,13 @@ loadIndex = (callback) ->
   xhr.send()
 
 boot = (index) ->
+  podsStore = new PodsStore()
   podsLoader = new PodsLoader(index)
-  podsController = new PodsController(podsLoader)
+  podsController = new PodsController(podsLoader, podsStore)
   podsController.loadPods()
   window.podsController = podsController
-  window.podsFilterRenderer = new PodsFilterRenderer(podsController)
-  window.podsNavigation = new PodsNavigation(podsController)
+  window.podsFilterRenderer = new PodsFilterRenderer(podsController, podsStore)
+  window.podsNavigation = new PodsNavigation(podsController, podsStore)
   new AppRouter()
   Backbone.history.start()
 ready = ->

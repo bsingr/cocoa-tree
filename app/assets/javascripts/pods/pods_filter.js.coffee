@@ -5,15 +5,16 @@ class @PodsFilter
     if filter != @filter
       @dirty = true
       @filter = filter
-  constructor: (pods_controller) ->
-    @pods_controller = pods_controller
+  constructor: (store) ->
+    @store = store
   pods: ->
     @dirty = false
     if @filter == "all"
-      @pods_controller.pods
+      @store.all()
     else
       pods = []
-      for pod in @pods_controller.pods
+      for pod in @store.all()
         if pod.summary.toLowerCase().match(" "+@filter+" ")
           pods.push(pod)
-      pods  
+      pods
+      
