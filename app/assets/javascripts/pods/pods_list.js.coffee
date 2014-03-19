@@ -2,9 +2,8 @@ class @PodsList
   index: 0
   max_per_page: 50
   dirty: true
-  constructor: (pods_controller) ->
-    @pods_controller = pods_controller
-    @pods_filter = new PodsFilter(pods_controller)
+  constructor: (pods_filter) ->
+    @pods_filter = pods_filter
     @sorter = new PodsSorter()
   all_pods: ->
     if @dirty || @sorter.dirty || @pods_filter.dirty
