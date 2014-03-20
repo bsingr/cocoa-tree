@@ -10,8 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require msgpack.js
-//= require json2.js
+//= require shared
 //= require underscore.js
 //= require jquery
 //= require jquery_ujs
@@ -19,7 +18,4 @@
 //= require jquery.timeago.js
 //= require backbone.js
 //= require nanobar.js
-//= require lunr.js
-//= require_tree ./pods
 //= require_tree ./application
-//= require_tree ./templates
