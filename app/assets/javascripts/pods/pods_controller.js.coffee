@@ -8,7 +8,6 @@ class @PodsController
     @progressBar = new PodsProgressBar()
     @loader = loader
     @loader.delegate = @
-    @update()
   loadPods: ->
     @loader.loadPods()
     @progressBar.start()
