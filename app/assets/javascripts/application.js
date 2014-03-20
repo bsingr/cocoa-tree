@@ -22,4 +22,4 @@
 //= require lunr.js
 //= require_tree ./pods
 //= require_tree ./application
-//= require_tree .
+//= require_tree ./templates
