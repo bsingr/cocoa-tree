@@ -7,7 +7,8 @@ class @PodsFilter
     else
       pods = []
       for pod in allPods
-        if pod.summary.toLowerCase().match(" "+@filterBy+" ")
+        base = pod.summary.toLowerCase()
+        if base == @filterBy || base.match(" "+@filterBy+" ")
           pods.push(pod)
       pods
       
