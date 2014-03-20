@@ -5,7 +5,7 @@ class @PodsStore
     records = []
     promise = new Promise (resolve, reject) =>
       @database (db) ->
-        t = db.transaction 'pods', 'readwrite'
+        t = db.transaction 'pods', 'readonly'
         store = t.objectStore('pods')
         keyRange = IDBKeyRange.lowerBound(0)
         r = store.openCursor(keyRange)
@@ -27,7 +27,7 @@ class @PodsStore
         r = s.put(pod)
   countAll: (callback) ->
     @database (db) ->
-      t = db.transaction 'pods', 'readwrite'
+      t = db.transaction 'pods', 'readonly'
       s = t.objectStore('pods')
       r = s.count()
       r.onsuccess = ->
