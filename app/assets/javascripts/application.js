@@ -19,6 +19,7 @@
 //= require jquery.timeago.js
 //= require backbone.js
 //= require nanobar.js
+//= require lunr.js
 //= require_tree ./pods
 //= require_tree ./application
 //= require_tree .

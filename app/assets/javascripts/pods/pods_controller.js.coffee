@@ -9,12 +9,18 @@ class @PodsController
     @progressBar = new PodsProgressBar()
     @loader = loader
     @loader.delegate = @
+    @search = lunr ->
+      @field('name', {boost: 10})
+      @field('summary')
+      @ref('name')
   loadPods: ->
     @loader.loadPods()
     @progressBar.start()
   didLoad: (chunk_id, pods) ->
     @progressBar.update(@loader.progress())
     @store.update pods
+    for pod in pods
+      @search.add pod
     for delegate in @delegates
       if delegate.podsDidChange
         delegate.podsDidChange()
