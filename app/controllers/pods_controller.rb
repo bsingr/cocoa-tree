@@ -10,6 +10,7 @@ class PodsController < ApplicationController
     end
     respond_to do |format|
       format.mpac { render :text => MessagePack.dump(pods_index) }
+      format.json { render json: pods_index }
       format.html
     end
   end
