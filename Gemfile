@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
+gem 'sprockets_better_errors' # must be remove in rails 4.1
 
 group :production do
   # Use PostgreSQL as the database for Active Record
