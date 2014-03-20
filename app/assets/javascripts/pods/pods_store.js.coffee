@@ -1,14 +1,17 @@
 class @PodsStore
   update: (new_records) ->
     @writeObjects(new_records)
-  all: ->
+  all: (sortBy, asc=true) ->
     records = []
     promise = new Promise (resolve, reject) =>
       @database (db) ->
         t = db.transaction 'pods', 'readonly'
         store = t.objectStore('pods')
-        keyRange = IDBKeyRange.lowerBound(0)
-        r = store.openCursor(keyRange)
+        base = store
+        if sortBy == 'stars'
+          base = base.index('stars')
+        direction = if asc then 'next' else 'prev'
+        r = base.openCursor(null, direction)
         r.onsuccess = (e) ->
           cursor = e.target.result
           if cursor

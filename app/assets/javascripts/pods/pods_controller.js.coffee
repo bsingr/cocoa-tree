@@ -3,6 +3,7 @@ class @PodsController
   index: null
   filterBy: "all"
   sortBy: "stars"
+  sortAsc: false
   constructor: (loader, store) ->
     @store = store
     @progressBar = new PodsProgressBar()
@@ -21,8 +22,7 @@ class @PodsController
     
   render: (pods) ->
     filteredPods = new PodsFilter(@filterBy).filter(pods)
-    sortedPods = new PodsSorter(@sortBy).sort(filteredPods)
-    podsList = new PodsList(sortedPods)
+    podsList = new PodsList(filteredPods)
     podsList.index = @index
     (new PodsRenderer).renderPods(podsList.pods())
     (new PodsNavigationRenderer).render(podsList, @sortBy, @filterBy)
@@ -31,9 +31,10 @@ class @PodsController
     @index = index
     @filterBy = filterBy
     @sortBy = sortBy
+    @sortAsc = if (sortBy == 'stars') then false else true
     @update()
   update: ->
     @store.countAll (count) ->
       $('.pods-count').text(count)
-    @store.all().then (pods) =>
+    @store.all(@sortBy, @sortAsc).then (pods) =>
       @render(pods)
