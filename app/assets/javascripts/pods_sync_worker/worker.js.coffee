@@ -16,12 +16,14 @@ class @PodsLoaderWorker
   reload: ->
     @podsLoader.loadPods()
   didLoad: (id, pods) ->
+    logger.verbose 'PodsLoaderWorker.didLoad', id
     @worker.postMessage
       command: 'didLoad'
       id: id
       pods: pods
       progress: @podsLoader.progress()
   didLoadAll: () ->
+    logger.verbose 'PodsLoaderWorker.didLoadAll'
     @worker.postMessage
       command: 'didLoadAll'
 
