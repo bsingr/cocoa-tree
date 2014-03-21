@@ -4,20 +4,20 @@ class @PodsController
   filterBy: "all"
   sortBy: "stars"
   sortAsc: false
-  constructor: (loader, store) ->
+  constructor: (podsSyncWorkerClient, store) ->
     @store = store
     @progressBar = new PodsProgressBar()
-    @loader = loader
-    @loader.delegate = @
+    @podsSyncWorkerClient = podsSyncWorkerClient
+    @podsSyncWorkerClient.delegate = @
     @search = lunr ->
       @field('name', {boost: 10})
       @field('summary')
       @ref('name')
   loadPods: ->
-    @loader.loadPods()
+    @podsSyncWorkerClient.loadPods()
     @progressBar.start()
   didLoad: (chunk_id, pods) ->
-    @progressBar.update(@loader.progress())
+    @progressBar.update(@podsSyncWorkerClient.progress)
     @store.update pods
     for pod in pods
       @search.add pod

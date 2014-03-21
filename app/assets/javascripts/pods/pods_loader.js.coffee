@@ -18,13 +18,13 @@ class @PodsLoader
     for chunk in @chunk_index
       @loadPodsChunk(chunk[0])
   loadPodsChunk: (chunk_id) ->
-    controller = @
+    loader = @
     xhr = new XMLHttpRequest()
     xhr.open('GET', '/pods/'+chunk_id+'.mpac', true)
     xhr.responseType = 'arraybuffer'
     xhr.onload = (e) ->
       pods = msgpack.decode(@response)
-      controller.podsChunkDidLoad(chunk_id, pods)
+      loader.podsChunkDidLoad(chunk_id, pods)
     xhr.send()
     @requests.push(xhr)
     @running += 1

@@ -8,8 +8,9 @@ loadIndex = (callback) ->
   xhr.send()
 boot = (index) ->
   podsStore = new PodsStore()
-  podsLoader = new PodsLoader(index)
-  window.podsController = new PodsController(podsLoader, podsStore)
+  podsSyncWorker = new Worker('/assets/pods_sync_worker.js')
+  podsSyncWorkerClient = new PodsSyncWorkerClient(podsSyncWorker, index)
+  window.podsController = new PodsController(podsSyncWorkerClient, podsStore)
   window.podsController.loadPods()
   new AppRouter()
   Backbone.history.start()
