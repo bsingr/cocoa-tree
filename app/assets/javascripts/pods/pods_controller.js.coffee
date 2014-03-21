@@ -17,6 +17,7 @@ class @PodsController
     @podsSyncWorkerClient.loadPods()
     @progressBar.start()
   didLoad: (chunk_id, pods) ->
+    logger.verbose 'PodsController#didLoad', chunk_id
     @progressBar.update(@podsSyncWorkerClient.progress)
     @store.update pods
     for pod in pods
@@ -25,7 +26,7 @@ class @PodsController
       if delegate.podsDidChange
         delegate.podsDidChange()
   didLoadAll: ->
-    
+    logger.verbose 'PodsController#didLoadAll'
   render: (pods) ->
     filteredPods = new PodsFilter(@filterBy).filter(pods)
     podsList = new PodsList(filteredPods)
