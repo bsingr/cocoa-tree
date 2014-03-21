@@ -4,3 +4,4 @@
 //= require_tree ./pods
 //= require_tree ./lib
 //= require_tree ./templates
+//= require_tree ./config

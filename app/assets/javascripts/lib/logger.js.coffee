@@ -16,9 +16,7 @@ class @Logger
   verbose: (statements...) ->
     @log('verbose', statements...)
   log: (level, statements...) ->
-    if @levels[level] <= @levels[LOG_LEVEL]
+    if @levels[level] <= @levels[Logger.level]
       if @console && @console.log
         s = [new Date(), @env].concat(statements)
         @console.log s.join(' ')
-
-LOG_LEVEL = 'info'
