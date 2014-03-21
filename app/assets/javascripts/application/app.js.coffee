@@ -1,3 +1,4 @@
+@logger = new Logger(console, 'app')
 loadIndex = (callback) ->
   xhr = new XMLHttpRequest()
   xhr.open('GET', '/pods.mpac', true)
