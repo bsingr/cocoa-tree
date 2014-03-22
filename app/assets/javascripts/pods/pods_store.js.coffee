@@ -30,7 +30,7 @@ class @PodsStore
         r = s.put(pod)
   countAll: () ->
     promise = new Promise (resolve, reject) =>
-      @database.then (db) ->
+      @database().then (db) ->
         t = db.transaction 'pods', 'readonly'
         s = t.objectStore('pods')
         r = s.count()
