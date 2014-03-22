@@ -2,9 +2,9 @@ class @PodsStore
   update: (new_records) ->
     @writeObjects(new_records)
   all: (sortBy, asc=true) ->
-    records = []
     promise = new Promise (resolve, reject) =>
       @database (db) ->
+        records = []
         t = db.transaction 'pods', 'readonly'
         store = t.objectStore('pods')
         base = store
