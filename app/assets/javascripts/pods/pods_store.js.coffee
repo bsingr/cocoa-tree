@@ -3,7 +3,7 @@ class @PodsStore
     @writeObjects(new_records)
   all: (sortBy, asc=true) ->
     promise = new Promise (resolve, reject) =>
-      @database (db) ->
+      @database().then (db) ->
         records = []
         t = db.transaction 'pods', 'readonly'
         store = t.objectStore('pods')
@@ -23,14 +23,14 @@ class @PodsStore
           reject(e)
     promise
   writeObjects: (pods) ->
-    @database (db) ->
+    @database().then (db) ->
       t = db.transaction 'pods', 'readwrite'
       s = t.objectStore('pods')
       for pod in pods
         r = s.put(pod)
   countAll: () ->
     promise = new Promise (resolve, reject) =>
-      @database (db) ->
+      @database.then (db) ->
         t = db.transaction 'pods', 'readonly'
         s = t.objectStore('pods')
         r = s.count()
@@ -39,15 +39,18 @@ class @PodsStore
         r.onerror = ->
           reject(e)
     promise
-  database: (callback) ->
-    r = indexedDB.open('pods', 1)
-    r.onupgradeneeded = (e) ->
-      db = event.target.result
-      if !db.objectStoreNames.contains 'pods'
-        store = db.createObjectStore 'pods',
-          keyPath: 'name'
-        store.createIndex "stars", "stars",
-          unique: false
-    r.onsuccess = (e) ->
-      db = r.result
-      callback(db)
+  database: () ->
+    new Promise (resolve, reject) =>
+      r = indexedDB.open('pods', 1)
+      r.onupgradeneeded = (e) ->
+        db = event.target.result
+        if !db.objectStoreNames.contains 'pods'
+          store = db.createObjectStore 'pods',
+            keyPath: 'name'
+          store.createIndex "stars", "stars",
+            unique: false
+      r.onsuccess = (e) ->
+        db = r.result
+        resolve(db)
+      r.onerror = (e) ->
+        reject(e)
