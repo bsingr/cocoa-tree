@@ -35,7 +35,7 @@ class @PodsStore
         s = t.objectStore('pods')
         r = s.count()
         r.onsuccess = ->
-          resolve(r.result)
+          resolve(r.result - 1)
         r.onerror = ->
           reject(e)
     promise
