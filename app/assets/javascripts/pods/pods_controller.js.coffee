@@ -41,7 +41,7 @@ class @PodsController
     @sortAsc = if (sortBy == 'stars') then false else true
     @update()
   update: ->
-    @store.countAll (count) ->
+    @store.countAll().then (count) ->
       $('.pods-count').text(count)
     @store.all(@sortBy, @sortAsc).then (pods) =>
       @render(pods)

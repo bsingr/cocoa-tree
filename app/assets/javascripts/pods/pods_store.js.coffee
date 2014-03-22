@@ -28,13 +28,17 @@ class @PodsStore
       s = t.objectStore('pods')
       for pod in pods
         r = s.put(pod)
-  countAll: (callback) ->
-    @database (db) ->
-      t = db.transaction 'pods', 'readonly'
-      s = t.objectStore('pods')
-      r = s.count()
-      r.onsuccess = ->
-        callback(r.result)
+  countAll: () ->
+    promise = new Promise (resolve, reject) =>
+      @database (db) ->
+        t = db.transaction 'pods', 'readonly'
+        s = t.objectStore('pods')
+        r = s.count()
+        r.onsuccess = ->
+          resolve(r.result)
+        r.onerror = ->
+          reject(e)
+    promise
   database: (callback) ->
     r = indexedDB.open('pods', 1)
     r.onupgradeneeded = (e) ->
