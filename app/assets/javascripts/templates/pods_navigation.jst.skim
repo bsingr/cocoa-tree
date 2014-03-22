@@ -7,7 +7,7 @@ ul.pagination.pagination-sm
       a &laquo;
   - i = 0
   - index = 0
-  - while index < @podsList.allPods.length
+  - while index < @podsList.totalCount
     - if index == @podsList.index
       li.active
         a
@@ -17,7 +17,7 @@ ul.pagination.pagination-sm
       li
         a href="#pods/#{@filterBy}/#{@sortBy}/#{index}" = i+1
     - i++
-    - index = i*@podsList.max_per_page
+    - index = i*@podsList.maxPerPage
   - if @podsList.has_next()
     li
       a href="#pods/#{@filterBy}/#{@sortBy}/#{@podsList.next_offset()}" &raquo;

@@ -1,15 +1,16 @@
 class @PodsList
-  index: 0
-  max_per_page: 50
-  constructor: (allPods) ->
-    @allPods = allPods
+  constructor: (totalCount, currentPods, index, maxPerPage) ->
+    @totalCount = totalCount
+    @currentPods = currentPods
+    @maxPerPage = maxPerPage
+    @index = index
   pods: ->
-    @allPods[@index..(@index+@max_per_page-1)]
+    @currentPods
   has_next: ->
-    @next_offset() < @allPods.length
+    @next_offset() < @totalCount
   has_prev: ->
     @index > 0
   next_offset: ->
-    @index + @max_per_page
+    @index + @maxPerPage
   previous_offset: ->
-    @index - @max_per_page
+    @index - @maxPerPage

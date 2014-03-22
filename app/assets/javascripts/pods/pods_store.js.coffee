@@ -1,7 +1,7 @@
 class @PodsStore
   update: (new_records) ->
     @writeObjects(new_records)
-  all: (sortBy, asc=true) ->
+  readObjects: (sortBy, asc=true, offset=0, limit=50) ->
     promise = new Promise (resolve, reject) =>
       @database().then (db) ->
         records = []
@@ -11,13 +11,21 @@ class @PodsStore
         if sortBy == 'stars'
           base = base.index('stars')
         direction = if asc then 'next' else 'prev'
+        cursorPositionMoved = false
         r = base.openCursor(null, direction)
         r.onsuccess = (e) ->
           cursor = e.target.result
           if cursor
-            records.push cursor.value
-            cursor.continue()
-          else
+            if cursorPositionMoved
+              records.push(cursor.value)
+              if records.length == limit
+                resolve(records)
+              else
+                cursor.continue()
+            else
+              cursorPositionMoved = true
+              cursor.advance(offset+1)
+          else # no more left
             resolve(records)
         r.onerror = (e) ->
           reject(e)

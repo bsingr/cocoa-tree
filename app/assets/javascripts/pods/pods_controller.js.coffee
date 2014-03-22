@@ -4,6 +4,7 @@ class @PodsController
   filterBy: "all"
   sortBy: "stars"
   sortAsc: false
+  maxPerPage: 50
   constructor: (podsSyncWorkerClient, store) ->
     @store = store
     @progressBar = new PodsProgressBar()
@@ -27,10 +28,9 @@ class @PodsController
         delegate.podsDidChange()
   didLoadAll: ->
     logger.verbose 'PodsController#didLoadAll'
-  render: (pods) ->
+  render: (totalCount, pods) ->
     filteredPods = new PodsFilter(@filterBy).filter(pods)
-    podsList = new PodsList(filteredPods)
-    podsList.index = @index
+    podsList = new PodsList(totalCount, filteredPods, @index, @maxPerPage)
     (new PodsRenderer).renderPods(podsList.pods())
     (new PodsNavigationRenderer).render(podsList, @sortBy, @filterBy)
     (new PodsFilterRenderer).render(pods)
@@ -41,7 +41,10 @@ class @PodsController
     @sortAsc = if (sortBy == 'stars') then false else true
     @update()
   update: ->
-    @store.countAll().then (count) ->
-      $('.pods-count').text(count)
-    @store.all(@sortBy, @sortAsc).then (pods) =>
-      @render(pods)
+    countAll = @store.countAll()
+    readPage = @store.readObjects(@sortBy, @sortAsc, @index, @maxPerPage)
+    Promise.all([countAll, readPage]).then (results) =>
+      totalCount = results[0]
+      currentPods = results[1]
+      $('.pods-count').text(totalCount)
+      @render(totalCount, currentPods)
