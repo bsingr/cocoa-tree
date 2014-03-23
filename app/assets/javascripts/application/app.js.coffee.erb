@@ -1,14 +1,6 @@
 //= depend_on_asset "pods_sync_worker.js"
 
 @logger = new Logger('app')
-loadIndex = (callback) ->
-  xhr = new XMLHttpRequest()
-  xhr.open('GET', '/pods.mpac', true)
-  xhr.responseType = 'arraybuffer'
-  xhr.onload = (e) ->
-    index = msgpack.decode(@response)
-    callback(index)
-  xhr.send()
 boot = (index) ->
   podsStore = new PodsStore()
   podsSyncWorker = new Worker('<%= asset_path('pods_sync_worker.js') %>')
@@ -18,6 +10,6 @@ boot = (index) ->
   new AppRouter()
   Backbone.history.start()
 ready = ->
-  loadIndex(boot)
+  new PodsIndex().load(boot)
 $(document).ready(ready)
 $(document).on('page:load', ready)
