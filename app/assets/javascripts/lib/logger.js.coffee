@@ -4,9 +4,10 @@ class @Logger
     warn: 1
     info: 2
     verbose: 3
-  constructor: (console, env) ->
+  constructor: (env) ->
     @env = env
-    @console = console
+    try
+      @console = console
   error: (statements...) ->
     @log('error', statements...)
   warn: (statements...) ->

@@ -27,5 +27,5 @@ class @PodsLoaderWorker
     @worker.postMessage
       command: 'didLoadAll'
 
-logger = new Logger(console, 'worker')
+logger = new Logger('worker')
 podsLoaderWorker = new PodsLoaderWorker(@)
