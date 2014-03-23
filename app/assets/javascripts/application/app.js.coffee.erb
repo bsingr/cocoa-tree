@@ -1,3 +1,5 @@
+//= depend_on_asset "pods_sync_worker.js"
+
 @logger = new Logger('app')
 loadIndex = (callback) ->
   xhr = new XMLHttpRequest()
@@ -9,7 +11,7 @@ loadIndex = (callback) ->
   xhr.send()
 boot = (index) ->
   podsStore = new PodsStore()
-  podsSyncWorker = new Worker('/assets/pods_sync_worker.js')
+  podsSyncWorker = new Worker('<%= asset_path('pods_sync_worker.js') %>')
   podsSyncWorkerClient = new PodsSyncWorkerClient(podsSyncWorker, index)
   window.podsController = new PodsController(podsSyncWorkerClient, podsStore)
   window.podsController.loadPods()
