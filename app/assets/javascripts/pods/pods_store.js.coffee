@@ -37,7 +37,9 @@ class @PodsStore
       for pod in pods
         r = s.put(pod)
   countAll: () ->
+    logger.verbose 'PodsStore.countAll.start'
     promise = new Promise (resolve, reject) =>
+      logger.verbose 'PodsStore.countAll.promise'
       @database().then (db) ->
         t = db.transaction 'pods', 'readonly'
         s = t.objectStore('pods')
