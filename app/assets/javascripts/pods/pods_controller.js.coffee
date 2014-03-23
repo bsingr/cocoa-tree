@@ -41,10 +41,12 @@ class @PodsController
     @sortAsc = if (sortBy == 'stars') then false else true
     @update()
   update: ->
+    logger.verbose 'PodsController#update.start'
     countAll = @store.countAll()
     readPage = @store.readObjects(@sortBy, @sortAsc, @index, @maxPerPage)
     Promise.all([countAll, readPage]).then (results) =>
       totalCount = results[0]
       currentPods = results[1]
+      logger.verbose 'PodsController#update.promise', totalCount
       $('.pods-count').text(totalCount)
       @render(totalCount, currentPods)
