@@ -1,4 +1,5 @@
 define (require) ->
+  Promise = require 'bluebird'
   class PodsStore
     update: (new_records) ->
       @writeObjects(new_records)

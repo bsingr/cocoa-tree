@@ -1,6 +1,7 @@
 # = require lunr.js
 
 define (require) ->
+  Promise = require 'bluebird'
   PodsRenderer = require 'pods/pods_renderer'
   PodsProgressBar = require 'pods/pods_progress_bar'
   PodsFilter = require 'pods/pods_filter'
