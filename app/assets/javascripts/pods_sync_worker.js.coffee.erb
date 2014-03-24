@@ -1,0 +1,10 @@
+# = depend_on_asset "require.js"
+worker = @
+importScripts('<%= asset_path('require.js') %>')
+require.config
+  baseUrl: '/assets'
+require ['pods_sync_worker/pods_loader_worker'], (PodsLoaderWorker) ->
+  podsLoaderWorker = new PodsLoaderWorker(worker)
+  worker.postMessage
+    command: 'ready'
+  

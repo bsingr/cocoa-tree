@@ -75,6 +75,7 @@ gem 'squeel' # ActiveRecord Queries
 
 gem 'msgpack'
 gem 'skim'
+gem 'requirejs-rails'
 
 gem 'capybara'
 gem 'poltergeist'
