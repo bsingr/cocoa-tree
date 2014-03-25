@@ -15,6 +15,7 @@ define (require) ->
     sortBy: "stars"
     sortAsc: false
     maxPerPage: 50
+    count: 0
     constructor: (podsSyncWorkerClient, store) ->
       @store = store
       @progressBar = new PodsProgressBar()
@@ -54,9 +55,9 @@ define (require) ->
       logger.verbose 'PodsController#update.start'
       countAll = @store.countAll()
       readPage = @store.readObjects(@sortBy, @sortAsc, @index, @maxPerPage)
-      Promise.all([countAll, readPage]).then (results) =>
-        totalCount = results[0]
-        currentPods = results[1]
-        logger.verbose 'PodsController#update.promise', totalCount
-        $('.pods-count').text(totalCount)
-        @render(totalCount, currentPods)
+      countAll.then (count) =>
+        @count = count
+        logger.verbose 'PodsController#update.promise', count
+        $('.pods-count').text(count)
+      readPage.then (pods) =>
+        @render(@count, pods)
