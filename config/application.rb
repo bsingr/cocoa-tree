@@ -25,25 +25,28 @@ module Cocoatree
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.assets.precompile << 'application.js'
-    config.assets.precompile << 'pods_sync_worker.js'
-    
-    config.assets.precompile << 'application/app_router.js'
-    config.assets.precompile << 'application/pods_sync_worker_client.js'
-    config.assets.precompile << 'pods_sync_worker/pods_loader_worker.js'
+    config.assets.precompile += %w[ application.css
+                                    application.js
 
-    config.assets.precompile << 'pods/pods_controller.js'
-    config.assets.precompile << 'pods/pods_store.js'
-    config.assets.precompile << 'pods/pods_loader.js'
-    config.assets.precompile << 'pods/pods_filter.js'
-    config.assets.precompile << 'pods/pods_filter_renderer.js'
-    config.assets.precompile << 'pods/pods_list.js'
-    config.assets.precompile << 'pods/pods_index.js'
-    config.assets.precompile << 'pods/pods_navigation_renderer.js'
-    config.assets.precompile << 'pods/pods_progress_bar.js'
-    config.assets.precompile << 'pods/pods_renderer.js'
-    config.assets.precompile << 'pods/pods_word_stats.js'
+                                    pods_sync_worker.js
     
-    config.assets.precompile << 'lib/logger.js'
+                                    application/app_router.js
+                                    application/pods_sync_worker_client.js
+                                    pods_sync_worker/pods_loader_worker.js
+
+                                    pods/pods_controller.js
+                                    pods/pods_store.js
+                                    pods/pods_loader.js
+                                    pods/pods_filter.js
+                                    pods/pods_filter_renderer.js
+                                    pods/pods_list.js
+                                    pods/pods_index.js
+                                    pods/pods_navigation_renderer.js
+                                    pods/pods_progress_bar.js
+                                    pods/pods_renderer.js
+                                    pods/pods_word_stats.js
+
+                                    lib/logger.js
+                                ]
   end
 end
