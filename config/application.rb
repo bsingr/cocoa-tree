@@ -47,6 +47,8 @@ module Cocoatree
       shared/pods_renderer.js
       shared/pods_word_stats.js
       shared/logger.js
+
+      *.png
     ]
   end
 end

@@ -33,7 +33,7 @@ $footerTextCol: #999;
 h1 {
   color: $headerTextCol;
 
-  background: url('/assets/cocoa-tree-128.png') no-repeat;
+  background: url(image_path('cocoa-tree-128.png')) no-repeat;
   height: 128px;
 }
 
