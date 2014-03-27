@@ -3,12 +3,12 @@
 
 define (require) ->
   Backbone = require 'backbone'
+  Logger = require 'shared/logger'
+  PodsStore = require 'shared/pods_store'
+  PodsController = require 'shared/pods_controller'
+  PodsIndex = require 'shared/pods_index'
   AppRouter = require 'application/app_router'
-  Logger = require 'lib/logger'
-  PodsStore = require 'pods/pods_store'
   PodsSyncWorkerClient = require 'application/pods_sync_worker_client'
-  PodsController = require 'pods/pods_controller'
-  PodsIndex = require 'pods/pods_index'
 
   @logger = new Logger('app', 'info')
   boot = (index) ->

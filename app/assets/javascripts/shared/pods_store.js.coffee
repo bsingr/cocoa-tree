@@ -1,7 +1,7 @@
 define (require) ->
   Promise = require 'bluebird'
   require 'ydn'
-  Logger = require 'lib/logger'
+  Logger = require 'shared/logger'
   logger = new Logger('app', 'info')
   
   class PodsStore

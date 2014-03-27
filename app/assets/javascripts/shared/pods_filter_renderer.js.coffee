@@ -1,5 +1,5 @@
 define (require) ->
-  PodsWordStats = require 'pods/pods_word_stats'
+  PodsWordStats = require 'shared/pods_word_stats'
   class PodsFilterRenderer
     categories: [
       "xml"

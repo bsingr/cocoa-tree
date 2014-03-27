@@ -1,7 +1,7 @@
 define (require) ->
-  Logger = require 'lib/logger'
+  Logger = require 'shared/logger'
   logger = new Logger('worker', 'info')
-  PodsLoader = require 'pods/pods_loader'
+  PodsLoader = require 'shared/pods_loader'
   class PodsLoaderWorker
     constructor: (worker) ->
       @worker = worker

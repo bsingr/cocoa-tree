@@ -2,12 +2,12 @@
 
 define (require) ->
   Promise = require 'bluebird'
-  PodsRenderer = require 'pods/pods_renderer'
-  PodsProgressBar = require 'pods/pods_progress_bar'
-  PodsFilter = require 'pods/pods_filter'
-  PodsList = require 'pods/pods_list'
-  PodsNavigationRenderer = require 'pods/pods_navigation_renderer'
-  PodsFilterRenderer = require 'pods/pods_filter_renderer'
+  PodsRenderer = require 'shared/pods_renderer'
+  PodsProgressBar = require 'shared/pods_progress_bar'
+  PodsFilter = require 'shared/pods_filter'
+  PodsList = require 'shared/pods_list'
+  PodsNavigationRenderer = require 'shared/pods_navigation_renderer'
+  PodsFilterRenderer = require 'shared/pods_filter_renderer'
   class PodsController
     delegates: []
     index: null

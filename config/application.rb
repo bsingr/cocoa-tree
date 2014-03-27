@@ -25,28 +25,28 @@ module Cocoatree
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.assets.precompile += %w[ application.css
-                                    application.js
+    config.assets.precompile += %w[
+      application.css
+      application.js
 
-                                    pods_sync_worker.js
-    
-                                    application/app_router.js
-                                    application/pods_sync_worker_client.js
-                                    pods_sync_worker/pods_loader_worker.js
+      pods_sync_worker.js
 
-                                    pods/pods_controller.js
-                                    pods/pods_store.js
-                                    pods/pods_loader.js
-                                    pods/pods_filter.js
-                                    pods/pods_filter_renderer.js
-                                    pods/pods_list.js
-                                    pods/pods_index.js
-                                    pods/pods_navigation_renderer.js
-                                    pods/pods_progress_bar.js
-                                    pods/pods_renderer.js
-                                    pods/pods_word_stats.js
+      application/app_router.js
+      application/pods_sync_worker_client.js
+      pods_sync_worker/pods_loader_worker.js
 
-                                    lib/logger.js
-                                ]
+      shared/pods_controller.js
+      shared/pods_store.js
+      shared/pods_loader.js
+      shared/pods_filter.js
+      shared/pods_filter_renderer.js
+      shared/pods_list.js
+      shared/pods_index.js
+      shared/pods_navigation_renderer.js
+      shared/pods_progress_bar.js
+      shared/pods_renderer.js
+      shared/pods_word_stats.js
+      shared/logger.js
+    ]
   end
 end
