@@ -2,7 +2,7 @@ define (require) ->
   Promise = require 'bluebird'
   require 'ydn'
   Logger = require 'lib/logger'
-  logger = new Logger('app', 'verbose')
+  logger = new Logger('app', 'info')
   
   class PodsStore
     constructor: () ->
