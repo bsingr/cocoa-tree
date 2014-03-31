@@ -1,10 +1,9 @@
-# = depend_on_asset "require.js"
-worker = @
-importScripts('<%= asset_path('require.js') %>')
-require.config
-  baseUrl: '/assets'
-require ['pods_sync_worker/pods_loader_worker'], (PodsLoaderWorker) ->
-  podsLoaderWorker = new PodsLoaderWorker(worker)
-  worker.postMessage
-    command: 'ready'
+#= require msgpack-js.js
+#= require shared.js
+#= require_tree ./pods_sync_worker
+
+logger = new Logger('app', 'info')
+podsLoaderWorker = new PodsLoaderWorker(@, logger)
+@.postMessage
+  command: 'ready'
   

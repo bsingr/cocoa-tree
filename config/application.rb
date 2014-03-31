@@ -26,28 +26,7 @@ module Cocoatree
     # config.i18n.default_locale = :de
 
     config.assets.precompile += %w[
-      application.css
-      application.js
-
       pods_sync_worker.js
-
-      application/app_router.js
-      application/pods_sync_worker_client.js
-      pods_sync_worker/pods_loader_worker.js
-
-      shared/pods_controller.js
-      shared/pods_store.js
-      shared/pods_loader.js
-      shared/pods_filter.js
-      shared/pods_filter_renderer.js
-      shared/pods_list.js
-      shared/pods_index.js
-      shared/pods_navigation_renderer.js
-      shared/pods_progress_bar.js
-      shared/pods_renderer.js
-      shared/pods_word_stats.js
-      shared/logger.js
-
       *.png
     ]
   end

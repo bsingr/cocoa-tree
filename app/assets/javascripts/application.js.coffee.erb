@@ -1,26 +1,24 @@
-# = depend_on_asset "pods_sync_worker.js"
-# = require_tree ./templates
+#= depend_on_asset pods_sync_worker.js
+#= require bluebird.js
+#= require msgpack-js.js
+#= require jquery.js
+#= require underscore.js
+#= require backbone.js
+#= require_tree ./templates
+#= require_tree ./shared
+#= require_tree ./application
 
-define (require) ->
-  Backbone = require 'backbone'
-  Logger = require 'shared/logger'
-  PodsStore = require 'shared/pods_store'
-  PodsController = require 'shared/pods_controller'
-  PodsIndex = require 'shared/pods_index'
-  AppRouter = require 'application/app_router'
-  PodsSyncWorkerClient = require 'application/pods_sync_worker_client'
-
-  @logger = new Logger('app', 'info')
-  boot = (index) ->
-    podsStore = new PodsStore()
-    podsSyncWorker = new Worker('<%= asset_path('pods_sync_worker.js') %>')
-    podsSyncWorkerClient = new PodsSyncWorkerClient(podsSyncWorker, index)
-    podsController = new PodsController(podsSyncWorkerClient, podsStore)
-    podsController.loadPods()
-    router = new AppRouter()
-    router.podsController = podsController
-    Backbone.history.start()
-  ready = ->
-    new PodsIndex().load(boot)
-  $(document).ready(ready)
-  $(document).on('page:load', ready)
+@logger = new Logger('app', 'info')
+boot = (index) ->
+  podsStore = new PodsStore()
+  podsSyncWorker = new Worker('<%= asset_path('pods_sync_worker.js') %>')
+  podsSyncWorkerClient = new PodsSyncWorkerClient(podsSyncWorker, index)
+  podsController = new PodsController(podsSyncWorkerClient, podsStore)
+  podsController.loadPods()
+  router = new AppRouter()
+  router.podsController = podsController
+  Backbone.history.start()
+ready = ->
+  new PodsIndex().load(boot)
+$(document).ready(ready)
+$(document).on('page:load', ready)
