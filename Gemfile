@@ -81,8 +81,8 @@ group :test, :development do
   gem 'teaspoon' # js
 end
 
-#gem 'rails-zero', '~> 0.1.0'
-gem 'rails-zero', path: '../rails-zero'
+gem 'rack-proxy'
+gem 'rails-zero', '~> 0.1.0'
 
 gem 'sprockets', '~> 2.11.0' # 2.12.0 doesnt work right now
                              # https://github.com/sstephenson/sprockets/issues/540

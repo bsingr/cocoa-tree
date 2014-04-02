@@ -1,6 +1,7 @@
 Cocoatree::Application.routes.draw do
   mount RailsZero::Engine => "/rails_zero"
-  
+  mount StoreProxy.new => "/store"
+
   root 'pods#index'
     
   # The priority is based upon order of creation: first created -> highest priority.
