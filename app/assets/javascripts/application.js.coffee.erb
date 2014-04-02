@@ -9,16 +9,16 @@
 #= require_tree ./application
 
 @logger = new Logger('app', 'info')
-boot = (index) ->
+boot = (podsIndex) ->
   podsStore = new PodsStore()
   podsSyncWorker = new Worker('<%= asset_path('pods_sync_worker.js') %>')
-  podsSyncWorkerClient = new PodsSyncWorkerClient(podsSyncWorker, index)
+  podsSyncWorkerClient = new PodsSyncWorkerClient(podsSyncWorker, podsIndex)
   podsController = new PodsController(podsSyncWorkerClient, podsStore)
   podsController.loadPods()
   router = new AppRouter()
   router.podsController = podsController
   Backbone.history.start()
 ready = ->
-  new PodsIndex().load(boot)
+  new PodsIndex("/store").load(boot)
 $(document).ready(ready)
 $(document).on('page:load', ready)

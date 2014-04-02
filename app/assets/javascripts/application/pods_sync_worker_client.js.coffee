@@ -1,6 +1,6 @@
 class @PodsSyncWorkerClient
   delegates: []
-  constructor: (worker, index) ->
+  constructor: (worker, podsIndex) ->
     @worker = worker
     @worker.onmessage = (e) =>
       command = e.data.command
@@ -12,7 +12,8 @@ class @PodsSyncWorkerClient
       else if command == 'ready'      
         @worker.postMessage
           command: 'init'
-          index: index
+          index: podsIndex.index
+          storeURL: podsIndex.storeURL
         @loadPods()
   loadPods: () ->
     @progress = 0

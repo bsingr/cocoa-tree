@@ -57,22 +57,17 @@ end
 
 gem 'slim-rails'
 
-gem 'cocoapods-core', git: 'https://github.com/dpree/Core.git' # rails 4 compatibility
 gem 'rspec'
 gem 'guard-rspec'
 gem 'guard-rake'
 gem 'guard-sass'
-gem 'octokit'
 gem 'slim'
-gem 'hashie'
 gem 'sass'
 gem 'actionpack'
 gem 'activesupport'
 
 gem 'bootstrap-sass'
-gem 'squeel' # ActiveRecord Queries
 
-gem 'msgpack'
 gem 'skim'
 
 gem 'capybara'
@@ -80,14 +75,14 @@ gem 'poltergeist'
 
 group :test do
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
 end
 
 group :test, :development do
   gem 'teaspoon' # js
 end
 
-gem 'rails-zero', github: 'dpree/rails-zero'
+#gem 'rails-zero', '~> 0.1.0'
+gem 'rails-zero', path: '../rails-zero'
 
 gem 'sprockets', '~> 2.11.0' # 2.12.0 doesnt work right now
                              # https://github.com/sstephenson/sprockets/issues/540
