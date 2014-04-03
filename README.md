@@ -24,6 +24,12 @@ Then generate and deploy the site:
 * * Rendering a Range of the List
 * build categories system
 * categorize each pod manually
+* screenshots for pods?
+
+## BUGS
+
+* pagination not working (see PodsStore)
+* collapsing dependencies not working (see Bootstrap)
 
 ## Installation
 
