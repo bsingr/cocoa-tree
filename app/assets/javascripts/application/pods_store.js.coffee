@@ -17,11 +17,10 @@ class @PodsStore
     logger.verbose 'PodsStore#readObjects'
     if sortBy == 'stars'
       logger.verbose 'sortBy=stars'
-      iterator = new ydn.db.IndexValueIterator('pod', sortBy, null, !asc)
+      @db.values 'pod', sortBy, null, limit, offset, !asc
     else
       logger.verbose 'sortBy=default'
-      iterator = new ydn.db.ValueIterator('pod', null, !asc)
-    @db.values iterator, limit
+      @db.values 'pod', null, limit, offset, !asc
   writeObjects: (pods) ->
     @db.put('pod', pods)
   countAll: () ->
