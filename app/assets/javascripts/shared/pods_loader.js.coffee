@@ -3,8 +3,8 @@ class @PodsLoader
   requests: []
   running: 0
   finished: 0
-  constructor: (storeURL, chunk_index) ->
-    @storeURL = storeURL
+  constructor: (seedsURL, chunk_index) ->
+    @seedsURL = seedsURL
     @chunk_index = chunk_index
   progress: ->
     @finished / (@finished + @running)
@@ -21,7 +21,7 @@ class @PodsLoader
   loadPodsChunk: (chunk_id) ->
     loader = @
     xhr = new XMLHttpRequest()
-    xhr.open('GET', @storeURL+'/pods/'+chunk_id+'.mpac', true)
+    xhr.open('GET', @seedsURL+'/pods/'+chunk_id+'.mpac', true)
     xhr.responseType = 'arraybuffer'
     xhr.onload = (e) ->
       pods = msgpack.decode(@response)

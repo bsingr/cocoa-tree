@@ -1,6 +1,6 @@
 Cocoatree::Application.routes.draw do
   mount RailsZero::Engine => "/rails_zero"
-  mount StoreProxy.new => "/store"
+  mount SeedsProxy.new => "/seeds"
 
   root 'pods#index'
     

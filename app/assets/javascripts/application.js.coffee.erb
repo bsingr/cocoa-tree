@@ -19,6 +19,6 @@ boot = (podsIndex) ->
   router.podsController = podsController
   Backbone.history.start()
 ready = ->
-  new PodsIndex("/store").load(boot)
+  new PodsIndex("/seeds").load(boot)
 $(document).ready(ready)
 $(document).on('page:load', ready)

@@ -13,7 +13,7 @@ class @PodsSyncWorkerClient
         @worker.postMessage
           command: 'init'
           index: podsIndex.index
-          storeURL: podsIndex.storeURL
+          seedsURL: podsIndex.seedsURL
         @loadPods()
   loadPods: () ->
     @progress = 0
