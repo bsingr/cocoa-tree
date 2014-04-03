@@ -1,5 +1,5 @@
 class SeedsProxy < Rack::Proxy
-  USE = :local
+  USE = :remote
   LOCAL_URL = 'localhost:3001'
   REMOTE_URL = 'cocoa-tree.github.io:80'
 
