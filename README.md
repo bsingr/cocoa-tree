@@ -3,7 +3,11 @@
 # Cocoa Tree
 
 [![Build Status](https://travis-ci.org/dpree/cocoa-tree.png)](https://travis-ci.org/dpree/cocoa-tree)
-[![Code Climate](https://codeclimate.com/github/dpree/cocoatree.png)](https://codeclimate.com/github/dpree/cocoatree)
+[![Code Climate](https://codeclimate.com/github/dpree/cocoa-tree.png)](https://codeclimate.com/github/dpree/cocoa-tree)
+
+This project is used to build [cocoa-tree.github.io](http://cocoa-tree.github.io), a CocoaPods browser inspired by the ruby toolbox.
+
+In its core it is a single page application that totally lives in the browser. The [seeds repository](http://github.com/cocoa-tree/seeds) acts as a data backend and is rebuild every 24 hours by the [CocoaTreeSeeds rails application](http://github.com/dpree/cocoa-tree-seeds).
 
 ## Deployment
 
@@ -31,24 +35,6 @@ Then generate and deploy the site:
 * pagination not working (see PodsStore)
 * collapsing dependencies not working (see Bootstrap)
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'cocoatree'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install cocoatree
-
-## Usage
-
-TODO: Write usage instructions here
-
 ## Contributing
 
 1. Fork it
@@ -57,7 +43,7 @@ TODO: Write usage instructions here
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dpree/cocoatree/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dpree/cocoa-tree/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 This project uses [MIT-LICENSE](LICENSE.txt).
 
