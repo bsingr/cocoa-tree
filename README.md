@@ -7,6 +7,14 @@
 
 ## Deployment
 
+First start the rails server in production mode:
+
+    RAILS_ENV=production rails s
+
+Then generate and deploy the site:
+
+    RAILS_ENV=production rake assets:clean assets:precompile rails_zero:generate rails_zero:deploy:git
+
 ![Deployment](./concept/deployment.png)
 
 ## TODO
