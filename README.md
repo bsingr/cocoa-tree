@@ -15,8 +15,6 @@ Then generate and deploy the site:
 
     RAILS_ENV=production rake assets:clean assets:precompile rails_zero:generate rails_zero:deploy:git
 
-![Deployment](./concept/deployment.png)
-
 ## TODO
 
 * use web worker to generate HTML from mpac
