@@ -16,6 +16,7 @@ class @PodsController
       @field('name', {boost: 10})
       @field('summary')
       @ref('name')
+    @update()
   loadPods: ->
     @podsSyncWorkerClient.loadPods()
     @progressBar.start()
