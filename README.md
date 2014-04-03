@@ -32,7 +32,6 @@ Then generate and deploy the site:
 
 ## BUGS
 
-* pagination not working (see PodsStore)
 * collapsing dependencies not working (see Bootstrap)
 
 ## Contributing
