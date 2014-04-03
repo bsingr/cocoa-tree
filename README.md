@@ -23,8 +23,7 @@ Then generate and deploy the site:
 
 * use web worker to generate HTML from mpac
 * * Loading / Parsing the List via AJAX (once per session)
-* * Updating the Indexddb with remote data?
-* * Sorting / Filtering the List
+* * Filtering the List
 * * Rendering a Range of the List
 * build categories system
 * categorize each pod manually
