@@ -41,7 +41,12 @@ class @PodsController
     @index = index
     @filterBy = filterBy
     @sortBy = sortBy
-    @sortAsc = if (sortBy == 'stars') then false else true
+    if sortBy == 'stars'
+      @sortAsc = false
+    else if sortBy == 'pushed_at'
+      @sortAsc = false
+    else
+      @sortAsc = true
     @update()
   update: ->
     logger.verbose 'PodsController#update.start'
