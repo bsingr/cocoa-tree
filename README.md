@@ -29,6 +29,7 @@ Then generate and deploy the site:
 * build categories system
 * categorize each pod manually
 * screenshots for pods?
+* remove deprecated pods from client side storage
 
 ## BUGS
 
