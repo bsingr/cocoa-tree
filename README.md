@@ -19,21 +19,6 @@ Then generate and deploy the site:
 
     RAILS_ENV=production rake assets:clean assets:precompile rails_zero:generate rails_zero:deploy:git
 
-## TODO
-
-* use web worker to generate HTML from mpac
-* * Loading / Parsing the List via AJAX (once per session)
-* * Filtering the List
-* * Rendering a Range of the List
-* build categories system
-* categorize each pod manually
-* screenshots for pods?
-* remove deprecated pods from client side storage
-
-## BUGS
-
-* collapsing dependencies not working (see Bootstrap)
-
 ## Contributing
 
 1. Fork it
