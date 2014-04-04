@@ -29,3 +29,4 @@
   * Move work to worker (fetch index, search, render html, ...?)
 * Categorization system closer to each of the repositories
 * Screenshots for UI-based CocoaPods (?)
+* Use brunch with a deploy task instead of Rails
