@@ -19,6 +19,10 @@ Then generate and deploy the site:
 
     RAILS_ENV=production rake assets:clean assets:precompile rails_zero:generate rails_zero:deploy:git
 
+**Heroku**
+
+    heroku config:set BUILDPACK_URL=heroku config:add BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git
+
 ## Contributing
 
 1. Fork it
