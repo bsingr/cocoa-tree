@@ -5,16 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 group :production do
-  # Use PostgreSQL as the database for Active Record
-  gem 'pg'
-
   # 12 Factor App compatibility
   gem 'rails_12factor'
-end
-
-group :development, :test do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
 end
 
 # Use SCSS for stylesheets
