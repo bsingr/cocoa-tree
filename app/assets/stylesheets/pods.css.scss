@@ -34,11 +34,10 @@ body {
   margin-top: 40px;
 }
 
-h1 {
+.navbar-brand {
   color: $headerTextCol;
-
-  background: url(image_path('cocoa-tree-128.png')) no-repeat;
-  height: 128px;
+  padding-left: 70px;
+  background: url(image_path('cocoa-tree-circle-50.png')) no-repeat 10px 0;
 }
 
 a {

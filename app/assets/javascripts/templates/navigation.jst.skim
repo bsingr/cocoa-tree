@@ -6,8 +6,8 @@
         span class="icon-bar"
         span class="icon-bar"
         span class="icon-bar"
-      a class="navbar-brand" href="#"
-        Brand
+      a.navbar-brand href="#"
+        | CocoaTree
     #main-nav.collapse.navbar-collapse
       ul.nav.navbar-nav
         li
