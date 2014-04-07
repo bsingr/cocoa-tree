@@ -6,7 +6,7 @@
 
 $headerTextCol: #ddd;
 $headBg: #eee;
-$headHoverBg: #f5f5f5;
+$headHoverBg: #ffffff;
 $linkCol: #aa4444;
 $linkHoverCol: lighten($linkCol, 10%);
 $emphasizeTextCol: #999;
@@ -35,7 +35,7 @@ body {
 }
 
 .navbar-brand {
-  color: $headerTextCol;
+  color: $headerTextCol !important;
   padding-left: 70px;
   background: url(image_path('cocoa-tree-circle-50.png')) no-repeat 10px 0;
 }
