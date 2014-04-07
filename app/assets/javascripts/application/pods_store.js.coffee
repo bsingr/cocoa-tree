@@ -11,6 +11,8 @@ class @PodsStore
         keyPath: 'stars'
       },{
         keyPath: 'pushed_at'
+      },{
+        keyPath: 'category'
       }]
     @db = new ydn.db.Storage 'pods', stores: [podsSchema]
   update: (new_records) ->
