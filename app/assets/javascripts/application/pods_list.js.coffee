@@ -14,7 +14,7 @@ class @PodsList
     @index + @maxPerPage
   previous_offset: ->
     @index - @maxPerPage
-  displayPageLink: (index) ->
+  paginationPosition: (index) ->
     if index == @index
       'current'
     else if index > @index
