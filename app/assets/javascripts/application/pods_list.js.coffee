@@ -19,7 +19,7 @@ class @PodsList
       'current'
     else if index > @index
       barrier = (@index + 3*@maxPerPage)
-      if index < barrier
+      if index < barrier || index > (@totalCount - 3*@maxPerPage)
         'within'
       else if index == barrier
         'barrier'
@@ -27,7 +27,7 @@ class @PodsList
         'without'
     else if index < @index
       barrier = (@index - 3*@maxPerPage)
-      if index > barrier
+      if index > barrier || index < 3*@maxPerPage
         'within'
       else if index == barrier
         'barrier'
