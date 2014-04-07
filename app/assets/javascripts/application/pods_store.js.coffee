@@ -29,3 +29,13 @@ class @PodsStore
     @db.put('pod', pods)
   countAll: () ->
     @db.count('pod')
+  categories: () ->
+    iterator = new ydn.db.IndexValueIterator('pod', 'category', null, false, true)
+    @db.values(iterator).then (pods) ->
+      categories = []
+      for pod in pods
+        category = pod.category
+        if category != ''
+          categories.push category
+      categories
+      
