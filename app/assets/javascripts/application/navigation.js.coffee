@@ -1,11 +1,9 @@
 class @Navigation
+  constructor: () ->
+    @foundCategories = []
   categories: () ->
-    [{
-      name: 'Graphics'
-    },
-    {
-      name: 'API'
-    }]
-  render: () ->
+    @foundCategories
+  render: (foundCategories) ->
+    @foundCategories = foundCategories
     html = JST['templates/navigation'](@)
     $('body').prepend(html)

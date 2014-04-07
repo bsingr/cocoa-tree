@@ -58,3 +58,5 @@ class @PodsController
       $('.pods-count').text(count)
     readPage.then (pods) =>
       @render(@count, pods)
+    @store.categories().then (categories) ->
+      (new Navigation).render(categories)
