@@ -14,3 +14,26 @@ class @PodsList
     @index + @maxPerPage
   previous_offset: ->
     @index - @maxPerPage
+  displayPageLink: (index) ->
+    if index == @index
+      'current'
+    else if index > @index
+      barrier = (@index + 3*@maxPerPage)
+      if index < barrier
+        'within'
+      else if index == barrier
+        'barrier'
+      else
+        'without'
+    else if index < @index
+      barrier = (@index - 3*@maxPerPage)
+      if index > barrier
+        'within'
+      else if index == barrier
+        'barrier'
+      else
+        'without'
+
+
+
+

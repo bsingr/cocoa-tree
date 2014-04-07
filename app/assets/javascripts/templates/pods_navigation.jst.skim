@@ -8,14 +8,18 @@ ul.pagination.pagination-sm
   - i = 0
   - index = 0
   - while index < @podsList.totalCount
-    - if index == @podsList.index
+    - positioning = @podsList.displayPageLink(index)
+    - if positioning == 'current'
       li.active
         a
           = i+1
           span.sr-only (current)
-    - else
+    - else if positioning == 'within'
       li
         a href="#pods/#{@filterBy}/#{@sortBy}/#{index}" = i+1
+    - else if positioning == 'barrier'
+      li
+        a = '...'
     - i++
     - index = i*@podsList.maxPerPage
   - if @podsList.has_next()
