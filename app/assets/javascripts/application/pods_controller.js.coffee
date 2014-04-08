@@ -50,12 +50,16 @@ class @PodsController
   update: ->
     logger.verbose 'PodsController#update.start'
     countAll = @store.countAll()
-    readPage = @store.readObjects(@sortBy, @sortAsc, @index, @maxPerPage)
+    podsPromise = null
+    if @filterBy == 'all'
+      podsPromise = @store.readPage(@sortBy, @sortAsc, @index, @maxPerPage)
+    else
+      podsPromise = @store.readCategory(@filterBy)
     countAll.then (count) =>
       @count = count
       logger.verbose 'PodsController#update.promise', count
       $('.pods-count').text(count)
-    readPage.then (pods) =>
+    podsPromise.then (pods) =>
       @render(@count, pods)
     @store.categories().then (categories) ->
       (new Navigation).render(categories)

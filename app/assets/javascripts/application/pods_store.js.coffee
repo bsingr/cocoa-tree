@@ -22,8 +22,12 @@ class @PodsStore
     @db = new ydn.db.Storage 'pods', stores: [podsSchema, categoriesSchema]
   update: (new_records) ->
     @writeObjects(new_records)
-  readObjects: (sortBy, asc=true, offset=0, limit=50) ->
-    logger.verbose 'PodsStore#readObjects'
+  readCategory: (category) ->
+    logger.verbose 'PodsStore#readCategory'
+    keyRange = ydn.db.KeyRange.only(category)
+    @db.values 'pod', 'category', keyRange
+  readPage: (sortBy, asc=true, offset=0, limit=50) ->
+    logger.verbose 'PodsStore#readPage'
     if sortBy == 'name'
       logger.verbose 'sortBy=name'
       @db.values 'pod', null, limit, offset, !asc
