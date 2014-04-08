@@ -22,3 +22,6 @@
               li
                 a href="#pods/#{category.name}"
                   = @i18n.category(category.name)
+        li
+          a href="#reload" Reload
+        
