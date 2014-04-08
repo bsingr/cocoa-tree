@@ -21,4 +21,4 @@
             - for category in @categories()
               li
                 a href="#"
-                  = @i18n.category[category.name]
+                  = @i18n.category(category.name)
