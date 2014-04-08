@@ -18,7 +18,7 @@
             ' 
             b.caret
           ul.dropdown-menu
-            - for category_name in @categories()
+            - for category in @categories()
               li
                 a href="#"
-                  = category_name
+                  = category.name

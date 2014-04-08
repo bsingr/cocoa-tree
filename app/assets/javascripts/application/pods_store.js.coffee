@@ -14,7 +14,12 @@ class @PodsStore
       },{
         keyPath: 'category'
       }]
-    @db = new ydn.db.Storage 'pods', stores: [podsSchema]
+    categoriesSchema =
+      name: 'category'
+      keyPath: 'name'
+      type: 'TEXT'
+      indexes: []
+    @db = new ydn.db.Storage 'pods', stores: [podsSchema, categoriesSchema]
   update: (new_records) ->
     @writeObjects(new_records)
   readObjects: (sortBy, asc=true, offset=0, limit=50) ->
@@ -29,13 +34,16 @@ class @PodsStore
     @db.put('pod', pods)
   countAll: () ->
     @db.count('pod')
-  categories: () ->
+  updateCategories: () ->
     iterator = new ydn.db.IndexValueIterator('pod', 'category', null, false, true)
-    @db.values(iterator).then (pods) ->
+    @db.values(iterator).then (pods) =>
       categories = []
       for pod in pods
         category = pod.category
         if category != ''
-          categories.push category
+          categories.push
+            name: category
+      @db.put('category', categories)
       categories
-      
+  categories: () ->
+    @db.values 'category'

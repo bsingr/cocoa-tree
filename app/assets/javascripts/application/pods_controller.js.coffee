@@ -24,6 +24,7 @@ class @PodsController
     logger.verbose 'PodsController#didLoad', chunk_id
     @progressBar.update(@podsSyncWorkerClient.progress)
     @store.update pods
+    @store.updateCategories()
     for pod in pods
       @search.add pod
     for delegate in @delegates
