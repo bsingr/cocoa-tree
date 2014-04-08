@@ -33,8 +33,7 @@ class @PodsController
   didLoadAll: ->
     logger.verbose 'PodsController#didLoadAll'
   render: (totalCount, pods) ->
-    filteredPods = new PodsFilter(@filterBy).filter(pods)
-    podsList = new PodsList(totalCount, filteredPods, @index, @maxPerPage)
+    podsList = new PodsList(totalCount, pods, @index, @maxPerPage)
     (new PodsRenderer).renderPods(podsList.pods())
     (new PodsNavigationRenderer).render(podsList, @sortBy, @filterBy)
   changeScope: (index, filterBy, sortBy) ->
