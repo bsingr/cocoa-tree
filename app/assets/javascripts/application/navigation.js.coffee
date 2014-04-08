@@ -1,6 +1,7 @@
 class @Navigation
   constructor: () ->
     @foundCategories = []
+    @i18n = new I18n()
   categories: () ->
     @foundCategories
   render: (foundCategories) ->
