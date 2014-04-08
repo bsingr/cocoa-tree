@@ -1,7 +1,0 @@
-a.col-xs-12.col-md-2 href="#pods/all" all
-- for category_name in @categories
-  a.col-xs-12.col-md-2 href="#pods/#{category_name}"
-    = category_name
-    ' 
-    span.count = @word_stats[category_name]
-  ' 
