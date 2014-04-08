@@ -20,5 +20,5 @@
           ul.dropdown-menu
             - for category in @categories()
               li
-                a href="#"
+                a href="#pods/#{category.name}"
                   = @i18n.category(category.name)
