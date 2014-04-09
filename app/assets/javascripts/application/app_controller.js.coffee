@@ -53,9 +53,9 @@ class @AppController
     countAll = @store.countAll()
     podsPromise = null
     if @filterBy == 'all'
-      podsPromise = @store.readPage(@sortBy, @sortAsc, @index, @maxPerPage)
+      podsPromise = @store.readFromAll(@sortBy, @sortAsc, @index, @maxPerPage)
     else
-      podsPromise = @store.readCategory(@filterBy)
+      podsPromise = @store.readFromCategory(@filterBy, @sortBy, @sortAsc, @index, @maxPerPage)
     countAll.then (count) =>
       @count = count
       logger.verbose 'AppController#update.promise', count
