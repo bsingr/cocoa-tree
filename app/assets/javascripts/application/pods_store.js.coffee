@@ -28,10 +28,11 @@ class @PodsStore
     logger.verbose 'PodsStore#readCategory'
     keyRange = ydn.db.KeyRange.only(category)
     @db.values('pod', 'category', keyRange).then (allPods) ->
+      allSortedPods = (new ObjectSorter).sort(allPods)
       pods = []
       i = offset
-      while i <= (offset + limit) && i < allPods.length
-        pod = allPods[i]
+      while i <= (offset + limit) && i < allSortedPods.length
+        pod = allSortedPods[i]
         pods.push pod
         i++
       pods
