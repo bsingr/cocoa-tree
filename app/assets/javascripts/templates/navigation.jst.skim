@@ -20,7 +20,7 @@
             ' 
             b.caret
           ul.dropdown-menu
-            - for category in @categories()
+            - for category in @categories
               li
                 a href="#pods/#{category.name}"
                   = @i18n.category(category.name)

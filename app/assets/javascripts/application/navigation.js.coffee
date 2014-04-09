@@ -1,10 +1,6 @@
 class @Navigation
-  constructor: () ->
-    @foundCategories = []
-    @i18n = new I18n()
-  categories: () ->
-    @foundCategories
-  render: (foundCategories) ->
-    @foundCategories = foundCategories
-    html = JST['templates/navigation'](@)
+  render: (categories) ->
+    html = JST['templates/navigation']
+      categories: categories
+      i18n: new I18n()
     $('body').prepend(html)
