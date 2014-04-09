@@ -5,7 +5,7 @@ class @AppController
   filterBy: "all"
   sortBy: "stars"
   sortAsc: false
-  maxPerPage: 50
+  maxPerPage: 10
   count: 0
   constructor: (podsSyncWorkerClient, store) ->
     @store = store
@@ -61,7 +61,7 @@ class @AppController
     countPromise.then (count) =>
       @count = count
       logger.verbose 'AppController#update.promise', count
-      $('.pods-count').text(count)
+      @renderTitle(count+' Pods')
     podsPromise.then (pods) =>
       @render(@count, pods)
     @store.categories().then (categories) ->
@@ -70,5 +70,8 @@ class @AppController
     @store.categories().then (categories) =>
       @resetMainView()
       (new CategoriesRenderer).render(categories)
+      @renderTitle(categories.length+' Categories')
+  renderTitle: (title) ->
+    $('h1').text(title)
   resetMainView: () ->
     $('#main-view').empty()
