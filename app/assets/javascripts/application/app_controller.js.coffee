@@ -50,13 +50,15 @@ class @AppController
     @update()
   update: ->
     logger.verbose 'AppController#update.start'
-    countAll = @store.countAll()
+    countPromise = null
     podsPromise = null
     if @filterBy == 'all'
+      countPromise = @store.countForAll()
       podsPromise = @store.readFromAll(@sortBy, @sortAsc, @index, @maxPerPage)
     else
+      countPromise = @store.countForCategory(@filterBy)
       podsPromise = @store.readFromCategory(@filterBy, @sortBy, @sortAsc, @index, @maxPerPage)
-    countAll.then (count) =>
+    countPromise.then (count) =>
       @count = count
       logger.verbose 'AppController#update.promise', count
       $('.pods-count').text(count)

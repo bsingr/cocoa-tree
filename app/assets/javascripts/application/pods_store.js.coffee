@@ -22,10 +22,14 @@ class @PodsStore
     @db = new ydn.db.Storage 'pods', stores: [podsSchema, categoriesSchema]
   update: (new_records) ->
     @writeObjects(new_records)
+  # this reads only pods within one category and must implement sorting and
+  # pagination itself
   readFromCategory: (category, sortBy, asc=true, offset=0, limit=50) ->
     logger.verbose 'PodsStore#readCategory'
     keyRange = ydn.db.KeyRange.only(category)
     @db.values 'pod', 'category', keyRange
+  # this reads from _all_ pods and uses ydn internal capabilities for sorting
+  # and pagination
   readFromAll: (sortBy, asc=true, offset=0, limit=50) ->
     logger.verbose 'PodsStore#readPage'
     if sortBy == 'name'
@@ -36,7 +40,10 @@ class @PodsStore
       @db.values 'pod', sortBy, null, limit, offset, !asc
   writeObjects: (pods) ->
     @db.put('pod', pods)
-  countAll: () ->
+  countForCategory: (category) ->
+    keyRange = ydn.db.KeyRange.only(category)
+    @db.count('pod', 'category', keyRange)
+  countForAll: () ->
     @db.count('pod')
   updateCategories: () ->
     iterator = new ydn.db.IndexValueIterator('pod', 'category', null, false, true)
