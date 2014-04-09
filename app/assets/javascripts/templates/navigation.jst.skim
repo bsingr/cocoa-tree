@@ -11,15 +11,13 @@
     #main-nav.collapse.navbar-collapse
       ul.nav.navbar-nav
         li
-          a href="#" Home
+          a href="#pods/all" Show All
         li.dropdown
           a href="#" class="dropdown-toggle" data-toggle="dropdown"
             | Categories
             ' 
             b.caret
           ul.dropdown-menu
-            li
-              a href="#pods/all" Show All
             - for category in @categories()
               li
                 a href="#pods/#{category.name}"
