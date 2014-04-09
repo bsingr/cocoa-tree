@@ -1,5 +1,5 @@
 #= require lunr.js
-class @PodsController
+class @AppController
   delegates: []
   index: null
   filterBy: "all"
@@ -21,7 +21,7 @@ class @PodsController
     @podsSyncWorkerClient.loadPods()
     @progressBar.start()
   didLoad: (chunk_id, pods) ->
-    logger.verbose 'PodsController#didLoad', chunk_id
+    logger.verbose 'AppController#didLoad', chunk_id
     @progressBar.update(@podsSyncWorkerClient.progress)
     @store.update pods
     @store.updateCategories()
@@ -31,7 +31,7 @@ class @PodsController
       if delegate.podsDidChange
         delegate.podsDidChange()
   didLoadAll: ->
-    logger.verbose 'PodsController#didLoadAll'
+    logger.verbose 'AppController#didLoadAll'
   render: (totalCount, pods) ->
     podsList = new PodsList(totalCount, pods, @index, @maxPerPage)
     (new PodsRenderer).renderPods(podsList.pods())
@@ -48,7 +48,7 @@ class @PodsController
       @sortAsc = true
     @update()
   update: ->
-    logger.verbose 'PodsController#update.start'
+    logger.verbose 'AppController#update.start'
     countAll = @store.countAll()
     podsPromise = null
     if @filterBy == 'all'
@@ -57,7 +57,7 @@ class @PodsController
       podsPromise = @store.readCategory(@filterBy)
     countAll.then (count) =>
       @count = count
-      logger.verbose 'PodsController#update.promise', count
+      logger.verbose 'AppController#update.promise', count
       $('.pods-count').text(count)
     podsPromise.then (pods) =>
       @render(@count, pods)

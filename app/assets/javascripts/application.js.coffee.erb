@@ -14,10 +14,10 @@ boot = (podsIndex) ->
   podsStore = new PodsStore()
   podsSyncWorker = new Worker('<%= asset_path('pods_sync_worker.js') %>')
   podsSyncWorkerClient = new PodsSyncWorkerClient(podsSyncWorker, podsIndex)
-  podsController = new PodsController(podsSyncWorkerClient, podsStore)
-  podsController.loadPods()
+  appController = new AppController(podsSyncWorkerClient, podsStore)
+  appController.loadPods()
   router = new AppRouter()
-  router.podsController = podsController
+  router.appController = appController
   Backbone.history.start()
 ready = ->
   new PodsIndex("/seeds").load(boot)
