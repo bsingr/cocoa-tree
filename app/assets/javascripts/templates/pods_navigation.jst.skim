@@ -31,6 +31,6 @@
         a &raquo;
 .col-md-6
   .btn-group
-    a.btn.btn-xs.btn-default href="#pods/all/stars" Stars
-    a.btn.btn-xs.btn-default href="#pods/all/pushed_at" Activity
-    a.btn.btn-xs.btn-default href="#pods/all/name" Name
+    a.btn.btn-xs.btn-default href="#pods/#{@filterBy}/stars" Stars
+    a.btn.btn-xs.btn-default href="#pods/#{@filterBy}/pushed_at" Activity
+    a.btn.btn-xs.btn-default href="#pods/#{@filterBy}/name" Name
