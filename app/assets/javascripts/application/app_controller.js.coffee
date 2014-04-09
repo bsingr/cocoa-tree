@@ -34,8 +34,9 @@ class @AppController
     logger.verbose 'AppController#didLoadAll'
   render: (totalCount, pods) ->
     podsList = new PodsList(totalCount, pods, @index, @maxPerPage)
-    (new PodsRenderer).renderPods(podsList.pods())
+    @resetMainView()
     (new PodsNavigationRenderer).render(podsList, @sortBy, @filterBy)
+    (new PodsRenderer).renderPods(podsList.pods())
   changeScope: (index, filterBy, sortBy) ->
     @index = index
     @filterBy = filterBy
@@ -64,5 +65,8 @@ class @AppController
     @store.categories().then (categories) ->
       (new Navigation).render(categories)
   displayCategories: () ->
-    @store.categories().then (categories) ->
+    @store.categories().then (categories) =>
+      @resetMainView()
       (new CategoriesRenderer).render(categories)
+  resetMainView: () ->
+    $('#main-view').empty()

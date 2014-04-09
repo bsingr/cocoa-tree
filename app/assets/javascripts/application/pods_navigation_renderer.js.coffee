@@ -5,4 +5,4 @@ class @PodsNavigationRenderer
       sortBy: sortBy
       filterBy: filterBy
     html = JST['templates/pods_navigation'](obj)
-    $('#list_navigator').html(html)
+    $('#main-view').append(html)
