@@ -1,11 +1,11 @@
 class @ObjectSorter
   sort: (objects) ->
-    if @sort_by
-      sort_by = @sort_by
+    if @sortBy
+      sortBy = @sortBy
       sorter = @
       objects.sort (a,b) ->
-        av = a[sort_by]
-        bv = b[sort_by]
+        av = a[sortBy]
+        bv = b[sortBy]
         sorter._sort(av, bv)
     else
       objects.sort @._sort
