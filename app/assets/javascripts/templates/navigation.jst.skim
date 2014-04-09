@@ -18,6 +18,8 @@
             ' 
             b.caret
           ul.dropdown-menu
+            li
+              a href="#pods/all" Show All
             - for category in @categories()
               li
                 a href="#pods/#{category.name}"
