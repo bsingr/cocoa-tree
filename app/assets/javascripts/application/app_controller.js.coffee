@@ -63,3 +63,6 @@ class @AppController
       @render(@count, pods)
     @store.categories().then (categories) ->
       (new Navigation).render(categories)
+  displayCategories: () ->
+    @store.categories().then (categories) ->
+      (new CategoriesRenderer).render(categories)
