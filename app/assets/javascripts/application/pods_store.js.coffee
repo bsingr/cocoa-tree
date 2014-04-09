@@ -27,7 +27,14 @@ class @PodsStore
   readFromCategory: (category, sortBy, asc=true, offset=0, limit=50) ->
     logger.verbose 'PodsStore#readCategory'
     keyRange = ydn.db.KeyRange.only(category)
-    @db.values 'pod', 'category', keyRange
+    @db.values('pod', 'category', keyRange).then (allPods) ->
+      pods = []
+      i = offset
+      while i <= (offset + limit) && i < allPods.length
+        pod = allPods[i]
+        pods.push pod
+        i++
+      pods
   # this reads from _all_ pods and uses ydn internal capabilities for sorting
   # and pagination
   readFromAll: (sortBy, asc=true, offset=0, limit=50) ->
