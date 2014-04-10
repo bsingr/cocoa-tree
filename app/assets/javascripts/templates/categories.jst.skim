@@ -1,4 +1,4 @@
 ul
   - for category in @categories
     li
-      a href="#pods/#{category.name}" = category.name
+      a href="#pods/#{category.name}" = @i18n.category(category.name)
