@@ -5,6 +5,18 @@ class @I18n
     else
       name
   categories:
-    "proprietary_api": "Proprietary API"
-    "functional_programming": "Functional Programming"
-    "gui": "Graphical User Interface"
+    "core_data": "Core data"
+    "debugging": "Debugging"
+    "framework": "Framework"
+    "functional_programming": "Functional programming"
+    "gaming": "Gaming"
+    "git": "Git"
+    "gui": "Gui"
+    "gui_controls": "Gui controls"
+    "http": "Http"
+    "image_processing": "Image processing"
+    "json": "Json"
+    "network": "Network"
+    "proprietary_api": "Proprietary api"
+    "reactive_programming": "Reactive programming"
+    "sqlite": "Sqlite"
