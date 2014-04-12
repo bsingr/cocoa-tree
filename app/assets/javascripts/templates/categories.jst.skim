@@ -10,6 +10,9 @@
       - while i < (categoriesPerColumn * (column + 1)) && i < @categories.length
         - category = @categories[i]
         li
-          a href="#pods/#{category.name}" = @i18n.category(category.name)
+          a href="#pods/#{category.name}"
+            span = @i18n.category(category.name)
+            ' 
+            span.count = category.podsCount
         - i++
     - column++
