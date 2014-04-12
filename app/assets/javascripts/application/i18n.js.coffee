@@ -3,7 +3,7 @@ class @I18n
     if @categories[name]
       @categories[name]
     else
-      name
+      Humanize.titleCase name
   categories:
     "core_data": "Core data"
     "debugging": "Debugging"
