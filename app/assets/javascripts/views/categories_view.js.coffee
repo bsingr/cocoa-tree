@@ -6,3 +6,4 @@
       categories: categories
       i18n: new I18n()
     @$el.html(html)
+    @
