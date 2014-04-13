@@ -54,6 +54,11 @@ a {
   }
 }
 
+.empty {
+  @extend .jumbotron;
+  
+}
+
 .categories-header-container {
   @extend .container;
 }

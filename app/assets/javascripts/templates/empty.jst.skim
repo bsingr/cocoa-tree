@@ -1,0 +1,8 @@
+.empty
+  h1 Fetching Data...
+  p
+    | Synchronizing with the 
+    a href='https://github.com/cocoa-tree/seeds' Seeds repository
+    ' 
+    | and calculating category system.
+    

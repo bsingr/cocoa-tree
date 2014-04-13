@@ -16,9 +16,9 @@ class @AppController
       @field('name', {boost: 10})
       @field('summary')
       @ref('name')
-    @update()
     navigation = new Navigation()
     navigation.render()
+    @displayEmptyView()
   loadPods: ->
     @podsSyncWorkerClient.loadPods()
     @progressBar.start()
@@ -63,13 +63,20 @@ class @AppController
     countPromise.then (count) =>
       @count = count
     podsPromise.then (pods) =>
-      @render(@count, pods)
+      if pods.length
+        @render(@count, pods)
   displayCategories: () ->
     @store.categories().then (categories) =>
-      list = []
-      for c in categories
-        list.push(new Category(c))
-      @resetMainView()
-      (new CategoriesView).render(list)
+      if categories.length
+        list = []
+        for c in categories
+          list.push(new Category(c))
+        @resetMainView()
+        (new CategoriesView).render(list)
+      else
+        @displayEmptyView()
+  displayEmptyView: () ->
+    @resetMainView()
+    (new EmptyView).render()
   resetMainView: () ->
     $('#main-view').empty()
