@@ -56,6 +56,10 @@ a {
   .categories-header-col {
     @extend .col-xs-12, .jumbotron;
     background-color: white;
+
+    img {
+      margin-right: 20px;
+    }
   }
 }
 
