@@ -5,7 +5,7 @@ class @AppController
   filterBy: "all"
   sortBy: "stars"
   sortAsc: false
-  maxPerPage: 10
+  maxPerPage: 50
   count: 0
   constructor: (podsSyncWorkerClient, store) ->
     @store = store
