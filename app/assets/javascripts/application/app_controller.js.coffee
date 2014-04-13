@@ -10,6 +10,7 @@ class @AppController
   count: 0
   constructor: (podsSyncWorkerClient, store) ->
     @store = store
+    @store.delegates.push @
     @progressBar = new PodsProgressBar()
     @podsSyncWorkerClient = podsSyncWorkerClient
     @podsSyncWorkerClient.delegate = @
@@ -17,7 +18,6 @@ class @AppController
       @field('name', {boost: 10})
       @field('summary')
       @ref('name')
-    @displayPods()
     navigation = new Navigation()
     navigation.render()
     @renderEmptyView()
@@ -28,14 +28,18 @@ class @AppController
     logger.verbose 'AppController#didLoad', chunk_id
     @progressBar.update(@podsSyncWorkerClient.progress)
     @store.update pods
-    @store.updateCategories()
     for pod in pods
       @search.add pod
     for delegate in @delegates
       if delegate.podsDidChange
         delegate.podsDidChange()
   didLoadAll: ->
-    logger.verbose 'AppController#didLoadAll'
+    @store.updateCategories()
+    @update()
+  didUpdate: () ->
+    @update()
+  update: () ->
+    logger.verbose 'AppController#update'
     if @current == 'categories'
       @displayCategories()
     else if @current == 'pods'

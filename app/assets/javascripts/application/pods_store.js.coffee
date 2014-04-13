@@ -1,5 +1,6 @@
 #= require ydn.js
 class @PodsStore
+  delegates: []
   constructor: () ->
     @initDb()
   initDb: () ->
@@ -71,6 +72,11 @@ class @PodsStore
       for categoryName, category of categories
         categoriesArray.push category
       @db.put('category', categoriesArray)
+      @didUpdateCategories()
       categories
   categories: () ->
     @db.values 'category'
+  didUpdateCategories: () ->
+    for delegate in @delegates
+      if delegate.didUpdateCategories
+        delegate.didUpdateCategories()
