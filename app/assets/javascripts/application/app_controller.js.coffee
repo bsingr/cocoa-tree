@@ -35,7 +35,7 @@ class @AppController
   render: (totalCount, pods) ->
     podsList = new PodsList(totalCount, pods, @index, @maxPerPage)
     @resetMainView()
-    (new PodsNavigationRenderer).render(podsList, @sortBy, @filterBy)
+    (new PodsNavigationView).render(podsList, @sortBy, @filterBy)
     (new PodsRenderer).renderPods(podsList.pods())
   changeScope: (index, filterBy, sortBy) ->
     @index = index
