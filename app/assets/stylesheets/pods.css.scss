@@ -211,8 +211,20 @@ a {
   }
 }
 
-#footer {
-  margin: 20px 0;
-  color: $footerTextCol;
-  text-align: center;
+.footer-container {
+  @extend .container-fluid;
+
+  background-color: darken($primaryColor, 10%);
+
+  .footer-row {
+    @extend .row;
+
+    .footer-col {
+      @extend .col-xs-12;
+
+      margin: 20px 0;
+      color: lighten($primaryColor, 60%);
+      text-align: center;
+    }
+  }
 }
