@@ -70,9 +70,12 @@ class @AppController
       (new Navigation).render(categories)
   displayCategories: () ->
     @store.categories().then (categories) =>
+      list = []
+      for c in categories
+        list.push(new Category(c))
       @resetMainView()
-      (new CategoriesView).render(categories)
-      @renderTitle(categories.length+' Categories')
+      (new CategoriesView).render(list)
+      @renderTitle(list.length+' Categories')
   renderTitle: (title) ->
     $('h1').text(title)
   resetMainView: () ->

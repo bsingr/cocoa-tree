@@ -9,9 +9,9 @@
       - i = categoriesPerColumn * column
       - while i < (categoriesPerColumn * (column + 1)) && i < @categories.length
         - category = @categories[i]
-        a href="#pods/#{category.name}"
-          span = @i18n.category(category.name)
+        a href="#pods/#{category.get('name')}"
+          span = category.displayName()
           ' 
-          span.badge.badge-yellow = category.podsCount
+          span.badge.badge-yellow = category.get('podsCount')
         - i++
     - column++
