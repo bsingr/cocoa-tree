@@ -8,6 +8,7 @@ class @I18n
     'api'
     'gui'
     'i18n'
+    'orm'
     'json'
     'xml'
     'http'
