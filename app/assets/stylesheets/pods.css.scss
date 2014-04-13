@@ -36,7 +36,7 @@ $footerTextCol: #999;
 .navbar {
   a {
     border-bottom: 2px solid transparent;
-    &:hover {
+    &[href]:hover {
       background-color: transparent !important;
       border-bottom: 2px solid $secondaryColor;
     }
