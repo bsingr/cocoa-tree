@@ -17,6 +17,8 @@ class @AppController
       @field('summary')
       @ref('name')
     @update()
+    navigation = new Navigation()
+    navigation.render()
   loadPods: ->
     @podsSyncWorkerClient.loadPods()
     @progressBar.start()
@@ -62,8 +64,6 @@ class @AppController
       @count = count
     podsPromise.then (pods) =>
       @render(@count, pods)
-    @store.categories().then (categories) ->
-      (new Navigation).render(categories)
   displayCategories: () ->
     @store.categories().then (categories) =>
       list = []
