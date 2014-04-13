@@ -69,7 +69,7 @@ class @AppController
   displayCategories: () ->
     @store.categories().then (categories) =>
       @resetMainView()
-      (new CategoriesRenderer).render(categories)
+      (new CategoriesView).render(categories)
       @renderTitle(categories.length+' Categories')
   renderTitle: (title) ->
     $('h1').text(title)
