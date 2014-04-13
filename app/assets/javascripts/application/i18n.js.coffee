@@ -1,22 +1,17 @@
 class @I18n
   category: (name) ->
-    if @categories[name]
-      @categories[name]
-    else
-      S(name).humanize()
-  categories:
-    "core_data": "Core data"
-    "debugging": "Debugging"
-    "framework": "Framework"
-    "functional_programming": "Functional programming"
-    "gaming": "Gaming"
-    "git": "Git"
-    "gui": "Gui"
-    "gui_controls": "Gui controls"
-    "http": "Http"
-    "image_processing": "Image processing"
-    "json": "Json"
-    "network": "Network"
-    "proprietary_api": "Proprietary api"
-    "reactive_programming": "Reactive programming"
-    "sqlite": "Sqlite"
+    humanized = S(name).humanize().s
+    for part in @uppercase
+      humanized = humanized.replace(new RegExp(part, 'gi'), S(part).toUpperCase())
+    humanized
+  uppercase: [
+    'api'
+    'gui'
+    'i18n'
+    'json'
+    'xml'
+    'http'
+    'https'
+    'ftp'
+    'ftps'
+  ]
