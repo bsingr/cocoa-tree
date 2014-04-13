@@ -1,6 +1,7 @@
 #= require lunr.js
 class @AppController
   delegates: []
+  current: null
   index: null
   filterBy: "all"
   sortBy: "stars"
@@ -16,9 +17,10 @@ class @AppController
       @field('name', {boost: 10})
       @field('summary')
       @ref('name')
+    @displayPods()
     navigation = new Navigation()
     navigation.render()
-    @displayEmptyView()
+    @renderEmptyView()
   loadPods: ->
     @podsSyncWorkerClient.loadPods()
     @progressBar.start()
@@ -34,12 +36,17 @@ class @AppController
         delegate.podsDidChange()
   didLoadAll: ->
     logger.verbose 'AppController#didLoadAll'
-  render: (totalCount, pods) ->
+    if @current == 'categories'
+      @displayCategories()
+    else if @current == 'pods'
+      @displayPods()
+  renderPods: (totalCount, pods) ->
     podsList = new PodsList(totalCount, pods, @index, @maxPerPage)
     @resetMainView()
     (new PodsNavigationView).render(podsList, @sortBy, @filterBy)
     (new PodsView).render(podsList)
-  displayPods: (index, filterBy, sortBy) ->
+  displayPodsAndUpdateScope: (index, filterBy, sortBy) ->
+    @current = 'pods'
     @index = index
     @filterBy = filterBy
     @sortBy = sortBy
@@ -49,8 +56,8 @@ class @AppController
       @sortAsc = false
     else
       @sortAsc = true
-    @update()
-  update: ->
+    @displayPods()
+  displayPods: ->
     logger.verbose 'AppController#update.start'
     countPromise = null
     podsPromise = null
@@ -64,18 +71,23 @@ class @AppController
       @count = count
     podsPromise.then (pods) =>
       if pods.length
-        @render(@count, pods)
+        @renderPods(@count, pods)
+      else
+        @renderEmptyView()
   displayCategories: () ->
+    @current = 'categories'
     @store.categories().then (categories) =>
       if categories.length
-        list = []
-        for c in categories
-          list.push(new Category(c))
-        @resetMainView()
-        (new CategoriesView).render(list)
+        @renderCategoriesView(categories)
       else
-        @displayEmptyView()
-  displayEmptyView: () ->
+        @renderEmptyView()
+  renderCategoriesView: (categories) ->
+    @resetMainView()
+    list = []
+    for c in categories
+      list.push(new Category(c))
+    (new CategoriesView).render(list)
+  renderEmptyView: () ->
     @resetMainView()
     (new EmptyView).render()
   resetMainView: () ->
