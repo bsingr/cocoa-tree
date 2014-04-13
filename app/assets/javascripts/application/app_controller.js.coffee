@@ -39,7 +39,7 @@ class @AppController
     @resetMainView()
     (new PodsNavigationView).render(podsList, @sortBy, @filterBy)
     (new PodsView).render(podsList)
-  changeScope: (index, filterBy, sortBy) ->
+  displayPods: (index, filterBy, sortBy) ->
     @index = index
     @filterBy = filterBy
     @sortBy = sortBy

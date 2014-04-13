@@ -14,6 +14,6 @@
       sort_by = 'stars'
     if !idx
       idx = 0
-    @appController.changeScope(parseInt(idx), filter, sort_by)
+    @appController.displayPods(parseInt(idx), filter, sort_by)
   reload: ->
     @appController.loadPods()
