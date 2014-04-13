@@ -1,6 +1,11 @@
 .container
   .row
-    - for pod in @pods
+    h1
+      = @totalCount
+      '
+      | CocoaPods
+  .row
+    - for pod in @pods()
       .row.pod data-toggle="collapse" data-target="#pod-#{pod.id}"
         .col-xs-6.meta.part
           .title

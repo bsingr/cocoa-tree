@@ -36,7 +36,7 @@ class @AppController
     podsList = new PodsList(totalCount, pods, @index, @maxPerPage)
     @resetMainView()
     (new PodsNavigationView).render(podsList, @sortBy, @filterBy)
-    (new PodsView).render(podsList.pods())
+    (new PodsView).render(podsList)
   changeScope: (index, filterBy, sortBy) ->
     @index = index
     @filterBy = filterBy
@@ -60,10 +60,6 @@ class @AppController
       podsPromise = @store.readFromCategory(@filterBy, @sortBy, @sortAsc, @index, @maxPerPage)
     countPromise.then (count) =>
       @count = count
-      logger.verbose 'AppController#update.promise', count
-      category = new Category
-        name: @filterBy
-      @renderTitle(count+' Pods in '+category.displayName())
     podsPromise.then (pods) =>
       @render(@count, pods)
     @store.categories().then (categories) ->
@@ -75,8 +71,5 @@ class @AppController
         list.push(new Category(c))
       @resetMainView()
       (new CategoriesView).render(list)
-      @renderTitle(list.length+' Categories')
-  renderTitle: (title) ->
-    $('h1').text(title)
   resetMainView: () ->
     $('#main-view').empty()

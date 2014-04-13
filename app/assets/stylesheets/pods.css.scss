@@ -62,7 +62,13 @@ a {
 .categories-container {
   @extend .container-fluid;
   background-color: lighten($primaryColor, 20%);
-  padding-top: 20px;
+  padding-top: 10px;
+
+  h1 {
+    color: $primaryColor;
+    text-align: center;
+    font-size: 1em;
+  }
 }
 
 .categories-row {

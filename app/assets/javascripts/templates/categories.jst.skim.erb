@@ -2,7 +2,7 @@
   .categories-header-row
     .categories-header-col
       image.pull-left src="<%= image_path('cocoa-tree-320.png') %>"
-      h1 Cocoa Tree
+      h1 CocoaTree
       p
         | The CocoaTree is a comprehensive catalog of open source Objective-C projects. In essence, it is based on the popular
         ' 
@@ -12,6 +12,12 @@
         | .
 .categories-container
   .container
+    .row
+      .col-xs-12
+        h1
+          = @categories.length
+          '
+          | Categories
     .categories-row
       - columns = 3
       - categoriesPerColumn = parseInt(@categories.length / columns)
