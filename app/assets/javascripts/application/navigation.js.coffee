@@ -3,4 +3,4 @@ class @Navigation
     html = JST['templates/navigation']
       categories: categories
       i18n: new I18n()
-    $('body').prepend(html)
+    $('.navbar-container').html(html)
