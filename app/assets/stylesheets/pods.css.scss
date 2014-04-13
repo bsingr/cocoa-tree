@@ -68,6 +68,10 @@ a {
     img {
       margin-right: 20px;
     }
+
+    a[href] {
+      font-weight: bold;
+    }
   }
 }
 
