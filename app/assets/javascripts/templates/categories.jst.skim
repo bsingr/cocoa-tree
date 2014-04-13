@@ -13,6 +13,6 @@
           a href="#pods/#{category.name}"
             span = @i18n.category(category.name)
             ' 
-            span.count = category.podsCount
+            span.badge = category.podsCount
         - i++
     - column++
