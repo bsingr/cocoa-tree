@@ -44,13 +44,35 @@ a {
   }
 }
 
-.categories {
-  @extend .list-group;
-  a {
-    @extend .list-group-item;
+.categories-header-container {
+  @extend .container;
+}
+
+.categories-header-row {
+  @extend .row;
+
+  .categories-header-col {
+    @extend .col-xs-12, .jumbotron;
+    background-color: white;
   }
-  .badge-yellow {
-    background-color: #DBA901;
+}
+
+.categories-container {
+  @extend .container-fluid;
+  background-color: lighten(#21610B, 20%);
+  padding-top: 20px;
+}
+
+.categories-row {
+  @extend .row;
+  .categories-col {
+    @extend .col-xs-12, .col-md-4, .list-group;
+    a {
+      @extend .list-group-item;
+    }
+    .badge-yellow {
+      background-color: #DBA901;
+    }
   }
 }
 

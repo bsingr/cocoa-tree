@@ -1,0 +1,31 @@
+.categories-header-container
+  .categories-header-row
+    .categories-header-col
+      image.pull-left src="<%= image_path('cocoa-tree-320.png') %>"
+      h1 Cocoa Tree
+      p
+        | The CocoaTree is a comprehensive catalog of open source Objective-C projects. In essence, it is based on the popular
+        ' 
+        a href="http://cocoapods.org" CocoaPods repository
+        | . Additionally, popularity and activity ratings are calculated using data provided by 
+        a href="https://github.com" GitHub
+        | .
+.categories-container
+  .container
+    .categories-row
+      - columns = 3
+      - categoriesPerColumn = parseInt(@categories.length / columns)
+      - if categoriesPerColumn * columns < @categories.length
+        - categoriesPerColumn++
+      - column = 0
+      - while column < columns
+        .categories-col
+          - i = categoriesPerColumn * column
+          - while i < (categoriesPerColumn * (column + 1)) && i < @categories.length
+            - category = @categories[i]
+            a href="#pods/#{category.get('name')}"
+              span = category.displayName()
+              ' 
+              span.badge.badge-yellow = category.get('podsCount')
+            - i++
+        - column++

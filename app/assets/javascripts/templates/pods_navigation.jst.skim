@@ -1,36 +1,37 @@
-.row
-  .col-md-6
-    ul.pagination.pagination-sm
-      - if @podsList.has_prev()
-        li
-          a href="#pods/#{@filterBy}/#{@sortBy}/#{@podsList.previous_offset()}" &laquo;
-      - else
-        li.disabled
-          a &laquo;
-      - i = 0
-      - index = 0
-      - while index < @podsList.totalCount
-        - positioning = @podsList.paginationPosition(index)
-        - if positioning == 'current'
-          li.active
-            a
-              = i+1
-              span.sr-only (current)
-        - else if positioning == 'within'
+.container
+  .row
+    .col-md-6
+      ul.pagination.pagination-sm
+        - if @podsList.has_prev()
           li
-            a href="#pods/#{@filterBy}/#{@sortBy}/#{index}" = i+1
-        - else if positioning == 'barrier'
+            a href="#pods/#{@filterBy}/#{@sortBy}/#{@podsList.previous_offset()}" &laquo;
+        - else
+          li.disabled
+            a &laquo;
+        - i = 0
+        - index = 0
+        - while index < @podsList.totalCount
+          - positioning = @podsList.paginationPosition(index)
+          - if positioning == 'current'
+            li.active
+              a
+                = i+1
+                span.sr-only (current)
+          - else if positioning == 'within'
+            li
+              a href="#pods/#{@filterBy}/#{@sortBy}/#{index}" = i+1
+          - else if positioning == 'barrier'
+            li
+              a = '...'
+          - i++
+          - index = i*@podsList.maxPerPage
+        - if @podsList.has_next()
           li
-            a = '...'
-        - i++
-        - index = i*@podsList.maxPerPage
-      - if @podsList.has_next()
-        li
-          a href="#pods/#{@filterBy}/#{@sortBy}/#{@podsList.next_offset()}" &raquo;
-      - else
-        li.disabled
-          a &raquo;
-  .col-md-6
+            a href="#pods/#{@filterBy}/#{@sortBy}/#{@podsList.next_offset()}" &raquo;
+        - else
+          li.disabled
+            a &raquo;
+    .col-md-6
     .btn-group
       a.btn.btn-xs.btn-default href="#pods/#{@filterBy}/stars" Stars
       a.btn.btn-xs.btn-default href="#pods/#{@filterBy}/pushed_at" Activity
