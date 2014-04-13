@@ -61,7 +61,9 @@ class @AppController
     countPromise.then (count) =>
       @count = count
       logger.verbose 'AppController#update.promise', count
-      @renderTitle(count+' Pods')
+      category = new Category
+        name: @filterBy
+      @renderTitle(count+' Pods in '+category.displayName())
     podsPromise.then (pods) =>
       @render(@count, pods)
     @store.categories().then (categories) ->
