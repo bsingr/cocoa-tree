@@ -7,5 +7,5 @@
       sortBy: sortBy
       filterBy: filterBy
     html = (obj)
-    $(@el).append(@template(obj))
+    @$el.append(@template(obj))
     @
