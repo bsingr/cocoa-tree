@@ -2,7 +2,7 @@ class @I18n
   category: (name) ->
     humanized = S(name).humanize().s
     for part in @uppercase
-      humanized = humanized.replace(new RegExp(part, 'gi'), S(part).toUpperCase())
+      humanized = humanized.replace(new RegExp(part, 'gi'), part.toUpperCase())
     humanized
   uppercase: [
     'api'
