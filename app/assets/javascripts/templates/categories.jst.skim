@@ -5,14 +5,13 @@
     - categoriesPerColumn++
   - column = 0
   - while column < columns
-    ul.col-xs-12.col-md-4
+    .col-xs-12.col-md-4.categories
       - i = categoriesPerColumn * column
       - while i < (categoriesPerColumn * (column + 1)) && i < @categories.length
         - category = @categories[i]
-        li
-          a href="#pods/#{category.name}"
-            span = @i18n.category(category.name)
-            ' 
-            span.badge = category.podsCount
+        a href="#pods/#{category.name}"
+          span = @i18n.category(category.name)
+          ' 
+          span.badge.badge-yellow = category.podsCount
         - i++
     - column++

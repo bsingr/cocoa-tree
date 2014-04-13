@@ -53,9 +53,12 @@ a {
 }
 
 .categories {
-  .count {
-    color: #999;
-    font-size: 0.8em;
+  @extend .list-group;
+  a {
+    @extend .list-group-item;
+  }
+  .badge-yellow {
+    background-color: #DBA901;
   }
 }
 
