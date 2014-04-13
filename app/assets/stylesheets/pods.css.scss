@@ -4,11 +4,13 @@
 
 @import "bootstrap";
 
+$primaryColor: #21610B;
+
 $headerTextCol: #ddd;
 $headBg: #eee;
 $headHoverBg: #ffffff;
 $linkCol: lighten(#21610B, 10%);
-$linkHoverCol: lighten($linkCol, 10%);
+$linkHoverCol: lighten($primaryColor, 10%);
 $emphasizeTextCol: #999;
 $lightTextCol: #bbb;
 $badgeTextCol: #aaa;
@@ -59,7 +61,7 @@ a {
 
 .categories-container {
   @extend .container-fluid;
-  background-color: lighten(#21610B, 20%);
+  background-color: lighten($primaryColor, 20%);
   padding-top: 20px;
 }
 
@@ -69,6 +71,12 @@ a {
     @extend .col-xs-12, .col-md-4, .list-group;
     a {
       @extend .list-group-item;
+      border: 0 none transparent;
+      background-color: lighten($primaryColor, 60%);
+
+      &:hover {
+        background-color: lighten($primaryColor, 70%);
+      } 
     }
     .badge-yellow {
       background-color: #DBA901;
