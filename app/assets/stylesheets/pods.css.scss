@@ -34,11 +34,14 @@ $noDependenciesTextCol: $primaryColor;
 }
 
 .navbar {
+  margin: 0;
+  border: 0;
+
   a {
-    border-bottom: 2px solid transparent;
+    border-bottom: 3px solid transparent;
     &[href]:hover {
       background-color: transparent !important;
-      border-bottom: 2px solid $secondaryColor;
+      border-bottom: 3px solid $secondaryColor;
     }
   }
   .navbar-brand {

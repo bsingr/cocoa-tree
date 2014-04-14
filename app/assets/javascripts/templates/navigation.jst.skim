@@ -1,5 +1,5 @@
 .navbar
-  .container-fluid
+  .container
     .navbar-header
       button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"
         span class="sr-only" Toggle navigation
