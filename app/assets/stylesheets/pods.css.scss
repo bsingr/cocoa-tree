@@ -115,6 +115,9 @@ a {
   @extend .container-fluid;
   background: lighten($primaryColor, 20%);
 
+  .sort-ctrl {
+    margin: 20px 0;
+  }
 }
 
 .pod {
