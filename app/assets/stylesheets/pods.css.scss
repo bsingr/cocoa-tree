@@ -60,7 +60,8 @@ a {
 }
 
 .categories-header-container {
-  @extend .container;
+  @extend .container-fluid;
+  background-color: white;
 }
 
 .categories-header-row {
@@ -69,6 +70,7 @@ a {
   .categories-header-col {
     @extend .col-xs-12, .jumbotron;
     background-color: white;
+
 
     img {
       margin-right: 20px;
