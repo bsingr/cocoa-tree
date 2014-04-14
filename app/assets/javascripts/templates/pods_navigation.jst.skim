@@ -1,7 +1,7 @@
 .pods-container
   .container
     .row
-      .col-md-6
+      .col-md-4
         h1
           = @podsList.totalCount
           '
@@ -11,7 +11,7 @@
           a.btn.btn-default href="#pods/#{@filterBy}/stars" Stars
           a.btn.btn-default href="#pods/#{@filterBy}/pushed_at" Activity
           a.btn.btn-default href="#pods/#{@filterBy}/name" Name
-      .col-md-3
+      .col-md-5
         ul.pagination.pagination-sm
           - if @podsList.has_prev()
             li
