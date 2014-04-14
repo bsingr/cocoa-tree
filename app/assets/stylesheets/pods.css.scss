@@ -33,6 +33,14 @@ $noDependenciesTextCol: $primaryColor;
   }
 }
 
+a {
+  color: $linkCol;
+
+  &:hover {
+    color: $linkHoverCol;
+  }
+}
+
 .navbar {
   margin: 0;
   border: 0;
@@ -49,14 +57,6 @@ $noDependenciesTextCol: $primaryColor;
   }
 }
 
-a {
-  color: $linkCol;
-
-  &:hover {
-    color: $linkHoverCol;
-  }
-}
-
 .empty {
   @extend .jumbotron;
   
@@ -65,22 +65,22 @@ a {
 .categories-header-container {
   @extend .container-fluid;
   background-color: white;
-}
 
-.categories-header-row {
-  @extend .row;
+  .categories-header-row {
+    @extend .row;
 
-  .categories-header-col {
-    @extend .col-xs-12, .jumbotron;
-    background-color: white;
+    .categories-header-col {
+      @extend .col-xs-12, .jumbotron;
+      background-color: white;
 
 
-    img {
-      margin-right: 20px;
-    }
+      img {
+        margin-right: 20px;
+      }
 
-    a[href] {
-      font-weight: bold;
+      a[href] {
+        font-weight: bold;
+      }
     }
   }
 }
@@ -95,23 +95,23 @@ a {
     text-align: center;
     font-size: 1em;
   }
-}
 
-.categories-row {
-  @extend .row;
-  .categories-col {
-    @extend .col-xs-12, .col-md-4, .list-group;
-    a {
-      @extend .list-group-item;
-      border: 0 none transparent;
-      background-color: $listBgCol;
+  .categories-row {
+    @extend .row;
+    .categories-col {
+      @extend .col-xs-12, .col-md-4, .list-group;
+      a {
+        @extend .list-group-item;
+        border: 0 none transparent;
+        background-color: $listBgCol;
 
-      &:hover {
-        background-color: $listHoverBgCol;
-      } 
-    }
-    .badge-yellow {
-      background-color: $secondaryColor;
+        &:hover {
+          background-color: $listHoverBgCol;
+        } 
+      }
+      .badge-yellow {
+        background-color: $secondaryColor;
+      }
     }
   }
 }
@@ -123,104 +123,103 @@ a {
   .sort-ctrl {
     margin: 20px 0;
   }
-}
 
-.pod {
-  margin-top: 1px;
-  cursor: pointer;
-  background: $listBgCol;
+  .pod {
+    margin-top: 1px;
+    cursor: pointer;
+    background: $listBgCol;
 
-  &:hover {
-    background: $listHoverBgCol;
+    &:hover {
+      background: $listHoverBgCol;
+    }
+
+    .part {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .title {
+      font-size: 1.4em;
+    }
+
+    .summary {
+      color: $primaryColor;
+      font-size: 0.7em;
+    }
+
+    .category {
+      color: $primaryColor;
+      font-size: 0.7em;
+    }
+
+    .dependencies {
+      color: $primaryColor;
+      font-size: 0.7em;
+    }
+
+    .version,
+    .stars,
+    .activity {
+      @include badge;
+    }
   }
 
-  .part {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
+  .pod-details {
+    .links {
+      background: $podLinksBg;
 
-  .title {
-    font-size: 1.4em;
-  }
+      a {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 0.9em;
+        letter-spacing: 0.2em;
 
-  .summary {
-    color: $primaryColor;
-    font-size: 0.7em;
-  }
-
-  .category {
-    color: $primaryColor;
-    font-size: 0.7em;
-  }
-
-  .dependencies {
-    color: $primaryColor;
-    font-size: 0.7em;
-  }
-
-  .version,
-  .stars,
-  .activity {
-    @include badge;
-  }
-}
-
-.pod-details {
-  .links {
-    background: $podLinksBg;
-
-    a {
-      padding-top: 5px;
-      padding-bottom: 5px;
-      text-align: center;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: 0.9em;
-      letter-spacing: 0.2em;
-
-      &,
-      & .glyphicon {
-        color: $podLinksEnabledTextCol;
-      }
-
-      &:not([href]) * {
-        color: $podLinksDisabledTextCol;
-      }
-
-      .glyphicon {
-        font-size: 0.8em;
-      }
-
-      &:hover {
-        &:not([href]) * {
-          cursor: default;
+        &,
+        & .glyphicon {
+          color: $podLinksEnabledTextCol;
         }
 
-        &[href] {
-          &, .glyphicon {
-            color: $podLinksHoverTextCol;
+        &:not([href]) * {
+          color: $podLinksDisabledTextCol;
+        }
+
+        .glyphicon {
+          font-size: 0.8em;
+        }
+
+        &:hover {
+          &:not([href]) * {
+            cursor: default;
+          }
+
+          &[href] {
+            &, .glyphicon {
+              color: $podLinksHoverTextCol;
+            }
           }
         }
       }
     }
+    
+    .dependencies {
+      margin-top: 0.5em;
+      margin-bottom: 2em;
+      font-size: 0.8em;
 
-  }
+      .dependency {
+        color: $dependencyTextCol;
 
-  .dependencies {
-    margin-top: 0.5em;
-    margin-bottom: 2em;
-    font-size: 0.8em;
-
-    .dependency {
-      color: $dependencyTextCol;
-
-      .version {
-        text-align: right;
+        .version {
+          text-align: right;
+        }
       }
-    }
 
-    .no-dependencies {
-      color: $noDependenciesTextCol;
+      .no-dependencies {
+        color: $noDependenciesTextCol;
+      }
     }
   }
 }
