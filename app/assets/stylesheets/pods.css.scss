@@ -79,6 +79,10 @@ a {
   }
 }
 
+.btn {
+  @include button();
+}
+
 .navbar {
   margin: 0;
   border: 0;
