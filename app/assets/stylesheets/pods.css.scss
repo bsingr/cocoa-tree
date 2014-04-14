@@ -39,31 +39,43 @@ a {
   }
 }
 
+@mixin button {
+  &,
+  &:hover {
+    color: $primaryColor;
+    background-color: desaturate(lighten($primaryColor, 40%), 30%);
+    border-color: desaturate(lighten($primaryColor, 40%), 30%);
+  }
+}
+
+@mixin activeButton {
+  &,
+  &:hover {
+    color: lighten($primaryColor, 50%);
+    background-color: lighten($primaryColor, 10%);
+    border-color: lighten($primaryColor, 10%);
+  }
+}
+
+@mixin disabledButton {
+  &,
+  &:hover {
+    background-color: lighten($primaryColor, 10%);
+    border-color: lighten($primaryColor, 10%);
+  }
+}
+
 .pagination {
   li > a {
-    &,
-    &:hover {
-      color: $primaryColor;
-      background-color: desaturate(lighten($primaryColor, 40%), 30%);
-      border-color: desaturate(lighten($primaryColor, 40%), 30%);
-    }
+    @include button();
   }
 
   li.disabled > a {
-    &,
-    &:hover {
-      color: lighten($primaryColor, 50%);
-      background-color: lighten($primaryColor, 10%);
-      border-color: lighten($primaryColor, 10%);
-    }
+    @include disabledButton();
   }
 
   li.active > a {
-    &,
-    &:hover {
-      background-color: lighten($primaryColor, 10%);
-      border-color: lighten($primaryColor, 10%);
-    }
+    @include activeButton();
   }
 }
 
