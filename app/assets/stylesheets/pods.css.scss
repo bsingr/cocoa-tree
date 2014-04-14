@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import "bootstrap";
 
 $primaryColor: #21610B;
 $secondaryColor: #DBA901;
@@ -17,6 +16,32 @@ $podLinksBg: $secondaryColor;
 $podLinksEnabledTextCol: #fff;
 $podLinksDisabledTextCol: lighten($secondaryColor, 10%);
 $podLinksHoverTextCol: lighten($secondaryColor, 30%);
+
+$btnTextCol: lighten($primaryColor, 10%);
+$btnBgCol: desaturate(lighten($primaryColor, 40%), 30%);
+$btnActiveTextCol: lighten($primaryColor, 50%);
+$btnActiveBgCol: lighten($primaryColor, 10%);
+
+// bootstrap variables
+
+$btn-default-col: $btnTextCol;
+$btn-default-bg: $btnBgCol;
+$btn-default-border: $btnBgCol;
+
+$pagination-color: $btnTextCol;
+$pagination-bg: $btnBgCol;
+$pagination-border: $btnBgCol;
+$pagination-hover-color: $btnTextCol;
+$pagination-hover-bg: $btnBgCol;
+$pagination-hover-border: $btnBgCol;
+$pagination-active-color: $btnActiveTextCol;
+$pagination-active-bg: $btnActiveBgCol;
+$pagination-active-border: $btnActiveBgCol;
+$pagination-disabled-color: $btnActiveTextCol;
+$pagination-disabled-bg: $btnActiveBgCol;
+$pagination-disabled-border: $btnActiveBgCol;
+
+@import "bootstrap";
 
 @mixin badge {
   text-align: center;
@@ -36,54 +61,6 @@ a {
 
   &:hover {
     color: $linkHoverCol;
-  }
-}
-
-@mixin button {
-  &,
-  &:hover {
-    color: $primaryColor;
-    background-color: desaturate(lighten($primaryColor, 40%), 30%);
-    border-color: desaturate(lighten($primaryColor, 40%), 30%);
-  }
-}
-
-@mixin activeButton {
-  &,
-  &:hover {
-    color: lighten($primaryColor, 50%);
-    background-color: lighten($primaryColor, 10%);
-    border-color: lighten($primaryColor, 10%);
-  }
-}
-
-@mixin disabledButton {
-  &,
-  &:hover {
-    background-color: lighten($primaryColor, 10%);
-    border-color: lighten($primaryColor, 10%);
-  }
-}
-
-.pagination {
-  li > a {
-    @include button();
-  }
-
-  li.disabled > a {
-    @include disabledButton();
-  }
-
-  li.active > a {
-    @include activeButton();
-  }
-}
-
-.btn {
-  @include button();
-
-  &.active {
-    @include activeButton();
   }
 }
 
