@@ -7,29 +7,29 @@
 $primaryColor: #21610B;
 $secondaryColor: #DBA901;
 
+$listBgCol: lighten($primaryColor, 60%);
+$listHoverBgCol: lighten($listBgCol, 5%);
+
 $headerTextCol: #ddd;
-$headBg: #eee;
-$headHoverBg: #ffffff;
 $linkCol: lighten(#21610B, 10%);
 $linkHoverCol: lighten($primaryColor, 10%);
-$emphasizeTextCol: #999;
-$lightTextCol: #bbb;
-$badgeTextCol: #aaa;
-$podBg: #ddd;
-$podLinksBg: #ccc;
+$podLinksBg: $secondaryColor;
 $podLinksEnabledTextCol: #fff;
-$podLinksDisabledTextCol: #ddd;
-$podLinksHoverTextCol: #999;
-$dependencyTextCol: #999;
-$noDependenciesTextCol: #ccc;
-$footerTextCol: #999;
+$podLinksDisabledTextCol: lighten($secondaryColor, 10%);
+$podLinksHoverTextCol: lighten($secondaryColor, 30%);
+$dependencyTextCol: $primaryColor;
+$noDependenciesTextCol: $primaryColor;
 
 @mixin badge {
   text-align: center;
   font-size: 1.5em;
 
-  &, .glyphicon {
-    color: $badgeTextCol;
+  & {
+    color: $primaryColor;
+  }
+
+  .glyphicon {
+    color: desaturate(lighten($primaryColor, 30%), 30%);
   }
 }
 
@@ -99,10 +99,10 @@ a {
     a {
       @extend .list-group-item;
       border: 0 none transparent;
-      background-color: lighten($primaryColor, 60%);
+      background-color: $listBgCol;
 
       &:hover {
-        background-color: lighten($primaryColor, 70%);
+        background-color: $listHoverBgCol;
       } 
     }
     .badge-yellow {
@@ -111,13 +111,19 @@ a {
   }
 }
 
+.pods-container {
+  @extend .container-fluid;
+  background: lighten($primaryColor, 20%);
+
+}
+
 .pod {
-  background: $headBg;
   margin-top: 1px;
   cursor: pointer;
+  background: $listBgCol;
 
   &:hover {
-    background: $headHoverBg;
+    background: $listHoverBgCol;
   }
 
   .part {
@@ -130,17 +136,17 @@ a {
   }
 
   .summary {
-    color: $emphasizeTextCol;
+    color: $primaryColor;
     font-size: 0.7em;
   }
 
   .category {
-    color: $lightTextCol;
+    color: $primaryColor;
     font-size: 0.7em;
   }
 
   .dependencies {
-    color: $lightTextCol;
+    color: $primaryColor;
     font-size: 0.7em;
   }
 

@@ -1,66 +1,66 @@
-.container
-  .row
-    h1
-      = @totalCount
-      '
-      | CocoaPods
-  .row
-    - for pod in @pods()
-      .row.pod data-toggle="collapse" data-target="#pod-#{pod.id}"
-        .col-xs-6.meta.part
-          .title
-            a name=pod.id = pod.name
-          .summary = pod.summary
-          .dependencies
-            = pod.dependencies.length
-            = " Dependencies"
-          .category = pod.category
-        .col-xs-2.version.part
-          .row
-            span.glyphicon.glyphicon-flag
-          .row
-            = pod.version
-        .col-xs-2.stars.part
-          .row
-            span.glyphicon.glyphicon-heart
-          .row
-            - if pod.stars > -1
-              = pod.stars
-        .col-xs-2.activity.part
-          .row
-            span.glyphicon.glyphicon-time
-          .row
-            time.timeago datetime=pod.pushed_at
-              = pod.pushed_at
-      .row.collapse.pod-details id="pod-#{pod.id}"
-        .col-xs-12.links
-          a.col-xs-4 href=pod.website_url
-            span.glyphicon.glyphicon-home
-            '
-            span Website
-          a.col-xs-4 href=pod.doc_url
-            span.glyphicon.glyphicon-book
-            '
-            span Doc
-          a.col-xs-4 href=pod.source_url
-            span.glyphicon.glyphicon-inbox
-            '
-            span Source
-        .col-xs-12.dependencies
-          - if !pod.dependencies.length
-            span.no-dependencies No Dependencies.
-          - else
-            - for dependency in pod.dependencies
-              .row.dependency
-                .col-xs-6.name
-                  a href="##{dependency.id}"
-                    = dependency.name
-                .col-xs-6.version
-                  = dependency.requirement
-          - if pod.dependents.length
-            - for dependent in pod.dependents
-              .col-xs-4.name
-                a href="##{dependent.id}"
-                  = dependent.name
-          - else
-            span.no-dependencies No Dependents
+.pods-container
+  .container
+    .row
+      h1
+        = @totalCount
+        '
+        | CocoaPods
+    .row
+      - for pod in @pods()
+        .row.pod data-toggle="collapse" data-target="#pod-#{pod.id}"
+          .col-xs-6.meta.part
+            .title
+              a name=pod.id = pod.name
+            .summary = pod.summary
+            .dependencies
+              = pod.dependencies.length
+              = " Dependencies"
+          .col-xs-2.version.part
+            .row
+              span.glyphicon.glyphicon-flag
+            .row
+              = pod.version
+          .col-xs-2.stars.part
+            .row
+              span.glyphicon.glyphicon-heart
+            .row
+              - if pod.stars > -1
+                = pod.stars
+          .col-xs-2.activity.part
+            .row
+              span.glyphicon.glyphicon-time
+            .row
+              time.timeago datetime=pod.pushed_at
+                = pod.pushed_at
+        .row.collapse.pod-details id="pod-#{pod.id}"
+          .col-xs-12.links
+            a.col-xs-4 href=pod.website_url
+              span.glyphicon.glyphicon-home
+              '
+              span Website
+            a.col-xs-4 href=pod.doc_url
+              span.glyphicon.glyphicon-book
+              '
+              span Doc
+            a.col-xs-4 href=pod.source_url
+              span.glyphicon.glyphicon-inbox
+              '
+              span Source
+          .col-xs-12.dependencies
+            - if !pod.dependencies.length
+              span.no-dependencies No Dependencies.
+            - else
+              - for dependency in pod.dependencies
+                .row.dependency
+                  .col-xs-6.name
+                    a href="##{dependency.id}"
+                      = dependency.name
+                  .col-xs-6.version
+                    = dependency.requirement
+            - if pod.dependents.length
+              - for dependent in pod.dependents
+                .col-xs-4.name
+                  a href="##{dependent.id}"
+                    = dependent.name
+            - else
+              span.no-dependencies No Dependents
