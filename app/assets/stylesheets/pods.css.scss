@@ -39,6 +39,34 @@ a {
   }
 }
 
+.pagination {
+  li > a {
+    &,
+    &:hover {
+      color: $primaryColor;
+      background-color: desaturate(lighten($primaryColor, 40%), 30%);
+      border-color: desaturate(lighten($primaryColor, 40%), 30%);
+    }
+  }
+
+  li.disabled > a {
+    &,
+    &:hover {
+      color: lighten($primaryColor, 50%);
+      background-color: lighten($primaryColor, 10%);
+      border-color: lighten($primaryColor, 10%);
+    }
+  }
+
+  li.active > a {
+    &,
+    &:hover {
+      background-color: lighten($primaryColor, 10%);
+      border-color: lighten($primaryColor, 10%);
+    }
+  }
+}
+
 .navbar {
   margin: 0;
   border: 0;
