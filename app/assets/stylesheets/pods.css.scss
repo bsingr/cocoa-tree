@@ -17,8 +17,6 @@ $podLinksBg: $secondaryColor;
 $podLinksEnabledTextCol: #fff;
 $podLinksDisabledTextCol: lighten($secondaryColor, 10%);
 $podLinksHoverTextCol: lighten($secondaryColor, 30%);
-$dependencyTextCol: $primaryColor;
-$noDependenciesTextCol: $primaryColor;
 
 @mixin badge {
   text-align: center;
@@ -168,6 +166,16 @@ a {
     }
   }
 
+  @mixin pod-relationships {
+    font-size: 0.8em;
+
+    h1 {
+      color: $primaryColor;
+      font-size: 1em;
+      font-weight: normal;
+    }
+  }
+
   .pod-details {
     .links {
       background: $podLinksBg;
@@ -209,20 +217,28 @@ a {
     }
 
     .dependencies {
-      margin-top: 0.5em;
-      margin-bottom: 2em;
-      font-size: 0.8em;
+      @include pod-relationships();
+      margin: 10px 0;
 
       .dependency {
-        color: $dependencyTextCol;
+        color: $primaryColor;
 
         .version {
           text-align: right;
         }
       }
+    }
 
-      .no-dependencies {
-        color: $noDependenciesTextCol;
+    .dependents {
+      @include pod-relationships();
+      margin-bottom: 10px;
+
+      .dependent {
+        color: $primaryColor;
+
+        .version {
+          text-align: right;
+        }
       }
     }
   }
