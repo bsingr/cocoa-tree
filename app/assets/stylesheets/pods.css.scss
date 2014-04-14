@@ -24,6 +24,10 @@ $btnActiveBgCol: lighten($primaryColor, 10%);
 
 // bootstrap variables
 
+$brand-primary: lighten($primaryColor, 20%);
+$component-active-color: $btnActiveTextCol;
+$component-active-bg: $btnActiveBgCol;
+
 $btn-default-col: $btnTextCol;
 $btn-default-bg: $btnBgCol;
 $btn-default-border: $btnBgCol;
@@ -53,14 +57,6 @@ $pagination-disabled-border: $btnActiveBgCol;
 
   .glyphicon {
     color: desaturate(lighten($primaryColor, 30%), 30%);
-  }
-}
-
-a {
-  color: $linkCol;
-
-  &:hover {
-    color: $linkHoverCol;
   }
 }
 
