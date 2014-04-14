@@ -42,9 +42,7 @@
               '
               span Source
           .col-xs-12.dependencies
-            - if !pod.dependencies.length
-              h1 This library depends on no other CocoaPod.
-            - else
+            - if pod.dependencies.length
               h1 This library depends on the following CocoaPods:
               - for dependency in pod.dependencies
                 .row.dependency
@@ -53,6 +51,8 @@
                       = dependency.name
                   .col-xs-6.version
                     = dependency.requirement
+            - else
+              h1 This library depends on no other CocoaPod.
           .col-xs-12.dependents
             - if pod.dependents.length
               h1 Other CocoaPods that depend on this library:
