@@ -124,6 +124,10 @@ a {
     margin: 20px 0;
   }
 
+  .pods {
+    padding-bottom: 20px;
+  }
+
   .pod {
     margin-top: 1px;
     cursor: pointer;
@@ -203,7 +207,7 @@ a {
         }
       }
     }
-    
+
     .dependencies {
       margin-top: 0.5em;
       margin-bottom: 2em;
