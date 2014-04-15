@@ -196,8 +196,16 @@ $pagination-disabled-border: $btnActiveBgCol;
     h1 {
       color: $primaryColor;
       margin: 5px 0;
-      font-size: 1em;
+      font-size: 1.2em;
       font-weight: normal;
+    }
+
+    a {
+      color: $primaryColor;
+    }
+
+    .version {
+      text-align: right;
     }
   }
 
@@ -246,11 +254,7 @@ $pagination-disabled-border: $btnActiveBgCol;
       margin: 10px 0;
 
       .dependency {
-        color: $primaryColor;
-
-        .version {
-          text-align: right;
-        }
+        
       }
     }
 
@@ -259,11 +263,7 @@ $pagination-disabled-border: $btnActiveBgCol;
       margin-bottom: 10px;
 
       .dependent {
-        color: $primaryColor;
-
-        .version {
-          text-align: right;
-        }
+        
       }
     }
   }
