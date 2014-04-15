@@ -1,3 +1,7 @@
 .about
-  h1 About CocoaTree
-  p Some...
+  .container
+    .row
+      .col-xs-12
+        h1 About CocoaTree
+        p Some...
+        

@@ -81,7 +81,11 @@ $pagination-disabled-border: $btnActiveBgCol;
 
 .empty {
   @extend .jumbotron;
-  
+}
+
+.about,
+.contribute {
+  background-color: white;
 }
 
 .categories-header-container {
