@@ -15,19 +15,21 @@ class @PodsList
   previous_offset: ->
     @index - @maxPerPage
   paginationPosition: (index) ->
+    innerPadding = 3
+    outerPadding = 1
     if index == @index
       'current'
     else if index > @index
-      barrier = (@index + 3*@maxPerPage)
-      if index < barrier || index > (@totalCount - 3*@maxPerPage)
+      barrier = (@index + innerPadding*@maxPerPage)
+      if index < barrier || index > (@totalCount - outerPadding*@maxPerPage)
         'within'
       else if index == barrier
         'barrier'
       else
         'without'
     else if index < @index
-      barrier = (@index - 3*@maxPerPage)
-      if index > barrier || index < 3*@maxPerPage
+      barrier = (@index - innerPadding*@maxPerPage)
+      if index > barrier || index < outerPadding*@maxPerPage
         'within'
       else if index == barrier
         'barrier'
