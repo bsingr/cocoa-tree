@@ -44,6 +44,8 @@ class @AppController
       @displayCategories()
     else if @current == 'pods'
       @displayPods()
+    else if @current == 'about'
+      @displayAbout()
   renderPods: (totalCount, pods) ->
     podsList = new PodsList(totalCount, pods, @index, @maxPerPage)
     @resetMainView()
@@ -85,6 +87,9 @@ class @AppController
         @renderCategoriesView(categories)
       else
         @renderEmptyView()
+  displayAbout: () ->
+    @current = 'about'
+    new AboutView().render()
   renderCategoriesView: (categories) ->
     @resetMainView()
     list = []

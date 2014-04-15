@@ -2,9 +2,12 @@
   routes:
     "reload": "reload"
     "": "categories"
+    "about": "about"
     "pods/:filter": "pods"
     "pods/:filter/:sort_by": "pods"
     "pods/:filter/:sort_by/:idx": "pods"
+  about: () ->
+    @appController.displayAbout()
   categories: () ->
     @appController.displayCategories()
   pods: (filter, sort_by, idx) ->
