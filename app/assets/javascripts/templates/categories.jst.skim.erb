@@ -2,15 +2,23 @@
   .container
     .categories-header-row
       .categories-header-col
-        img.pull-left src="<%= image_path('cocoa-tree-320.png') %>"
-        h1 CocoaTree
-        p
-          | The CocoaTree is a comprehensive catalog of open source Objective-C projects. In essence, it is based on the popular
-          ' 
-          a href="http://cocoapods.org" CocoaPods repository
-          | . Additionally, popularity and activity ratings are calculated using data provided by 
-          a href="https://github.com" GitHub
-          | .
+        .col-md-4
+          img src="<%= image_path('cocoa-tree-320.png') %>"
+        .col-md-8
+          p.alert.alert-warning
+            | We need your help to add missing categories. Just send us your
+            ' 
+            a href="https://github.com/cocoa-tree/categories"
+              | pull-request
+            | .
+          h1 CocoaTree
+          p
+            | The CocoaTree is a comprehensive catalog of open source Objective-C projects. In essence, it is based on the popular
+            ' 
+            a href="http://cocoapods.org" CocoaPods repository
+            | . Additionally, popularity and activity ratings are calculated using data provided by 
+            a href="https://github.com" GitHub
+            | .
 .categories-container
   .container
     .row
