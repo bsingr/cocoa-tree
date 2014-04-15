@@ -3,9 +3,12 @@
     "reload": "reload"
     "": "categories"
     "about": "about"
+    "contribute": "contribute"
     "pods/:filter": "pods"
     "pods/:filter/:sort_by": "pods"
     "pods/:filter/:sort_by/:idx": "pods"
+  contribute: () ->
+    @appController.displayContribute()
   about: () ->
     @appController.displayAbout()
   categories: () ->

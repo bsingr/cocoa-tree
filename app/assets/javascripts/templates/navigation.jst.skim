@@ -17,3 +17,6 @@
       ul.nav.navbar-nav.navbar-right
         li
           a href="#about" About
+        li
+          a href="#contribute" Contribute
+        
