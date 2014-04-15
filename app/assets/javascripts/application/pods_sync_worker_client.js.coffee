@@ -12,8 +12,6 @@ class @PodsSyncWorkerClient
       else if command == 'ready'      
         @worker.postMessage
           command: 'init'
-          index: podsIndex.index
-          seedsURL: podsIndex.seedsURL
         @loadPods()
   loadPods: () ->
     @progress = 0
