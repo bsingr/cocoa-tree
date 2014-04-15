@@ -2,5 +2,43 @@
   .container
     .row
       .col-xs-12
-        h1 Contribute to CocoaTree
-        p Some..
+        h1 Contribute
+      .col-md-6
+        h2 Categorization
+        p
+          | Categories are created specifically for CocoaTree. 
+        p
+          | Each CocoaPod is mapped to a category in a JSON object in 
+          a href='https://github.com/cocoa-tree/categories/blob/master/cocoa_pods_categories.json' cocoa_pods_categories.json
+          | .
+        table.table.table-condensed
+          tr
+            th Scheme
+            th Key: CocoaPod
+            th Value: Category
+          tr
+            th Example
+            td "500px-iOS-api"
+            td "proprietary_api"
+        p.alert.alert-warning
+          | Please help us to add missing categories. Just send us your 
+          a href='https://github.com/cocoa-tree/categories/edit/master/cocoa_pods_categories.json' pull-request
+          | .
+        p
+          | Changes within the categories file are automatically detected and are deployed within 24 hours.
+      .col-md-6
+        h2 Site and data sources
+        p
+          | This site is is built via 
+          a href='https://github.com/dpree/cocoa-tree' github.com/dpree/cocoa-tree
+          | . Basically, it is just a static site with a development environment based on 
+          a href='https://github.com/dpree/rails-zero#readme' RailsZero
+          | .
+        p
+          | The data is fetched from 
+          a href='https://github.com/cocoapods/Specs' CocoaPods Specs
+          |  and 
+          a href='https://developer.github.com/v3/' GitHub API
+          | . Synchronization and preprocessing is done via 
+          a href='https://github.com/dpree/cocoa-tree-seeds' github.com/dpree/cocoa-tree-seeds
+          | .
