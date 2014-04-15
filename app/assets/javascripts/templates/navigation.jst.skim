@@ -14,7 +14,3 @@
           a href="#" Categories
         li
           a href="#pods/all" All
-      ul.nav.navbar-nav.navbar-right
-        li
-          a href="#reload" Reload
-        
