@@ -25,6 +25,9 @@ $btnActiveBgCol: lighten($primaryColor, 10%);
 // bootstrap variables
 
 $brand-primary: lighten($primaryColor, 20%);
+
+$body-bg: $primaryColor;
+
 $component-active-color: $btnActiveTextCol;
 $component-active-bg: $btnActiveBgCol;
 
