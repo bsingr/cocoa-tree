@@ -3,25 +3,25 @@
     .row.pods
       - for pod in @pods()
         .row.pod data-toggle="collapse" data-target="#pod-#{pod.id}"
-          .col-xs-6.meta.part
+          .col-xs-12.col-md-6.meta.part
             .title
               a name=pod.id = pod.name
             .summary = pod.summary
             .dependencies
               = pod.dependencies.length
               = " Dependencies"
-          .col-xs-2.version.part
+          .col-xs-4.col-md-2.version.part
             .row
               span.glyphicon.glyphicon-flag
             .row
               = pod.version
-          .col-xs-2.stars.part
+          .col-xs-4.col-md-2.stars.part
             .row
               span.glyphicon.glyphicon-heart
             .row
               - if pod.stars > -1
                 = pod.stars
-          .col-xs-2.activity.part
+          .col-xs-4.col-md-2.activity.part
             .row
               span.glyphicon.glyphicon-time
             .row
