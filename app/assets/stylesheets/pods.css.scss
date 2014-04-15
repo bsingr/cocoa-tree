@@ -86,6 +86,10 @@ $pagination-disabled-border: $btnActiveBgCol;
 .about,
 .contribute {
   background-color: white;
+
+  .glyphicon-heart {
+    color: red;
+  }
 }
 
 .categories-header-container {
