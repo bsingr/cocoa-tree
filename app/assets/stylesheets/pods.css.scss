@@ -260,7 +260,7 @@ $pagination-disabled-border: $btnActiveBgCol;
 
     .dependents {
       @include pod-relationships();
-      margin-bottom: 10px;
+      margin-bottom: 20px;
 
       .dependent {
         
