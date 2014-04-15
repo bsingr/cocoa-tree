@@ -94,7 +94,7 @@ $pagination-disabled-border: $btnActiveBgCol;
     .categories-header-col {
       @extend .col-xs-12, .jumbotron;
       background-color: white;
-
+      padding-bottom: 0;
 
       img {
         margin-right: 20px;
