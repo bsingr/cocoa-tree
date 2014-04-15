@@ -3,7 +3,9 @@
   template: JST['templates/pods']
   el: '#main-view'
   render: (podsList) ->
-    html = @template podsList
+    html = @template
+      podsList: podsList
+      i18n: new I18n()
     @$el.append(html)
     @$el.find(".timeago").timeago()
     @

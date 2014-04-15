@@ -1,13 +1,15 @@
 .pods-container
   .container
     .row.pods
-      - for pod in @pods()
+      - for pod in @podsList.pods()
         .row.pod data-toggle="collapse" data-target="#pod-#{pod.id}"
           .col-xs-12.col-md-6.meta.part
             .title
               a name=pod.id = pod.name
             .summary = pod.summary
-            .dependencies
+            span.category
+              = @i18n.category pod.category
+            span.dependencies
               = pod.dependencies.length
               = " Dependencies"
           .col-xs-4.col-md-2.version.part
