@@ -21,12 +21,6 @@
             | .
 .categories-container
   .container
-    .row
-      .col-xs-12
-        h1
-          = @categories.length
-          '
-          | Categories
     .categories-row
       - columns = 3
       - categoriesPerColumn = parseInt(@categories.length / columns)
@@ -44,3 +38,9 @@
               span.badge.badge-yellow = category.get('podsCount')
             - i++
         - column++
+    .row
+      .col-xs-12
+        h1
+          = @categories.length
+          '
+          | Categories
