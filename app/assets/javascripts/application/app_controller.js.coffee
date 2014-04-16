@@ -1,6 +1,5 @@
 #= require lunr.js
 class @AppController
-  delegates: []
   current: null
   constructor: (podsSyncWorkerClient, store) ->
     @store = store
@@ -20,9 +19,6 @@ class @AppController
     logger.verbose 'AppController#didLoad', chunk_id
     @progressBar.update(@podsSyncWorkerClient.progress)
     @store.update pods
-    for delegate in @delegates
-      if delegate.podsDidChange
-        delegate.podsDidChange()
   didLoadAll: ->
     @store.updateCategories()
     @update()
