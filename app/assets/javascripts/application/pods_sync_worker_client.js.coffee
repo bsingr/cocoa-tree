@@ -12,6 +12,7 @@ class @PodsSyncWorkerClient
       else if command == 'ready'      
         @worker.postMessage
           command: 'init'
+      else if command == 'didInit'
         @loadPods()
   loadPods: () ->
     @progress = 0

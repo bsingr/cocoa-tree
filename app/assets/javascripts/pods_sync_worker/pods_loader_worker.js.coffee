@@ -8,13 +8,17 @@ class @PodsLoaderWorker
     command = e.data.command
     @logger.verbose 'PodsLoaderWorker.onmessage command', command
     if command == 'init'
-      new PodsIndex("/seeds").load (podsIndex) =>
-        @initLoader(podsIndex.seedsURL, podsIndex.index)
+      @initIndex()
     else if command == 'reload'
       @reload()
+  initIndex: () ->    
+    new PodsIndex("/seeds").load (podsIndex) =>
+      @initLoader(podsIndex.seedsURL, podsIndex.index)
   initLoader: (seedsURL, index) ->
     @podsLoader = new PodsLoader(seedsURL, index)
     @podsLoader.delegate = @
+    @worker.postMessage
+      command: 'didInit'
   reload: ->
     if @podsLoader
       @podsLoader.loadPods()
