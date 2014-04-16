@@ -78,5 +78,5 @@ class @PodsStore
     @db.values 'category'
   didUpdateCategories: () ->
     for delegate in @delegates
-      if delegate.didUpdateCategories
-        delegate.didUpdateCategories()
+      if delegate.storeDidUpdateCategories
+        delegate.storeDidUpdateCategories()

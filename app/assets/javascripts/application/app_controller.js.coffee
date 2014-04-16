@@ -12,7 +12,7 @@ class @AppController
     @renderEmptyView()
   loadPods: ->
     @seedsSyncController.sync()
-  didUpdate: () ->
+  storeDidUpdateCategories: () ->
     @update()
   seedsSyncControllerDidSync: () ->
     @update()
