@@ -6,6 +6,7 @@ class @AppController
     @store = store
     @store.delegates.push @
     @podsController = new PodsController(@store)
+    @categoriesController = new CategoriesController(@store)
     @progressBar = new PodsProgressBar()
     @podsSyncWorkerClient = podsSyncWorkerClient
     @podsSyncWorkerClient.delegate = @
@@ -57,9 +58,10 @@ class @AppController
         @renderEmptyView()
   displayCategories: () ->
     @current = 'categories'
-    @store.categories().then (categories) =>
+    @categoriesController.load().then (categories) =>
       if categories.length
-        @renderCategoriesView(categories)
+        @resetMainView()
+        @categoriesController.render(categories)
       else
         @renderEmptyView()
   displayAbout: () ->
@@ -68,12 +70,6 @@ class @AppController
   displayContribute: () ->
     @current = 'contribute'
     new ContributeView().render()
-  renderCategoriesView: (categories) ->
-    @resetMainView()
-    list = []
-    for c in categories
-      list.push(new Category(c))
-    (new CategoriesView).render(list)
   renderEmptyView: () ->
     @resetMainView()
     (new EmptyView).render()
