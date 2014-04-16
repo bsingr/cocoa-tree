@@ -12,7 +12,7 @@
 #= require_tree ./shared
 #= require_tree ./application
 
-@logger = new Logger('app', 'verbose')
+@logger = new Logger('app', 'info')
 ready = () ->
   podsStore = new PodsStore()
   podsSyncWorker = new Worker('<%= asset_path('seeds_worker.js') %>')
