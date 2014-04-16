@@ -2,7 +2,8 @@
 class @PodsProgressBar
   update: (factor) ->
     progress = factor * 100
-    @nanobar.go(progress)
+    if @nanobar
+      @nanobar.go(progress)
   start: ->
     $container = $('.progress-container').empty()
     @nanobar = new Nanobar
