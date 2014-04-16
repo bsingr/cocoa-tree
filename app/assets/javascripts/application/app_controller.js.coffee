@@ -17,7 +17,7 @@ class @AppController
   seedsSyncControllerDidSync: () ->
     @update()
   update: () ->
-    logger.verbose 'AppController#update'
+    logger.verbose 'AppController#update current=', @current
     if @current == 'categories'
       @displayCategories()
     else if @current == 'pods'
