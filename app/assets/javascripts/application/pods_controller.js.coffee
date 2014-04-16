@@ -5,8 +5,7 @@ class @PodsController
   sortAsc: false
   maxPerPage: 50
   count: 0
-  constructor: (appController, store) ->
-    @appController = appController
+  constructor: (store) ->
     @store = store
     @store.delegates.push @
   updateScope: (filterBy, sortBy, index) ->
@@ -31,7 +30,5 @@ class @PodsController
     countPromise.then (count) =>
       @count = count
     podsPromise.then (pods) =>
-      if pods.length
-        @appController.renderPods(@count, pods)
-      else
-        @appController.renderEmptyView()
+      count: @count
+      pods: pods

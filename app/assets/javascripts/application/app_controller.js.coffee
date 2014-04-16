@@ -5,7 +5,7 @@ class @AppController
   constructor: (podsSyncWorkerClient, store) ->
     @store = store
     @store.delegates.push @
-    @podsController = new PodsController(@, @store)
+    @podsController = new PodsController(@store)
     @progressBar = new PodsProgressBar()
     @podsSyncWorkerClient = podsSyncWorkerClient
     @podsSyncWorkerClient.delegate = @
@@ -54,7 +54,11 @@ class @AppController
   displayPods: ->
     logger.verbose 'AppController#update.start'
     @current = 'pods'
-    @podsController.display()
+    @podsController.display().then (result) =>
+      if result.pods.length
+        @renderPods(result.count, result.pods)
+      else
+        @renderEmptyView()
   displayCategories: () ->
     @current = 'categories'
     @store.categories().then (categories) =>
