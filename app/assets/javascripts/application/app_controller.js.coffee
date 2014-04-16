@@ -52,7 +52,6 @@ class @AppController
     @current = 'pods'
     @podsController.load().then (result) =>
       if result.pods.length
-        @resetMainView()
         @podsController.render(result.count, result.pods)
       else
         @renderEmptyView()
@@ -60,7 +59,6 @@ class @AppController
     @current = 'categories'
     @categoriesController.load().then (categories) =>
       if categories.length
-        @resetMainView()
         @categoriesController.render(categories)
       else
         @renderEmptyView()
@@ -71,7 +69,4 @@ class @AppController
     @current = 'contribute'
     new ContributeView().render()
   renderEmptyView: () ->
-    @resetMainView()
     (new EmptyView).render()
-  resetMainView: () ->
-    $('#main-view').empty()

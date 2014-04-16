@@ -33,6 +33,7 @@ class @PodsController
       count: @count
       pods: pods
   render: (totalCount, pods) ->
+    $('#main-view').empty()
     podsList = new PodsList(totalCount, pods, @index, @maxPerPage)
     (new PodsNavigationView).render(podsList, @sortBy, @filterBy)
     (new PodsView).render(podsList)
