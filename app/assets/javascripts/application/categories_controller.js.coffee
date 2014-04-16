@@ -8,3 +8,4 @@ class @CategoriesController
     for c in categories
       list.push(new Category(c))
     (new CategoriesView).render(list)
+  
