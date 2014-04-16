@@ -28,6 +28,11 @@
         p
           | Changes within the categories file are automatically detected and are deployed within 24 hours.
       .col-md-6
+        h2 Report an Issue
+        p
+          | Please file bugs, proposals or questions on  
+          a href='https://github.com/dpree/cocoa-tree/issues' this GitHub Issues page
+          | .
         h2 Site and data sources
         p
           | This site is is built via 
