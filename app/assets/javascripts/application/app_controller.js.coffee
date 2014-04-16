@@ -2,15 +2,10 @@
 class @AppController
   delegates: []
   current: null
-  index: null
-  filterBy: "all"
-  sortBy: "stars"
-  sortAsc: false
-  maxPerPage: 50
-  count: 0
   constructor: (podsSyncWorkerClient, store) ->
     @store = store
     @store.delegates.push @
+    @podsController = new PodsController(@, @store)
     @progressBar = new PodsProgressBar()
     @podsSyncWorkerClient = podsSyncWorkerClient
     @podsSyncWorkerClient.delegate = @
@@ -49,39 +44,17 @@ class @AppController
     else if @current == 'contribute'
       @displayContribute()
   renderPods: (totalCount, pods) ->
-    podsList = new PodsList(totalCount, pods, @index, @maxPerPage)
+    podsList = new PodsList(totalCount, pods, @podsController.index, @podsController.maxPerPage)
     @resetMainView()
-    (new PodsNavigationView).render(podsList, @sortBy, @filterBy)
+    (new PodsNavigationView).render(podsList, @podsController.sortBy, @podsController.filterBy)
     (new PodsView).render(podsList)
   displayPodsAndUpdateScope: (index, filterBy, sortBy) ->
-    @current = 'pods'
-    @index = index
-    @filterBy = filterBy
-    @sortBy = sortBy
-    if sortBy == 'stars'
-      @sortAsc = false
-    else if sortBy == 'pushed_at'
-      @sortAsc = false
-    else
-      @sortAsc = true
+    @podsController.updateScope(filterBy, sortBy, index)
     @displayPods()
   displayPods: ->
     logger.verbose 'AppController#update.start'
-    countPromise = null
-    podsPromise = null
-    if @filterBy == 'all'
-      countPromise = @store.countForAll()
-      podsPromise = @store.readFromAll(@sortBy, @sortAsc, @index, @maxPerPage)
-    else
-      countPromise = @store.countForCategory(@filterBy)
-      podsPromise = @store.readFromCategory(@filterBy, @sortBy, @sortAsc, @index, @maxPerPage)
-    countPromise.then (count) =>
-      @count = count
-    podsPromise.then (pods) =>
-      if pods.length
-        @renderPods(@count, pods)
-      else
-        @renderEmptyView()
+    @current = 'pods'
+    @podsController.display()
   displayCategories: () ->
     @current = 'categories'
     @store.categories().then (categories) =>
