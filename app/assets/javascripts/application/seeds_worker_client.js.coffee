@@ -1,4 +1,4 @@
-class @PodsSyncWorkerClient
+class @SeedsWorkerClient
   delegates: []
   constructor: (worker, podsIndex) ->
     @worker = worker

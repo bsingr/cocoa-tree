@@ -1,12 +1,12 @@
 #= require lunr.js
 class @AppController
   current: null
-  constructor: (podsSyncWorkerClient, store) ->
+  constructor: (seedsWorkerClient, store) ->
     @store = store
     @store.delegates.push @
     @podsController = new PodsController(@store)
     @categoriesController = new CategoriesController(@store)
-    @seedsSyncController = new SeedsSyncController(@store, podsSyncWorkerClient)
+    @seedsSyncController = new SeedsSyncController(@store, seedsWorkerClient)
     navigation = new Navigation()
     navigation.render()
     @renderEmptyView()
