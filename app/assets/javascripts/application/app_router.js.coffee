@@ -27,6 +27,7 @@
     @appController.displayPodsAndUpdateScope(parseInt(idx), filter, sort_by)
   reload: ->
     @appController.loadPods()
+    @navigate('/', true)
   pageview: (page) ->
     if window.ga
       window.ga 'send', 'pageview', page
