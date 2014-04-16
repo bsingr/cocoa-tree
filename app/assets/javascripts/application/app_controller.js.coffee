@@ -52,7 +52,7 @@ class @AppController
     @podsController.updateScope(filterBy, sortBy, index)
     @displayPods()
   displayPods: ->
-    logger.verbose 'AppController#update.start'
+    logger.verbose 'AppController#displayPods'
     @current = 'pods'
     @podsController.display().then (result) =>
       if result.pods.length
