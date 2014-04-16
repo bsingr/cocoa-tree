@@ -7,6 +7,7 @@ class @SeedsSyncController
     @podsSyncWorkerClient = podsSyncWorkerClient
     @podsSyncWorkerClient.delegate = @
   sync: () ->
+    logger.verbose 'SeedsController#sync'
     @podsSyncWorkerClient.loadPods()
     @progressBar.start()
   didLoad: (chunk_id, pods) ->
@@ -18,4 +19,3 @@ class @SeedsSyncController
     @store.updateCategories()
     if @delegate
       @delegate.seedsSyncControllerDidSync()
-      
