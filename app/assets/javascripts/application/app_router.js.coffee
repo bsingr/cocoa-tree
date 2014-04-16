@@ -28,5 +28,5 @@
   reload: ->
     @appController.loadPods()
   pageview: (page) ->
-    if ga
-      ga 'send', 'pageview', page
+    if window.ga
+      window.ga 'send', 'pageview', page
