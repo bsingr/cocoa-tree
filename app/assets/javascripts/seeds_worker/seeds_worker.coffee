@@ -4,6 +4,8 @@ class @SeedsWorker
     @worker = worker
     @worker.onmessage = (e) =>
       @.onmessage(e)
+    @worker.postMessage
+      command: 'ready'
   onmessage: (e) ->
     command = e.data.command
     @logger.verbose 'PodsLoaderWorker.onmessage command', command
