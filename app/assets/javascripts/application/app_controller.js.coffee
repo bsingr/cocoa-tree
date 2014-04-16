@@ -51,7 +51,8 @@ class @AppController
     @current = 'pods'
     @podsController.display().then (result) =>
       if result.pods.length
-        @renderPods(result.count, result.pods)
+        @resetMainView()
+        @podsController.render(result.count, result.pods)
       else
         @renderEmptyView()
   displayCategories: () ->
@@ -67,11 +68,6 @@ class @AppController
   displayContribute: () ->
     @current = 'contribute'
     new ContributeView().render()
-  renderPods: (totalCount, pods) ->
-    podsList = new PodsList(totalCount, pods, @podsController.index, @podsController.maxPerPage)
-    @resetMainView()
-    (new PodsNavigationView).render(podsList, @podsController.sortBy, @podsController.filterBy)
-    (new PodsView).render(podsList)
   renderCategoriesView: (categories) ->
     @resetMainView()
     list = []

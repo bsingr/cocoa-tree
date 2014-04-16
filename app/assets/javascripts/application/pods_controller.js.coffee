@@ -32,3 +32,7 @@ class @PodsController
     podsPromise.then (pods) =>
       count: @count
       pods: pods
+  render: (totalCount, pods) ->
+    podsList = new PodsList(totalCount, pods, @index, @maxPerPage)
+    (new PodsNavigationView).render(podsList, @sortBy, @filterBy)
+    (new PodsView).render(podsList)
