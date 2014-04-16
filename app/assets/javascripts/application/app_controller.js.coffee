@@ -43,11 +43,6 @@ class @AppController
       @displayAbout()
     else if @current == 'contribute'
       @displayContribute()
-  renderPods: (totalCount, pods) ->
-    podsList = new PodsList(totalCount, pods, @podsController.index, @podsController.maxPerPage)
-    @resetMainView()
-    (new PodsNavigationView).render(podsList, @podsController.sortBy, @podsController.filterBy)
-    (new PodsView).render(podsList)
   displayPodsAndUpdateScope: (index, filterBy, sortBy) ->
     @podsController.updateScope(filterBy, sortBy, index)
     @displayPods()
@@ -72,6 +67,11 @@ class @AppController
   displayContribute: () ->
     @current = 'contribute'
     new ContributeView().render()
+  renderPods: (totalCount, pods) ->
+    podsList = new PodsList(totalCount, pods, @podsController.index, @podsController.maxPerPage)
+    @resetMainView()
+    (new PodsNavigationView).render(podsList, @podsController.sortBy, @podsController.filterBy)
+    (new PodsView).render(podsList)
   renderCategoriesView: (categories) ->
     @resetMainView()
     list = []
