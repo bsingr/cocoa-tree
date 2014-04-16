@@ -6,23 +6,15 @@ class @AppController
     @store.delegates.push @
     @podsController = new PodsController(@store)
     @categoriesController = new CategoriesController(@store)
-    @progressBar = new PodsProgressBar()
-    @podsSyncWorkerClient = podsSyncWorkerClient
-    @podsSyncWorkerClient.delegate = @
+    @seedsSyncController = new SeedsSyncController(@store, podsSyncWorkerClient)
     navigation = new Navigation()
     navigation.render()
     @renderEmptyView()
   loadPods: ->
-    @podsSyncWorkerClient.loadPods()
-    @progressBar.start()
-  didLoad: (chunk_id, pods) ->
-    logger.verbose 'AppController#didLoad', chunk_id
-    @progressBar.update(@podsSyncWorkerClient.progress)
-    @store.update pods
-  didLoadAll: ->
-    @store.updateCategories()
-    @update()
+    @seedsSyncController.sync()
   didUpdate: () ->
+    @update()
+  seedsSyncControllerDidSync: () ->
     @update()
   update: () ->
     logger.verbose 'AppController#update'
