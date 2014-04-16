@@ -8,7 +8,7 @@ class @SeedsWorker
       command: 'ready'
   onmessage: (e) ->
     command = e.data.command
-    @logger.verbose 'PodsLoaderWorker.onmessage command', command
+    @logger.verbose 'SeedsWorker.onmessage command', command
     if command == 'init'
       @initIndex()
     else if command == 'reload'
@@ -25,13 +25,13 @@ class @SeedsWorker
     if @podsLoader
       @podsLoader.loadPods()
   didLoad: (id, pods) ->
-    @logger.verbose 'PodsLoaderWorker.didLoad', id
+    @logger.verbose 'SeedsWorker.didLoad', id
     @worker.postMessage
       command: 'didLoad'
       id: id
       pods: pods
       progress: @podsLoader.progress()
   didLoadAll: () ->
-    @logger.verbose 'PodsLoaderWorker.didLoadAll'
+    @logger.verbose 'SeedsWorker.didLoadAll'
     @worker.postMessage
       command: 'didLoadAll'
