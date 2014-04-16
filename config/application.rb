@@ -26,7 +26,7 @@ module Cocoatree
     # config.i18n.default_locale = :de
 
     config.assets.precompile += %w[
-      pods_sync_worker.js
+      seeds_worker.js
       *.png
     ]
   end

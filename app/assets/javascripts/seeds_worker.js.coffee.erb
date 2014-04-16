@@ -1,9 +1,9 @@
 #= require msgpack-js.js
 #= require shared.js
-#= require_tree ./pods_sync_worker
+#= require_tree ./seeds_worker
 
 logger = new Logger('app', 'info')
-podsLoaderWorker = new PodsLoaderWorker(@, logger)
+podsLoaderWorker = new SeedsWorker(@, logger)
 @.postMessage
   command: 'ready'
   

@@ -1,4 +1,4 @@
-#= depend_on_asset pods_sync_worker.js
+#= depend_on_asset seeds_worker.js
 #= require bluebird.js
 #= require msgpack-js.js
 #= require jquery.js
@@ -15,7 +15,7 @@
 @logger = new Logger('app', 'verbose')
 ready = () ->
   podsStore = new PodsStore()
-  podsSyncWorker = new Worker('<%= asset_path('pods_sync_worker.js') %>')
+  podsSyncWorker = new Worker('<%= asset_path('seeds_worker.js') %>')
   podsSyncWorkerClient = new PodsSyncWorkerClient(podsSyncWorker)
   appController = new AppController(podsSyncWorkerClient, podsStore)
   router = new AppRouter()

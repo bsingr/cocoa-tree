@@ -1,4 +1,4 @@
-class @PodsLoaderWorker
+class @SeedsWorker
   constructor: (worker, logger) ->
     @logger = logger
     @worker = worker
