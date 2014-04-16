@@ -18,7 +18,7 @@ class @PodsController
       @sortAsc = false
     else
       @sortAsc = true
-  display: () ->
+  load: () ->
     countPromise = null
     podsPromise = null
     if @filterBy == 'all'

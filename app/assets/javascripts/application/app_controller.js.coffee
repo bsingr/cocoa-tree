@@ -49,7 +49,7 @@ class @AppController
   displayPods: ->
     logger.verbose 'AppController#displayPods'
     @current = 'pods'
-    @podsController.display().then (result) =>
+    @podsController.load().then (result) =>
       if result.pods.length
         @resetMainView()
         @podsController.render(result.count, result.pods)
