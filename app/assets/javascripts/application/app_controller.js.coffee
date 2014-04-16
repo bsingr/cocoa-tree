@@ -10,10 +10,6 @@ class @AppController
     @progressBar = new PodsProgressBar()
     @podsSyncWorkerClient = podsSyncWorkerClient
     @podsSyncWorkerClient.delegate = @
-    @search = lunr ->
-      @field('name', {boost: 10})
-      @field('summary')
-      @ref('name')
     navigation = new Navigation()
     navigation.render()
     @renderEmptyView()
@@ -24,8 +20,6 @@ class @AppController
     logger.verbose 'AppController#didLoad', chunk_id
     @progressBar.update(@podsSyncWorkerClient.progress)
     @store.update pods
-    for pod in pods
-      @search.add pod
     for delegate in @delegates
       if delegate.podsDidChange
         delegate.podsDidChange()
