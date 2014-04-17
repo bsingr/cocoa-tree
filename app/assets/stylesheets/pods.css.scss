@@ -26,7 +26,7 @@ $btnActiveBgCol: lighten($primaryColor, 10%);
 
 $brand-primary: lighten($primaryColor, 20%);
 
-$body-bg: $primaryColor;
+$body-bg: darken($primaryColor, 10%);
 
 $component-active-color: $btnActiveTextCol;
 $component-active-bg: $btnActiveBgCol;
@@ -311,8 +311,7 @@ $pagination-disabled-border: $btnActiveBgCol;
 
 .footer-container {
   @extend .container-fluid;
-
-  background-color: darken($primaryColor, 10%);
+  height: 100px;
 
   .footer-row {
     @extend .row;
