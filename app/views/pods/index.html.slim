@@ -3,11 +3,14 @@
 #main-view
 .footer-container
   .footer-row
-    .footer-col
-      | Copyright &copy; 2013 - #{Time.now.year} Jens Bissinger
-      '  | 
+    .col-md-4
+      h1 Data
       a href="#reload" Reload
-      '  | 
+    .col-md-4
+      h1 License
+      | Copyright &copy; 2013 - #{Time.now.year} Jens Bissinger
+    .col-md-4
+      h1 Contribute
       a href='https://github.com/dpree/cocoa-tree/issues' Report an Issue
-      '  |
+      br
       a href='https://github.com/cocoa-tree/categories/edit/master/cocoa_pods_categories.json' Add a Category
