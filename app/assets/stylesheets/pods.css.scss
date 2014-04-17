@@ -85,11 +85,14 @@ $pagination-disabled-border: $btnActiveBgCol;
 
 .empty {
   @extend .jumbotron;
+
+  padding-bottom: 50px;
 }
 
 .about,
 .contribute {
   background-color: white;
+  padding-bottom: 50px;
 
   .glyphicon-heart {
     color: red;
