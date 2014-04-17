@@ -49,7 +49,7 @@
               - for dependency in pod.dependencies
                 .dependency
                   .col-xs-6.name
-                    a href="#pods/#{dependency.id}"
+                    a href="#pod/#{dependency.name}"
                       = dependency.name
                   .col-xs-6.version
                     = dependency.requirement
@@ -60,7 +60,7 @@
               h1 Other CocoaPods that depend on this library:
               - for dependent in pod.dependents
                 .col-xs-4.name
-                  a href="##{dependent.id}"
+                  a href="#pod/#{dependent.name}"
                     = dependent.name
             - else
               h1 No other CocoaPods depends on this library.
