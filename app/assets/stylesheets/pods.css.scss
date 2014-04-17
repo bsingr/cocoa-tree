@@ -311,7 +311,7 @@ $pagination-disabled-border: $btnActiveBgCol;
 
 .footer-container {
   @extend .container-fluid;
-  height: 100px;
+  min-height: 100px;
 
   .footer-row {
     @extend .row;
