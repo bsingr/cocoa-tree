@@ -49,6 +49,9 @@ class @PodsStore
     else
       logger.verbose 'sortBy='+sortBy
       @db.values 'pod', sortBy, null, limit, offset, !asc
+  readPod: (name) ->
+    keyRange = ydn.db.KeyRange.only(name)
+    @db.values 'pod', keyRange
   writeObjects: (pods) ->
     @db.put('pod', pods)
   countForCategory: (category) ->

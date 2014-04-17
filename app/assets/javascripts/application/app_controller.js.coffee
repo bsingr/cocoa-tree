@@ -29,6 +29,15 @@ class @AppController
   displayPodsAndUpdateScope: (index, filterBy, sortBy) ->
     @podsController.updateScope(filterBy, sortBy, index)
     @displayPods()
+  displayPod: (id) ->
+    logger.verbose 'AppController#displayPod', id
+    @store.readPod(id).then (pods) ->
+      if pods.length
+        $('#main-view').empty()
+        podsList = new PodsList(1, pods, 0, 1)
+        (new PodsView).render(podsList)
+      else
+        renderEmptyView()
   displayPods: ->
     logger.verbose 'AppController#displayPods'
     @current = 'pods'

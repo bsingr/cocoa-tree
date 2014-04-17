@@ -7,6 +7,7 @@
     "pods/:filter": "pods"
     "pods/:filter/:sort_by": "pods"
     "pods/:filter/:sort_by/:idx": "pods"
+    "pod/:id": "pod"
   contribute: () ->
     @pageview '/contribute'
     @appController.displayContribute()
@@ -25,6 +26,9 @@
       idx = 0
     @pageview '/pods/'+filter+'/'+sort_by+'/'+idx
     @appController.displayPodsAndUpdateScope(parseInt(idx), filter, sort_by)
+  pod: (id) ->
+    @pageview '/pod/'+id
+    @appController.displayPod(id)
   reload: ->
     @appController.loadPods()
     @navigate('/', true)
