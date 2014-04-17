@@ -13,14 +13,7 @@
               a href='#pods/#{@filterBy}' = new I18n().category(@filterBy)
               ' 
               .badge = @podsList.totalCount
-      .col-md-3
-        .btn-group.sort-ctrl
-          - for sortBy in @sortByList
-            - if sortBy.name == @sortBy
-              a.btn.btn-default.active href="#pods/#{@filterBy}/#{sortBy.name}" = sortBy.displayName
-            - else
-              a.btn.btn-default href="#pods/#{@filterBy}/#{sortBy.name}" = sortBy.displayName
-      .col-md-5
+      .col-md-8
         ul.pagination.pagination-sm
           - if @podsList.has_prev()
             li
@@ -51,3 +44,9 @@
           - else
             li.disabled
               a &raquo;
+        .btn-group.sort-ctrl
+          - for sortBy in @sortByList
+            - if sortBy.name == @sortBy
+              a.btn.btn-default.active href="#pods/#{@filterBy}/#{sortBy.name}" = sortBy.displayName
+            - else
+              a.btn.btn-default href="#pods/#{@filterBy}/#{sortBy.name}" = sortBy.displayName

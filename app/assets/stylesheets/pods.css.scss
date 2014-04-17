@@ -161,7 +161,13 @@ $pagination-disabled-border: $btnActiveBgCol;
   .pods-container-head {
     @extend .container;
     .sort-ctrl {
-      margin: 20px 0;
+      @extend .pull-right;
+      margin-top: 18px;
+      margin-right: 20px;
+    }
+
+    .pagination {
+      @extend .pull-right;
     }
 
     .breadcrumb {
