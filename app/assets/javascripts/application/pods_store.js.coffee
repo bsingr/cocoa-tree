@@ -20,7 +20,7 @@ class @PodsStore
       keyPath: 'name'
       type: 'TEXT'
       indexes: []
-    @db = new ydn.db.Storage 'pods', stores: [podsSchema, categoriesSchema]
+    @db = new ydn.db.Storage 'seeds', stores: [podsSchema, categoriesSchema]
   update: (new_records) ->
     @writeObjects(new_records)
   # this reads only pods within one category and must implement sorting and
