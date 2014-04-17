@@ -1,8 +1,8 @@
 # Teaspoon includes some support files, but you can use anything from your own support path too.
 # require support/expect
 # require support/sinon
-# require support/your-support-file
 #= require support/chai
+#= require support/chai-as-promised.js
 
 #
 # PhantomJS (Teaspoons default driver) doesn't have support for Function.prototype.bind, which has caused confusion. Use

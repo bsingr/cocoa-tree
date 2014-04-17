@@ -1,9 +1,9 @@
 #= require ydn.js
 class @SeedsStore
   delegates: []
-  constructor: () ->
-    @initDb()
-  initDb: () ->
+  constructor: (name='seeds') ->
+    @initDb(name)
+  initDb: (name) ->
     podsSchema = 
       name: 'pod'
       keyPath: 'name'
@@ -20,7 +20,7 @@ class @SeedsStore
       keyPath: 'name'
       type: 'TEXT'
       indexes: []
-    @db = new ydn.db.Storage 'seeds', stores: [podsSchema, categoriesSchema]
+    @db = new ydn.db.Storage name, stores: [podsSchema, categoriesSchema]
   update: (new_records) ->
     @writeObjects(new_records)
   # this reads only pods within one category and must implement sorting and
