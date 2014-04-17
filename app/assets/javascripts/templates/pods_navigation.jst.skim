@@ -7,7 +7,7 @@
             a href='#pods/all' All
           - if @filterBy != 'all'
             li
-              a href='#pods/#{@filterBy}' = @filterBy
+              a href='#pods/#{@filterBy}' = new I18n().category(@filterBy)
         h1
           = @podsList.totalCount
           '
