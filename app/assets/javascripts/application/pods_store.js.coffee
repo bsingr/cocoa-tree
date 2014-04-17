@@ -71,6 +71,7 @@ class @PodsStore
       categoriesArray = []
       for categoryName, category of categories
         categoriesArray.push category
+      @db.clear('category')
       @db.put('category', categoriesArray)
       @didUpdateCategories()
       categories
