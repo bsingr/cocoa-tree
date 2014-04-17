@@ -2,6 +2,12 @@
   .container
     .row
       .col-md-4
+        ol.breadcrumb
+          li
+            a href='#pods/all' All
+          - if @filterBy != 'all'
+            li
+              a href='#pods/#{@filterBy}' = @filterBy
         h1
           = @podsList.totalCount
           '
