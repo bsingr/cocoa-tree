@@ -35,6 +35,10 @@ $btn-default-col: $btnTextCol;
 $btn-default-bg: $btnBgCol;
 $btn-default-border: $btnBgCol;
 
+$breadcrumb-color: $btnTextCol;
+$breadcrumb-active-color: darken($btnTextCol, 20%);
+$breadcrumb-bg: $btnBgCol;
+
 $pagination-color: $btnTextCol;
 $pagination-bg: $btnBgCol;
 $pagination-border: $btnBgCol;
@@ -156,6 +160,13 @@ $pagination-disabled-border: $btnActiveBgCol;
 
   .sort-ctrl {
     margin: 20px 0;
+  }
+
+  .breadcrumb {
+    margin-top: 20px;
+    a {
+      color: $btnTextCol;
+    }
   }
 
   .pods {
