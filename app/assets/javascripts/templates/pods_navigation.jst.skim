@@ -5,13 +5,14 @@
         ol.breadcrumb
           li
             a href='#pods/all' All
+            - if @filterBy == 'all'
+              ' 
+              .badge = @podsList.totalCount
           - if @filterBy != 'all'
             li
               a href='#pods/#{@filterBy}' = new I18n().category(@filterBy)
-        h1
-          = @podsList.totalCount
-          '
-          | CocoaPods
+              ' 
+              .badge = @podsList.totalCount
       .col-md-3
         .btn-group.sort-ctrl
           - for sortBy in @sortByList
