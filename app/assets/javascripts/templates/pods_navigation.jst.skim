@@ -1,5 +1,5 @@
 .pods-container
-  .container
+  .pods-container-head
     .row
       .col-md-4
         ol.breadcrumb

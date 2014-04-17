@@ -158,22 +158,26 @@ $pagination-disabled-border: $btnActiveBgCol;
   @extend .container-fluid;
   background: lighten($primaryColor, 20%);
 
-  .sort-ctrl {
-    margin: 20px 0;
-  }
-
-  .breadcrumb {
-    margin-top: 20px;
-    a {
-      color: $btnTextCol;
+  .pods-container-head {
+    @extend .container;
+    .sort-ctrl {
+      margin: 20px 0;
     }
 
-    .badge {
-      background-color: lighten($btnActiveBgCol, 10%);
+    .breadcrumb {
+      margin-top: 20px;
+      a {
+        color: $btnTextCol;
+      }
+
+      .badge {
+        background-color: lighten($btnActiveBgCol, 10%);
+      }
     }
   }
 
   .pods {
+    @extend .container;
     padding-bottom: 20px;
   }
 
