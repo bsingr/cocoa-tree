@@ -14,10 +14,10 @@
 
 @logger = new Logger('app', 'info')
 ready = () ->
-  podsStore = new PodsStore()
+  seedsStore = new SeedsStore()
   seedsWorker = new Worker('<%= asset_path('seeds_worker.js') %>')
   seedsWorkerClient = new SeedsWorkerClient(seedsWorker)
-  appController = new AppController(seedsWorkerClient, podsStore)
+  appController = new AppController(seedsWorkerClient, seedsStore)
   router = new AppRouter()
   router.appController = appController
   Backbone.history.start()

@@ -1,5 +1,5 @@
 #= require ydn.js
-class @PodsStore
+class @SeedsStore
   delegates: []
   constructor: () ->
     @initDb()
