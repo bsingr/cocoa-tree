@@ -7,7 +7,7 @@
             .title
               a name=pod.id = pod.name
             .summary = pod.summary
-            span.category
+            a.category href='#pods/#{pod.category}'
               = @i18n.category pod.category
             span.dependencies
               = pod.dependencies.length
