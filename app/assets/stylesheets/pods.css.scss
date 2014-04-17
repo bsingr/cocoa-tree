@@ -167,6 +167,10 @@ $pagination-disabled-border: $btnActiveBgCol;
     a {
       color: $btnTextCol;
     }
+
+    .badge {
+      background-color: lighten($btnActiveBgCol, 10%);
+    }
   }
 
   .pods {
