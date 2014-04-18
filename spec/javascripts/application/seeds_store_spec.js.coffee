@@ -44,55 +44,57 @@ describe 'PodsList', ->
       expect(@subject.update(listByName()))
         .eventually.notify(done)
     describe 'name', ->
-      sortBy = 'name'
+      beforeEach () ->
+        @sortBy = 'name'
       describe 'asc', ->
         list = listByName()
         sortOrderAsc = true
         it 'from the beginning', (done) ->
-          expect(@subject.readFromAll(sortBy, sortOrderAsc, 0, 1)).eventually
+          expect(@subject.readFromAll(@sortBy, sortOrderAsc, 0, 1)).eventually
             .eql([list[0]]).notify(done)
         it 'in the middle', (done) ->
-          expect(@subject.readFromAll(sortBy, sortOrderAsc, 1, 2)).eventually
+          expect(@subject.readFromAll(@sortBy, sortOrderAsc, 1, 2)).eventually
             .eql([list[1], list[2]]).notify(done)
         it 'beyond scope', (done) ->
-          expect(@subject.readFromAll(sortBy, sortOrderAsc, 5, 2)).eventually
+          expect(@subject.readFromAll(@sortBy, sortOrderAsc, 5, 2)).eventually
             .eql([list[5]]).notify(done)
       describe 'desc', ->
         list = listByName().reverse()
         sortOrderAsc = false
         it 'from the beginning', (done) ->
-          expect(@subject.readFromAll(sortBy, sortOrderAsc, 0, 1)).eventually
+          expect(@subject.readFromAll(@sortBy, sortOrderAsc, 0, 1)).eventually
             .eql([list[0]]).notify(done)
         it 'in the middle', (done) ->
-          expect(@subject.readFromAll(sortBy, sortOrderAsc, 1, 2)).eventually
+          expect(@subject.readFromAll(@sortBy, sortOrderAsc, 1, 2)).eventually
             .eql([list[1], list[2]]).notify(done)
         it 'beyond scope', (done) ->
-          expect(@subject.readFromAll(sortBy, sortOrderAsc, 5, 2)).eventually
+          expect(@subject.readFromAll(@sortBy, sortOrderAsc, 5, 2)).eventually
             .eql([list[5]]).notify(done)
     describe 'stars', ->
-      sortBy = 'stars'
+      beforeEach () ->
+        @sortBy = 'stars'
       describe 'asc', ->
         list = listByStars()
         sortOrderAsc = true
         it 'from the beginning', (done) ->
-          expect(@subject.readFromAll(sortBy, sortOrderAsc, 0, 1)).eventually
+          expect(@subject.readFromAll(@sortBy, sortOrderAsc, 0, 1)).eventually
             .eql([list[0]]).notify(done)
         it 'in the middle', (done) ->
-          expect(@subject.readFromAll(sortBy, sortOrderAsc, 1, 2)).eventually
+          expect(@subject.readFromAll(@sortBy, sortOrderAsc, 1, 2)).eventually
             .eql([list[1], list[2]]).notify(done)
         it 'beyond scope', (done) ->
-          expect(@subject.readFromAll(sortBy, sortOrderAsc, 5, 2)).eventually
+          expect(@subject.readFromAll(@sortBy, sortOrderAsc, 5, 2)).eventually
             .eql([list[5]]).notify(done)
       describe 'desc', ->
         list = listByStars().reverse()
         sortOrderAsc = false
         it 'from the beginning', (done) ->
-          expect(@subject.readFromAll(sortBy, sortOrderAsc, 0, 1)).eventually
+          expect(@subject.readFromAll(@sortBy, sortOrderAsc, 0, 1)).eventually
             .eql([list[0]]).notify(done)
         it 'in the middle', (done) ->
-          expect(@subject.readFromAll(sortBy, sortOrderAsc, 1, 2)).eventually
+          expect(@subject.readFromAll(@sortBy, sortOrderAsc, 1, 2)).eventually
             .eql([list[1], list[2]]).notify(done)
         it 'beyond scope', (done) ->
-          expect(@subject.readFromAll(sortBy, sortOrderAsc, 5, 2)).eventually
+          expect(@subject.readFromAll(@sortBy, sortOrderAsc, 5, 2)).eventually
             .eql([list[5]]).notify(done)
 
