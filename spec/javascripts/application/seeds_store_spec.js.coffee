@@ -16,9 +16,13 @@ describe 'PodsList', ->
       list = [{name: 1}, {name: 2}, {name: 3}, {name: 4}]
       expect(subject.update(list))
         .eventually.notify(done)
-    it 'readsFromAll asc', (done) ->
+    it 'readsFromAll name,asc from the beginning', (done) ->
+      expect(subject.readFromAll('name', true, 0, 1)).eventually
+        .eql([{name: 1}]).notify(done)
+    it 'readsFromAll name,asc in the middle', (done) ->
       expect(subject.readFromAll('name', true, 1, 2)).eventually
         .eql([{name: 2}, {name: 3}]).notify(done)
-    it 'readsFromAll desc', (done) ->
-      expect(subject.readFromAll('name', false, 1, 2)).eventually
-        .eql([{name: 3}, {name: 2}]).notify(done)
+    it 'readsFromAll name,asc out of scope', (done) ->
+      expect(subject.readFromAll('name', true, 3, 2)).eventually
+        .eql([{name: 4}]).notify(done)
+        
