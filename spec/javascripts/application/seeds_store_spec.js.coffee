@@ -1,4 +1,10 @@
 describe 'PodsList', ->
-  it 'is empty', ->
+  subject = null
+  beforeEach (done) ->
     subject = new SeedsStore('test')
-    expect(subject.countForAll()).to.eventually.eql(0)
+    expect(subject.clear()).eventually.notify(done)
+  it 'counts 0', (done) ->
+    expect(subject.countForAll()).eventually.equal(0).notify(done)
+  it 'counts n', (done) ->
+    subject.update([{name: 1},{name: 2},{name: 3}])
+    expect(subject.countForAll()).eventually.equal(3).notify(done)

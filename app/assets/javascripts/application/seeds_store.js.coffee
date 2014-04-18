@@ -21,6 +21,8 @@ class @SeedsStore
       type: 'TEXT'
       indexes: []
     @db = new ydn.db.Storage name, stores: [podsSchema, categoriesSchema]
+  clear: () ->
+    @db.clear()
   update: (new_records) ->
     @writeObjects(new_records)
   # this reads only pods within one category and must implement sorting and
