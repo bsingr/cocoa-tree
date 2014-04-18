@@ -7,6 +7,7 @@ class @AppController
     @podsController = new PodsController(@store)
     @categoriesController = new CategoriesController(@store)
     @seedsSyncController = new SeedsSyncController(@store, seedsWorkerClient)
+    @seedsSyncController.delegate = @
     navigation = new Navigation()
     navigation.render()
     @renderEmptyView()
