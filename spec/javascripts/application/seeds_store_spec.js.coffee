@@ -6,7 +6,7 @@ describe 'SeedsStore', ->
   it 'counts 0', (done) ->
     expect(@subject.countForAll()).eventually.equal(0).notify(done)
   describe 'large dataset', ->
-    beforeEach () ->        
+    beforeEach () ->
       @listByName = ->
         [
           {name: 'a', category: 'a', stars: 1},
@@ -52,19 +52,21 @@ describe 'SeedsStore', ->
           list[1],
           list[3]
         ]
+      @normalizePods = (docs) ->
+        normalized = []
+        for doc in docs
+          normalized.push
+            name: doc.name
+            category: doc.category
+            stars: doc.stars
+        normalized
     beforeEach (done) ->
       expect(@subject.update(@listByName()))
         .eventually.notify(done)
     it 'counts n', (done) ->
       expect(@subject.countForAll()).eventually.equal(6).notify(done)
     it 'readPod', (done) ->
-      p = @subject.readPod('c').then (docs) ->
-        doc = docs[0]
-        [{
-          name: doc.name
-          category: doc.category
-          stars: doc.stars
-        }]
+      p = @subject.readPod('c').then(@normalizePods)
       expect(p).eventually
         .eql([@listByName()[2]]).notify(done)
     describe 'updateCategories()', ->    
