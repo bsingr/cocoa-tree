@@ -11,3 +11,11 @@ describe 'PodsList', ->
   it 'readPod', (done) ->
     subject.update([{name: 1}, {name: 2}])
     expect(subject.readPod(1)).eventually.eql([{name: 1}]).notify(done)
+  it 'readsFromAll asc', (done) ->
+    subject.update([{name: 1}, {name: 2}, {name: 3}, {name: 4}])
+    expect(subject.readFromAll('name', true, 1, 2)).eventually
+      .eql([{name: 2}, {name: 3}]).notify(done)
+  it 'readsFromAll desc', (done) ->
+    subject.update([{name: 1}, {name: 2}, {name: 3}, {name: 4}])
+    expect(subject.readFromAll('name', false, 1, 2)).eventually
+      .eql([{name: 3}, {name: 2}]).notify(done)
