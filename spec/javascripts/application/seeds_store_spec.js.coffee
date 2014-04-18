@@ -1,4 +1,4 @@
-describe 'PodsList', ->
+describe 'SeedsStore', ->
   beforeEach (done) ->
     @subject = new SeedsStore('test')
     expect(@subject.clear()).eventually.notify(done)
