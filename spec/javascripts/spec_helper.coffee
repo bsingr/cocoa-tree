@@ -41,4 +41,4 @@
 #= require application
 
 window.expect = chai.expect
-chai.config.truncateThreshold = 100
+chai.config.truncateThreshold = 150
