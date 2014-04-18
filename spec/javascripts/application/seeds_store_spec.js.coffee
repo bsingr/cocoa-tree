@@ -13,12 +13,18 @@ describe 'PodsList', ->
     expect(subject.readPod(1)).eventually.eql([{name: 1}]).notify(done)
   describe 'readsFromAll', ->
     listByName = [
-      {name: 1, category: "aaa"},
-      {name: 2, category: "ccc"},
-      {name: 3, category: "bbb"},
-      {name: 4, category: "ccc"}
+      {name: 1, category: "aaa", stars: 0},
+      {name: 2, category: "ccc", stars: 6},
+      {name: 3, category: "bbb", stars: 3},
+      {name: 4, category: "ccc", stars: 9}
     ]
     listByCategory = [
+      listByName[0],
+      listByName[2],
+      listByName[1],
+      listByName[3]
+    ]
+    listByStars = [
       listByName[0],
       listByName[2],
       listByName[1],
@@ -52,9 +58,9 @@ describe 'PodsList', ->
         it 'beyond scope', (done) ->
           expect(subject.readFromAll(sortBy, sortOrderAsc, 3, 2)).eventually
             .eql([list[0]]).notify(done)
-    describe 'category', ->
-      list = listByCategory
-      sortBy = 'category'
+    describe 'stars', ->
+      list = listByStars
+      sortBy = 'stars'
       describe 'asc', ->
         sortOrderAsc = true
         it 'from the beginning', (done) ->
