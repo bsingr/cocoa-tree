@@ -69,17 +69,6 @@ describe 'SeedsStore', ->
       p = @subject.readPod('c').then(@normalizePods)
       expect(p).eventually
         .eql([@listByName()[2]]).notify(done)
-    describe 'updateCategories()', ->    
-      beforeEach (done) ->
-        expect(@subject.updateCategories())
-          .eventually.notify(done)
-      it 'categories()', (done) ->
-        expect(@subject.categories()).eventually
-          .eql([
-            {name: 'a', podsCount: 1},
-            {name: 'b', podsCount: 1},
-            {name: 'c', podsCount: 4}
-          ]).notify(done)
     expectReadAll = () ->
       describe 'readFromAll()', ->
         it 'from the beginning', (done) ->
@@ -152,3 +141,14 @@ describe 'SeedsStore', ->
           @category = 'c'
         expectReadAll()
         expectReadCategory()
+    describe 'updateCategories()', ->    
+      beforeEach (done) ->
+        expect(@subject.updateCategories())
+          .eventually.notify(done)
+      it 'categories()', (done) ->
+        expect(@subject.categories()).eventually
+          .eql([
+            {name: 'a', podsCount: 1},
+            {name: 'b', podsCount: 1},
+            {name: 'c', podsCount: 4}
+          ]).notify(done)
