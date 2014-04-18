@@ -83,24 +83,36 @@ describe 'SeedsStore', ->
     expectReadAll = () ->
       describe 'readFromAll()', ->
         it 'from the beginning', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 0, 1)).eventually
+          p = @subject.readFromAll(@sortBy, @sortOrderAsc, 0, 1)
+            .then(@normalizePods)
+          expect(p).eventually
             .eql([@list[0]]).notify(done)
         it 'in the middle', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 1, 2)).eventually
+          p = @subject.readFromAll(@sortBy, @sortOrderAsc, 1, 2)
+            .then(@normalizePods)
+          expect(p).eventually
             .eql([@list[1], @list[2]]).notify(done)
         it 'beyond scope', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 5, 2)).eventually
+          p = @subject.readFromAll(@sortBy, @sortOrderAsc, 5, 2)
+            .then(@normalizePods)
+          expect(p).eventually
             .eql([@list[5]]).notify(done)
     expectReadCategory = () ->
       describe 'readFromCategory()', ->
         it 'from the beginning', (done) ->
-          expect(@subject.readFromCategory(@category, @sortBy, @sortOrderAsc, 0, 1)).eventually
+          p = @subject.readFromCategory(@category, @sortBy, @sortOrderAsc, 0, 1)
+            .then(@normalizePods)
+          expect(p).eventually
             .eql([@listForCategory[0]]).notify(done)
         it 'in the middle', (done) ->
-          expect(@subject.readFromCategory(@category, @sortBy, @sortOrderAsc, 1, 2)).eventually
+          p = @subject.readFromCategory(@category, @sortBy, @sortOrderAsc, 1, 2)
+            .then(@normalizePods)
+          expect(p).eventually
             .eql([@listForCategory[1], @listForCategory[2]]).notify(done)
         it 'beyond scope', (done) ->
-          expect(@subject.readFromCategory(@category, @sortBy, @sortOrderAsc, 3, 2)).eventually
+          p = @subject.readFromCategory(@category, @sortBy, @sortOrderAsc, 3, 2)
+            .then(@normalizePods)
+          expect(p).eventually
             .eql([@listForCategory[3]]).notify(done)
     describe 'sortBy=name', ->
       beforeEach () ->
