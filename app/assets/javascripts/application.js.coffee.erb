@@ -13,13 +13,3 @@
 #= require_tree ./application
 
 @logger = new Logger('app', 'info')
-ready = () ->
-  seedsStore = new SeedsStore()
-  seedsWorker = new Worker('<%= asset_path('seeds_worker.js') %>')
-  seedsWorkerClient = new SeedsWorkerClient(seedsWorker)
-  appController = new AppController(seedsWorkerClient, seedsStore)
-  router = new AppRouter()
-  router.appController = appController
-  Backbone.history.start()
-$(document).ready(ready)
-$(document).on('page:load', ready)

@@ -1,0 +1,11 @@
+#= depend_on_asset seeds_worker.js
+ready = () ->
+  seedsStore = new SeedsStore()
+  seedsWorker = new Worker('<%= asset_path('seeds_worker.js') %>')
+  seedsWorkerClient = new SeedsWorkerClient(seedsWorker)
+  appController = new AppController(seedsWorkerClient, seedsStore)
+  router = new AppRouter()
+  router.appController = appController
+  Backbone.history.start()
+$(document).ready(ready)
+$(document).on('page:load', ready)

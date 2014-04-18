@@ -26,6 +26,7 @@ module Cocoatree
     # config.i18n.default_locale = :de
 
     config.assets.precompile += %w[
+      boot.js
       seeds_worker.js
       *.png
     ]
