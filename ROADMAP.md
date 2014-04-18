@@ -2,18 +2,6 @@
 
 ## Next version
 
-* Top navigation
-  * Logo
-  * Categories collapse menu (including subcategories)
-* File-based categorization
-* Categories-View
-  * Listing all CocoaPods
-  * Sorting by
-    * Usage (Stars)
-    * Activity (Pushed-at)
-* CocoaPod-View
-  * Main attributes
-  * Dependencies
 * Remove deprecated CocoaPod from local database
 
 ## Future versions
