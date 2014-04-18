@@ -14,12 +14,12 @@ describe 'SeedsStore', ->
     beforeEach () ->        
       @listByName = ->
         [
-          {name: 1, category: "a", stars: 1},
-          {name: 2, category: "c", stars: 5},
-          {name: 3, category: "b", stars: 4},
-          {name: 4, category: "c", stars: 6},
-          {name: 5, category: "c", stars: 3},
-          {name: 6, category: "c", stars: 2}
+          {name: 1, category: 'a', stars: 1},
+          {name: 2, category: 'c', stars: 5},
+          {name: 3, category: 'b', stars: 4},
+          {name: 4, category: 'c', stars: 6},
+          {name: 5, category: 'c', stars: 3},
+          {name: 6, category: 'c', stars: 2}
         ]
       @listByCategory = ->
         list = @listByName()
