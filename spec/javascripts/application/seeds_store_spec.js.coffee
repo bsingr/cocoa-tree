@@ -2,14 +2,9 @@ describe 'SeedsStore', ->
   beforeEach (done) ->
     @subject = new SeedsStore('test')
     expect(@subject.clear()).eventually.notify(done)
+  describe 'counts', ->
   it 'counts 0', (done) ->
     expect(@subject.countForAll()).eventually.equal(0).notify(done)
-  it 'counts n', (done) ->
-    @subject.update([{name: 'a'},{name: 'b'},{name: 'c'}])
-    expect(@subject.countForAll()).eventually.equal(3).notify(done)
-  it 'readPod', (done) ->
-    @subject.update([{name: 'a'}, {name: 'b'}])
-    expect(@subject.readPod('a')).eventually.eql([{name: 'a'}]).notify(done)
   describe 'large dataset', ->
     beforeEach () ->        
       @listByName = ->
@@ -60,16 +55,22 @@ describe 'SeedsStore', ->
     beforeEach (done) ->
       expect(@subject.update(@listByName()))
         .eventually.notify(done)
-    beforeEach (done) ->
-      expect(@subject.updateCategories())
-        .eventually.notify(done)
-    it 'updateCategories() + categories()', (done) ->
-      expect(@subject.categories()).eventually
-        .eql([
-          {name: 'a', podsCount: 1},
-          {name: 'b', podsCount: 1},
-          {name: 'c', podsCount: 4}
-        ]).notify(done)
+    it 'counts n', (done) ->
+      expect(@subject.countForAll()).eventually.equal(6).notify(done)
+    it 'readPod', (done) ->
+      expect(@subject.readPod('c')).eventually
+        .eql([@listByName()[2]]).notify(done)
+    describe 'updateCategories()', ->    
+      beforeEach (done) ->
+        expect(@subject.updateCategories())
+          .eventually.notify(done)
+      it 'categories()', (done) ->
+        expect(@subject.categories()).eventually
+          .eql([
+            {name: 'a', podsCount: 1},
+            {name: 'b', podsCount: 1},
+            {name: 'c', podsCount: 4}
+          ]).notify(done)
     expectReadAll = () ->
       describe 'readFromAll()', ->
         it 'from the beginning', (done) ->
