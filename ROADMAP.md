@@ -2,6 +2,20 @@
 
 ## Next version
 
+* rebuild store using pouchdb
+  * Use simple documents   
+    * id == name
+    * stars
+    * pushed_at
+    * category
+  * Use seperate, simple documents for sortBy
+    * stars
+      * id == stars
+      * name
+    * pushed_at
+      * id == pushed_at
+      * name
+  * fetch additional data (dependencies, summary) from remotes 
 * Remove deprecated CocoaPod from local database
 
 ## Future versions
