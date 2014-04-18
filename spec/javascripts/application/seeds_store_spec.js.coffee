@@ -44,6 +44,16 @@ describe 'PodsList', ->
     beforeEach (done) ->
       expect(@subject.update(@listByName()))
         .eventually.notify(done)
+    expectReadAll = () ->
+      it 'from the beginning', (done) ->
+        expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 0, 1)).eventually
+          .eql([@list[0]]).notify(done)
+      it 'in the middle', (done) ->
+        expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 1, 2)).eventually
+          .eql([@list[1], @list[2]]).notify(done)
+      it 'beyond scope', (done) ->
+        expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 5, 2)).eventually
+          .eql([@list[5]]).notify(done)
     describe 'name', ->
       beforeEach () ->
         @sortBy = 'name'
@@ -51,28 +61,12 @@ describe 'PodsList', ->
         beforeEach () ->
           @list = @listByName()
           @sortOrderAsc = true
-        it 'from the beginning', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 0, 1)).eventually
-            .eql([@list[0]]).notify(done)
-        it 'in the middle', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 1, 2)).eventually
-            .eql([@list[1], @list[2]]).notify(done)
-        it 'beyond scope', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 5, 2)).eventually
-            .eql([@list[5]]).notify(done)
+        expectReadAll()
       describe 'desc', ->
         beforeEach () ->
           @list = @listByName().reverse()
           @sortOrderAsc = false
-        it 'from the beginning', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 0, 1)).eventually
-            .eql([@list[0]]).notify(done)
-        it 'in the middle', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 1, 2)).eventually
-            .eql([@list[1], @list[2]]).notify(done)
-        it 'beyond scope', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 5, 2)).eventually
-            .eql([@list[5]]).notify(done)
+        expectReadAll()
     describe 'stars', ->
       beforeEach () ->
         @sortBy = 'stars'
@@ -80,26 +74,10 @@ describe 'PodsList', ->
         beforeEach () ->
           @list = @listByStars()
           @sortOrderAsc = true
-        it 'from the beginning', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 0, 1)).eventually
-            .eql([@list[0]]).notify(done)
-        it 'in the middle', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 1, 2)).eventually
-            .eql([@list[1], @list[2]]).notify(done)
-        it 'beyond scope', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 5, 2)).eventually
-            .eql([@list[5]]).notify(done)
+        expectReadAll()
       describe 'desc', ->
         beforeEach () ->
           @list = @listByStars().reverse()
           @sortOrderAsc = false
-        it 'from the beginning', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 0, 1)).eventually
-            .eql([@list[0]]).notify(done)
-        it 'in the middle', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 1, 2)).eventually
-            .eql([@list[1], @list[2]]).notify(done)
-        it 'beyond scope', (done) ->
-          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 5, 2)).eventually
-            .eql([@list[5]]).notify(done)
+        expectReadAll()
 
