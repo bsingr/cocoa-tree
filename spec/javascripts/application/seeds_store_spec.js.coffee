@@ -41,6 +41,22 @@ describe 'SeedsStore', ->
           list[1],
           list[3]
         ]
+      @listForCategoryByName = ->
+        list = @listByName()
+        [
+          list[1],
+          list[3],
+          list[4],
+          list[5]
+        ]
+      @listForCategoryByStars = ->
+        list = @listByName()
+        [
+          list[5],
+          list[4],
+          list[1],
+          list[3]
+        ]
     beforeEach (done) ->
       expect(@subject.update(@listByName()))
         .eventually.notify(done)
@@ -55,30 +71,52 @@ describe 'SeedsStore', ->
         it 'beyond scope', (done) ->
           expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 5, 2)).eventually
             .eql([@list[5]]).notify(done)
+    expectReadCategory = () ->
+      describe 'readFromCategory()', ->
+        it 'from the beginning', (done) ->
+          expect(@subject.readFromCategory(@category, @sortBy, @sortOrderAsc, 0, 1)).eventually
+            .eql([@listForCategory[0]]).notify(done)
+        it 'in the middle', (done) ->
+          expect(@subject.readFromCategory(@category, @sortBy, @sortOrderAsc, 1, 2)).eventually
+            .eql([@listForCategory[1], @listForCategory[2]]).notify(done)
+        it 'beyond scope', (done) ->
+          expect(@subject.readFromCategory(@category, @sortBy, @sortOrderAsc, 3, 2)).eventually
+            .eql([@listForCategory[3]]).notify(done)
     describe 'sortBy=name', ->
       beforeEach () ->
         @sortBy = 'name'
       describe 'order=asc', ->
         beforeEach () ->
           @list = @listByName()
+          @listForCategory = @listForCategoryByName()
           @sortOrderAsc = true
+          @category = 'c'
         expectReadAll()
+        expectReadCategory()
       describe 'order=desc', ->
         beforeEach () ->
           @list = @listByName().reverse()
+          @listForCategory = @listForCategoryByName().reverse()
           @sortOrderAsc = false
+          @category = 'c'
         expectReadAll()
+        expectReadCategory()
     describe 'sortBy=stars', ->
       beforeEach () ->
         @sortBy = 'stars'
       describe 'order=asc', ->
         beforeEach () ->
           @list = @listByStars()
+          @listForCategory = @listForCategoryByStars()
           @sortOrderAsc = true
+          @category = 'c'
         expectReadAll()
+        expectReadCategory()
       describe 'order=desc', ->
         beforeEach () ->
           @list = @listByStars().reverse()
+          @listForCategory = @listForCategoryByStars().reverse()
           @sortOrderAsc = false
+          @category = 'c'
         expectReadAll()
-
+        expectReadCategory()

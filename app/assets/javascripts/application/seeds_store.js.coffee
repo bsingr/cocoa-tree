@@ -34,9 +34,11 @@ class @SeedsStore
       sorter = new ObjectSorter()
       sorter.sortBy = sortBy
       allSortedPods = sorter.sort(allPods)
+      if asc
+        allSortedPods.reverse()
       pods = []
       i = offset
-      while i <= (offset + limit) && i < allSortedPods.length
+      while i < (offset + limit) && i < allSortedPods.length
         pod = allSortedPods[i]
         pods.push pod
         i++
