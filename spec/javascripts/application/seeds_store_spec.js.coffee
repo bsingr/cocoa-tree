@@ -10,7 +10,7 @@ describe 'SeedsStore', ->
   it 'readPod', (done) ->
     @subject.update([{name: 1}, {name: 2}])
     expect(@subject.readPod(1)).eventually.eql([{name: 1}]).notify(done)
-  describe 'read', ->
+  describe 'large dataset', ->
     beforeEach () ->        
       @listByName = ->
         [
@@ -63,7 +63,7 @@ describe 'SeedsStore', ->
     beforeEach (done) ->
       expect(@subject.updateCategories())
         .eventually.notify(done)
-    it 'categories()', (done) ->
+    it 'updateCategories() + categories()', (done) ->
       expect(@subject.categories()).eventually
         .eql([
           {name: 'a', podsCount: 1},
