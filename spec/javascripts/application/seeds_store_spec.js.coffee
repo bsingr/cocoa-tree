@@ -60,6 +60,16 @@ describe 'SeedsStore', ->
     beforeEach (done) ->
       expect(@subject.update(@listByName()))
         .eventually.notify(done)
+    beforeEach (done) ->
+      expect(@subject.updateCategories())
+        .eventually.notify(done)
+    it 'categories()', (done) ->
+      expect(@subject.categories()).eventually
+        .eql([
+          {name: 'a', podsCount: 1},
+          {name: 'b', podsCount: 1},
+          {name: 'c', podsCount: 4}
+        ]).notify(done)
     expectReadAll = () ->
       describe 'readFromAll()', ->
         it 'from the beginning', (done) ->
