@@ -58,7 +58,14 @@ describe 'SeedsStore', ->
     it 'counts n', (done) ->
       expect(@subject.countForAll()).eventually.equal(6).notify(done)
     it 'readPod', (done) ->
-      expect(@subject.readPod('c')).eventually
+      p = @subject.readPod('c').then (docs) ->
+        doc = docs[0]
+        [{
+          name: doc.name
+          category: doc.category
+          stars: doc.stars
+        }]
+      expect(p).eventually
         .eql([@listByName()[2]]).notify(done)
     describe 'updateCategories()', ->    
       beforeEach (done) ->
