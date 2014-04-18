@@ -5,21 +5,21 @@ describe 'SeedsStore', ->
   it 'counts 0', (done) ->
     expect(@subject.countForAll()).eventually.equal(0).notify(done)
   it 'counts n', (done) ->
-    @subject.update([{name: 1},{name: 2},{name: 3}])
+    @subject.update([{name: 'a'},{name: 'b'},{name: 'c'}])
     expect(@subject.countForAll()).eventually.equal(3).notify(done)
   it 'readPod', (done) ->
-    @subject.update([{name: 1}, {name: 2}])
-    expect(@subject.readPod(1)).eventually.eql([{name: 1}]).notify(done)
+    @subject.update([{name: 'a'}, {name: 'b'}])
+    expect(@subject.readPod('a')).eventually.eql([{name: 'a'}]).notify(done)
   describe 'large dataset', ->
     beforeEach () ->        
       @listByName = ->
         [
-          {name: 1, category: 'a', stars: 1},
-          {name: 2, category: 'c', stars: 5},
-          {name: 3, category: 'b', stars: 4},
-          {name: 4, category: 'c', stars: 6},
-          {name: 5, category: 'c', stars: 3},
-          {name: 6, category: 'c', stars: 2}
+          {name: 'a', category: 'a', stars: 1},
+          {name: 'b', category: 'c', stars: 5},
+          {name: 'c', category: 'b', stars: 4},
+          {name: 'd', category: 'c', stars: 6},
+          {name: 'e', category: 'c', stars: 3},
+          {name: 'f', category: 'c', stars: 2}
         ]
       @listByCategory = ->
         list = @listByName()

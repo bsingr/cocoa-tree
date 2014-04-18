@@ -12,9 +12,9 @@ class @ObjectSorter
   _sort: (a,b) ->
     if typeof(a) == 'string' && typeof(b) == 'string'
       if a.toLowerCase() > b.toLowerCase()
-        1
-      else
         -1
+      else
+        1
     else if typeof(a) == 'number' && typeof(b) == 'number'
       b - a
     else if typeof(a) == 'number' && typeof(b) == 'string'
