@@ -13,10 +13,10 @@ describe 'PodsList', ->
     expect(subject.readPod(1)).eventually.eql([{name: 1}]).notify(done)
   describe 'readsFromAll', ->
     listByName = [
-      {name: 1, category: 10},
-      {name: 2, category: 20},
-      {name: 3, category: 15},
-      {name: 4, category: 20}
+      {name: 1, category: "aaa"},
+      {name: 2, category: "ccc"},
+      {name: 3, category: "bbb"},
+      {name: 4, category: "ccc"}
     ]
     listByCategory = [
       listByName[0],
