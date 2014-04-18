@@ -10,7 +10,7 @@ describe 'PodsList', ->
   it 'readPod', (done) ->
     @subject.update([{name: 1}, {name: 2}])
     expect(@subject.readPod(1)).eventually.eql([{name: 1}]).notify(done)
-  describe 'readsFromAll', ->
+  describe 'read', ->
     beforeEach () ->        
       @listByName = ->
         [
@@ -45,37 +45,38 @@ describe 'PodsList', ->
       expect(@subject.update(@listByName()))
         .eventually.notify(done)
     expectReadAll = () ->
-      it 'from the beginning', (done) ->
-        expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 0, 1)).eventually
-          .eql([@list[0]]).notify(done)
-      it 'in the middle', (done) ->
-        expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 1, 2)).eventually
-          .eql([@list[1], @list[2]]).notify(done)
-      it 'beyond scope', (done) ->
-        expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 5, 2)).eventually
-          .eql([@list[5]]).notify(done)
-    describe 'name', ->
+      describe 'readFromAll()', ->
+        it 'from the beginning', (done) ->
+          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 0, 1)).eventually
+            .eql([@list[0]]).notify(done)
+        it 'in the middle', (done) ->
+          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 1, 2)).eventually
+            .eql([@list[1], @list[2]]).notify(done)
+        it 'beyond scope', (done) ->
+          expect(@subject.readFromAll(@sortBy, @sortOrderAsc, 5, 2)).eventually
+            .eql([@list[5]]).notify(done)
+    describe 'sortBy=name', ->
       beforeEach () ->
         @sortBy = 'name'
-      describe 'asc', ->
+      describe 'order=asc', ->
         beforeEach () ->
           @list = @listByName()
           @sortOrderAsc = true
         expectReadAll()
-      describe 'desc', ->
+      describe 'order=desc', ->
         beforeEach () ->
           @list = @listByName().reverse()
           @sortOrderAsc = false
         expectReadAll()
-    describe 'stars', ->
+    describe 'sortBy=stars', ->
       beforeEach () ->
         @sortBy = 'stars'
-      describe 'asc', ->
+      describe 'order=asc', ->
         beforeEach () ->
           @list = @listByStars()
           @sortOrderAsc = true
         expectReadAll()
-      describe 'desc', ->
+      describe 'order=desc', ->
         beforeEach () ->
           @list = @listByStars().reverse()
           @sortOrderAsc = false
