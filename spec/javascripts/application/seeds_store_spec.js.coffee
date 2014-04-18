@@ -29,3 +29,14 @@ describe 'PodsList', ->
         it 'beyond scope', (done) ->
           expect(subject.readFromAll(sortBy, sortOrderAsc, 3, 2)).eventually
             .eql([{name: 4}]).notify(done)
+      describe 'desc', ->
+        sortOrderAsc = false
+        it 'from the beginning', (done) ->
+          expect(subject.readFromAll(sortBy, sortOrderAsc, 0, 1)).eventually
+            .eql([{name: 4}]).notify(done)
+        it 'in the middle', (done) ->
+          expect(subject.readFromAll(sortBy, sortOrderAsc, 1, 2)).eventually
+            .eql([{name: 3}, {name: 2}]).notify(done)
+        it 'beyond scope', (done) ->
+          expect(subject.readFromAll(sortBy, sortOrderAsc, 3, 2)).eventually
+            .eql([{name: 1}]).notify(done)
