@@ -87,19 +87,19 @@ describe 'SeedsStore', ->
           expect(p).eventually
             .eql([@list[5]]).notify(done)
     expectReadCategory = () ->
-      describe 'findCategories()', ->
+      describe 'findPodsByCategory()', ->
         it 'from the beginning', (done) ->
-          p = @subject.findCategories(@category, @sortBy, @sortOrderAsc, 0, 1)
+          p = @subject.findPodsByCategory(@category, @sortBy, @sortOrderAsc, 0, 1)
             .then(@normalizePods)
           expect(p).eventually
             .eql([@listForCategory[0]]).notify(done)
         it 'in the middle', (done) ->
-          p = @subject.findCategories(@category, @sortBy, @sortOrderAsc, 1, 2)
+          p = @subject.findPodsByCategory(@category, @sortBy, @sortOrderAsc, 1, 2)
             .then(@normalizePods)
           expect(p).eventually
             .eql([@listForCategory[1], @listForCategory[2]]).notify(done)
         it 'beyond scope', (done) ->
-          p = @subject.findCategories(@category, @sortBy, @sortOrderAsc, 3, 2)
+          p = @subject.findPodsByCategory(@category, @sortBy, @sortOrderAsc, 3, 2)
             .then(@normalizePods)
           expect(p).eventually
             .eql([@listForCategory[3]]).notify(done)

@@ -27,7 +27,7 @@ class @SeedsStore
     @db.put('pod', pods)
   # this reads only pods within one category and must implement sorting and
   # pagination itself
-  findCategories: (category, sortBy, asc=true, offset=0, limit=50) ->
+  findPodsByCategory: (category, sortBy, asc=true, offset=0, limit=50) ->
     logger.verbose 'PodsStore#readCategory'
     keyRange = ydn.db.KeyRange.only(category)
     @db.values('pod', 'category', keyRange).then (allPods) ->
