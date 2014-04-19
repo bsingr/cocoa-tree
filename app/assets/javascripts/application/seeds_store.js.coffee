@@ -45,7 +45,7 @@ class @SeedsStore
       pods
   # this reads from _all_ pods and uses ydn internal capabilities for sorting
   # and pagination
-  readFromAll: (sortBy, asc=true, offset=0, limit=50) ->
+  findPods: (sortBy, asc=true, offset=0, limit=50) ->
     logger.verbose 'PodsStore#readPage'
     if sortBy == 'name'
       logger.verbose 'sortBy=name'

@@ -70,19 +70,19 @@ describe 'SeedsStore', ->
       expect(p).eventually
         .eql([@listByName()[2]]).notify(done)
     expectReadAll = () ->
-      describe 'readFromAll()', ->
+      describe 'findPods()', ->
         it 'from the beginning', (done) ->
-          p = @subject.readFromAll(@sortBy, @sortOrderAsc, 0, 1)
+          p = @subject.findPods(@sortBy, @sortOrderAsc, 0, 1)
             .then(@normalizePods)
           expect(p).eventually
             .eql([@list[0]]).notify(done)
         it 'in the middle', (done) ->
-          p = @subject.readFromAll(@sortBy, @sortOrderAsc, 1, 2)
+          p = @subject.findPods(@sortBy, @sortOrderAsc, 1, 2)
             .then(@normalizePods)
           expect(p).eventually
             .eql([@list[1], @list[2]]).notify(done)
         it 'beyond scope', (done) ->
-          p = @subject.readFromAll(@sortBy, @sortOrderAsc, 5, 2)
+          p = @subject.findPods(@sortBy, @sortOrderAsc, 5, 2)
             .then(@normalizePods)
           expect(p).eventually
             .eql([@list[5]]).notify(done)
