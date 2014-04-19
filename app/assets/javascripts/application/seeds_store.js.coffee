@@ -66,7 +66,7 @@ class @SeedsStore
     @db.put('category', categories)
     @didUpdateCategories()
     categories
-  categories: () ->
+  findCategories: () ->
     @db.values 'category'
   didUpdateCategories: () ->
     for delegate in @delegates

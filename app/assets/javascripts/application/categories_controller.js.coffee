@@ -5,7 +5,7 @@ class @CategoriesController
   load: () ->
     @store.countPods().then (count) =>
       @totalPodsCount = count
-    @store.categories()
+    @store.findCategories()
   render: (categories) ->
     list = []
     for c in categories
