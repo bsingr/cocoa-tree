@@ -61,7 +61,7 @@ describe 'SeedsStore', ->
             stars: doc.stars
         normalized
     beforeEach (done) ->
-      expect(@subject.update(@listByName()))
+      expect(@subject.updatePods(@listByName()))
         .eventually.notify(done)
     it 'counts n', (done) ->
       expect(@subject.countForAll()).eventually.equal(6).notify(done)

@@ -23,8 +23,8 @@ class @SeedsStore
     @db = new ydn.db.Storage name, stores: [podsSchema, categoriesSchema]
   clear: () ->
     @db.clear()
-  update: (new_records) ->
-    @writeObjects(new_records)
+  updatePods: (pods) ->
+    @db.put('pod', pods)
   # this reads only pods within one category and must implement sorting and
   # pagination itself
   findCategories: (category, sortBy, asc=true, offset=0, limit=50) ->
@@ -56,8 +56,6 @@ class @SeedsStore
   readPod: (name) ->
     keyRange = ydn.db.KeyRange.only(name)
     @db.values 'pod', keyRange
-  writeObjects: (pods) ->
-    @db.put('pod', pods)
   countForCategory: (category) ->
     keyRange = ydn.db.KeyRange.only(category)
     @db.count('pod', 'category', keyRange)

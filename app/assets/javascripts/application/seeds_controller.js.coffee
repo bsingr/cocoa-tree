@@ -18,7 +18,7 @@ class @SeedsSyncController
   didLoad: (chunk_id, pods) ->
     logger.verbose 'SeedsController#didLoad', chunk_id
     @progressBar.update(@seedsWorkerClient.progress)
-    @store.update pods
+    @store.updatePods pods
   didLoadAll: ->
     logger.verbose 'SeedsController#didLoadAll'
     if @delegate
