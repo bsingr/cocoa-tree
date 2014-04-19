@@ -66,9 +66,3 @@ class @SeedsStore
   updateCategories: (categories) ->
     @db.clear('category')
     @db.put('category', categories)
-    @didUpdateCategories()
-    categories
-  didUpdateCategories: () ->
-    for delegate in @delegates
-      if delegate.storeDidUpdateCategories
-        delegate.storeDidUpdateCategories()

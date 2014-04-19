@@ -13,9 +13,9 @@ class @AppController
     @renderEmptyView()
   loadPods: ->
     @seedsSyncController.sync()
-  storeDidUpdateCategories: () ->
+  seedsSyncControllerDidSyncCategories: () ->
     @update()
-  seedsSyncControllerDidSync: () ->
+  seedsSyncControllerDidSyncPods: () ->
     @update()
   update: () ->
     logger.verbose 'AppController#update current=', @current
