@@ -4,7 +4,7 @@ describe 'SeedsStore', ->
     expect(@subject.clear()).eventually.notify(done)
   describe 'counts', ->
   it 'counts 0', (done) ->
-    expect(@subject.countForAll()).eventually.equal(0).notify(done)
+    expect(@subject.countPods()).eventually.equal(0).notify(done)
   describe 'large dataset', ->
     beforeEach () ->
       @listByName = ->
@@ -64,7 +64,7 @@ describe 'SeedsStore', ->
       expect(@subject.updatePods(@listByName()))
         .eventually.notify(done)
     it 'counts n', (done) ->
-      expect(@subject.countForAll()).eventually.equal(6).notify(done)
+      expect(@subject.countPods()).eventually.equal(6).notify(done)
     it 'findPod', (done) ->
       p = @subject.findPod('c').then(@normalizePods)
       expect(p).eventually

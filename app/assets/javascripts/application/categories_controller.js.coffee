@@ -3,7 +3,7 @@ class @CategoriesController
   constructor: (store) ->
     @store = store
   load: () ->
-    @store.countForAll().then (count) =>
+    @store.countPods().then (count) =>
       @totalPodsCount = count
     @store.categories()
   render: (categories) ->
