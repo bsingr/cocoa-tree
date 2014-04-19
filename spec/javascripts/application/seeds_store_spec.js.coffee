@@ -148,8 +148,8 @@ describe 'SeedsStore', ->
       it 'categories()', (done) ->
         expect(@subject.categories()).eventually
           .eql([
-            {name: 'a', podsCount: 1},
-            {name: 'b', podsCount: 1},
-            {name: 'c', podsCount: 4}
+            {name: 'a', cocoa_pods_count: 1},
+            {name: 'b', cocoa_pods_count: 1},
+            {name: 'c', cocoa_pods_count: 4}
           ]).notify(done)
           

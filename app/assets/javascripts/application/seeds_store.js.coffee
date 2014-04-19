@@ -75,10 +75,10 @@ class @SeedsStore
       for pod in pods
         category = categories[pod.category]
         if category
-          category.podsCount++
+          category.cocoa_pods_count++
         else
           categories[pod.category] =
-            podsCount: 1
+            cocoa_pods_count: 1
             name: pod.category
       categoriesArray = []
       for categoryName, category of categories
