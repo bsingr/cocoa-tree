@@ -21,7 +21,7 @@ class @PodsLoader
   loadPodsChunk: (chunk_id) ->
     loader = @
     xhr = new XMLHttpRequest()
-    xhr.open('GET', @seedsURL+'/pods/'+chunk_id+'.mpac', true)
+    xhr.open('GET', @seedsURL+'/'+chunk_id+'.mpac', true)
     xhr.responseType = 'arraybuffer'
     xhr.onload = (e) ->
       pods = msgpack.decode(@response)

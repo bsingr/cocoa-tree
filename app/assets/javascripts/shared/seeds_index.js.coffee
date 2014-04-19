@@ -1,12 +1,12 @@
-class @PodsIndex
+class @SeedsIndex
   constructor: (seedsURL) ->
     @seedsURL = seedsURL
   load: (callback) ->
-    podsIndex = @
+    index = @
     xhr = new XMLHttpRequest()
-    xhr.open('GET', @seedsURL+'/pods.mpac', true)
+    xhr.open('GET', @seedsURL + '.mpac', true)
     xhr.responseType = 'arraybuffer'
     xhr.onload = (e) ->
-      podsIndex.index = msgpack.decode(@response)
-      callback(podsIndex)
+      index.index = msgpack.decode(@response)
+      callback(index)
     xhr.send()

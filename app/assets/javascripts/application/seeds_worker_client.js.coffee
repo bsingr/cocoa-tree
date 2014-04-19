@@ -1,6 +1,6 @@
 class @SeedsWorkerClient
   delegates: []
-  constructor: (worker, podsIndex) ->
+  constructor: (worker) ->
     @worker = worker
     @worker.onmessage = (e) =>
       command = e.data.command
@@ -12,8 +12,13 @@ class @SeedsWorkerClient
       else if command == 'ready'      
         @worker.postMessage
           command: 'init'
-      else if command == 'didInit'
+      else if command == 'didInitCategories'
+        @didLoadCategories(e.data.index)
+      else if command == 'didInitPodsLoader'
         @loadPods()
+  didLoadCategories: (index) ->
+    if @delegate && @delegate.didLoadCategories
+      @delegate.didLoadCategories(index)
   loadPods: () ->
     @progress = 0
     @worker.postMessage

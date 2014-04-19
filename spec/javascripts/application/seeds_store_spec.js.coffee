@@ -141,9 +141,9 @@ describe 'SeedsStore', ->
           @category = 'c'
         expectReadAll()
         expectReadCategory()
-    describe 'updateCategories()', ->    
+    describe 'updateCategoriesFromPods()', ->    
       beforeEach (done) ->
-        expect(@subject.updateCategories())
+        expect(@subject.updateCategoriesFromPods())
           .eventually.notify(done)
       it 'categories()', (done) ->
         expect(@subject.categories()).eventually
@@ -152,3 +152,4 @@ describe 'SeedsStore', ->
             {name: 'b', podsCount: 1},
             {name: 'c', podsCount: 4}
           ]).notify(done)
+          

@@ -10,12 +10,16 @@ class @SeedsSyncController
     logger.verbose 'SeedsController#sync'
     @seedsWorkerClient.loadPods()
     @progressBar.start()
+  didLoadCategories: (index) ->
+    logger.verbose 'SeedsController#didLoadCategories', index
+    @store.updateCategories(index)
+    if @delegate
+      @delegate.seedsSyncControllerDidSync()
   didLoad: (chunk_id, pods) ->
     logger.verbose 'SeedsController#didLoad', chunk_id
     @progressBar.update(@seedsWorkerClient.progress)
     @store.update pods
   didLoadAll: ->
     logger.verbose 'SeedsController#didLoadAll'
-    @store.updateCategories()
     if @delegate
       @delegate.seedsSyncControllerDidSync()

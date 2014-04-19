@@ -63,7 +63,12 @@ class @SeedsStore
     @db.count('pod', 'category', keyRange)
   countForAll: () ->
     @db.count('pod')
-  updateCategories: () ->
+  updateCategories: (categories) ->
+    @db.clear('category')
+    @db.put('category', categories)
+    @didUpdateCategories()
+    categories
+  updateCategoriesFromPods: () ->
     iterator = new ydn.db.IndexValueIterator('pod', 'category', null, false, false)
     @db.values(iterator).then (pods) =>
       categories = {}

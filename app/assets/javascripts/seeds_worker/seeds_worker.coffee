@@ -13,14 +13,20 @@ class @SeedsWorker
       @initIndex()
     else if command == 'reload'
       @reload()
-  initIndex: () ->    
-    new PodsIndex("/seeds").load (podsIndex) =>
-      @initLoader(podsIndex.seedsURL, podsIndex.index)
-  initLoader: (seedsURL, index) ->
+  initIndex: () ->
+    new SeedsIndex("/seeds/categories").load (index) =>
+      @initCategories(index.index)
+    new SeedsIndex("/seeds/pods").load (index) =>
+      @initPodsLoader(index.seedsURL, index.index)
+  initCategories: (index) ->
+    @worker.postMessage
+      command: 'didInitCategories'
+      index: index
+  initPodsLoader: (seedsURL, index) ->
     @podsLoader = new PodsLoader(seedsURL, index)
     @podsLoader.delegate = @
     @worker.postMessage
-      command: 'didInit'
+      command: 'didInitPodsLoader'
   reload: ->
     if @podsLoader
       @podsLoader.loadPods()
