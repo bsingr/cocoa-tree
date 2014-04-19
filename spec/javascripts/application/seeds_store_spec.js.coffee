@@ -141,15 +141,4 @@ describe 'SeedsStore', ->
           @category = 'c'
         expectReadAll()
         expectReadCategory()
-    describe 'updateCategoriesFromPods()', ->    
-      beforeEach (done) ->
-        expect(@subject.updateCategoriesFromPods())
-          .eventually.notify(done)
-      it 'categories()', (done) ->
-        expect(@subject.categories()).eventually
-          .eql([
-            {name: 'a', cocoa_pods_count: 1},
-            {name: 'b', cocoa_pods_count: 1},
-            {name: 'c', cocoa_pods_count: 4}
-          ]).notify(done)
           

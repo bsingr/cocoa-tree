@@ -68,25 +68,6 @@ class @SeedsStore
     @db.put('category', categories)
     @didUpdateCategories()
     categories
-  updateCategoriesFromPods: () ->
-    iterator = new ydn.db.IndexValueIterator('pod', 'category', null, false, false)
-    @db.values(iterator).then (pods) =>
-      categories = {}
-      for pod in pods
-        category = categories[pod.category]
-        if category
-          category.cocoa_pods_count++
-        else
-          categories[pod.category] =
-            cocoa_pods_count: 1
-            name: pod.category
-      categoriesArray = []
-      for categoryName, category of categories
-        categoriesArray.push category
-      @db.clear('category')
-      @db.put('category', categoriesArray)
-      @didUpdateCategories()
-      categories
   categories: () ->
     @db.values 'category'
   didUpdateCategories: () ->
