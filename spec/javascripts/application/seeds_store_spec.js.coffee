@@ -65,8 +65,8 @@ describe 'SeedsStore', ->
         .eventually.notify(done)
     it 'counts n', (done) ->
       expect(@subject.countForAll()).eventually.equal(6).notify(done)
-    it 'readPod', (done) ->
-      p = @subject.readPod('c').then(@normalizePods)
+    it 'findPod', (done) ->
+      p = @subject.findPod('c').then(@normalizePods)
       expect(p).eventually
         .eql([@listByName()[2]]).notify(done)
     expectReadAll = () ->

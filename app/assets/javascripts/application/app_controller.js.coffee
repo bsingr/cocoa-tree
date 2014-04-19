@@ -32,7 +32,7 @@ class @AppController
     @displayPods()
   displayPod: (id) ->
     logger.verbose 'AppController#displayPod', id
-    @store.readPod(id).then (pods) ->
+    @store.findPod(id).then (pods) ->
       if pods.length
         $('#main-view').empty()
         podsList = new PodsList(1, pods, 0, 1)

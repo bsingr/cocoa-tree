@@ -53,7 +53,7 @@ class @SeedsStore
     else
       logger.verbose 'sortBy='+sortBy
       @db.values 'pod', sortBy, null, limit, offset, !asc
-  readPod: (name) ->
+  findPod: (name) ->
     keyRange = ydn.db.KeyRange.only(name)
     @db.values 'pod', keyRange
   countForCategory: (category) ->
