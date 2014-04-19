@@ -25,7 +25,9 @@ class @PodsController
       countPromise = @store.countPods()
       podsPromise = @store.findPods(@sortBy, @sortAsc, @index, @maxPerPage)
     else
-      countPromise = @store.countForCategory(@filterBy)
+      countPromise = @store.findCategory(@filterBy).then (categories) ->
+        if categories.length
+          categories[0].cocoa_pods_count
       podsPromise = @store.findPodsByCategory(@filterBy, @sortBy, @sortAsc, @index, @maxPerPage)
     countPromise.then (count) =>
       @count = count

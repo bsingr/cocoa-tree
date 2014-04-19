@@ -58,11 +58,11 @@ class @SeedsStore
     @db.count('pod')
   updatePods: (pods) ->
     @db.put('pod', pods)
-  countForCategory: (category) ->
-    keyRange = ydn.db.KeyRange.only(category)
-    @db.count('pod', 'category', keyRange)
   findCategories: () ->
     @db.values 'category'
+  findCategory: (name) ->
+    keyRange = ydn.db.KeyRange.only(name)
+    @db.values 'category', keyRange
   updateCategories: (categories) ->
     @db.clear('category')
     @db.put('category', categories)
