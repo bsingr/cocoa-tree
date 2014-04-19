@@ -12,6 +12,7 @@ class @SeedsSyncController
     @progressBar.start()
   didLoadCategories: (index) ->
     logger.verbose 'SeedsController#didLoadCategories', index
+    # TODO use callback to do the delegate call, or return promise
     @store.updateCategories(index)
     if @delegate && @delegate.seedsSyncControllerDidSyncCategories
       @delegate.seedsSyncControllerDidSyncCategories()
