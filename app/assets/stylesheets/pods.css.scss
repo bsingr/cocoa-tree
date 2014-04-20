@@ -38,6 +38,7 @@ $btn-default-border: $btnBgCol;
 $navbar-inverse-color: white;
 $navbar-inverse-link-color: white;
 $navbar-inverse-bg: $btnActiveBgCol;
+$navbar-inverse-toggle-border-color: $navbar-inverse-bg;
 
 $breadcrumb-color: $btnTextCol;
 $breadcrumb-active-color: darken($btnTextCol, 20%);
