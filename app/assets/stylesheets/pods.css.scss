@@ -35,6 +35,10 @@ $btn-default-col: $btnTextCol;
 $btn-default-bg: $btnBgCol;
 $btn-default-border: $btnBgCol;
 
+$navbar-inverse-color: white;
+$navbar-inverse-link-color: white;
+$navbar-inverse-bg: $btnActiveBgCol;
+
 $breadcrumb-color: $btnTextCol;
 $breadcrumb-active-color: darken($btnTextCol, 20%);
 $breadcrumb-bg: $btnBgCol;
@@ -77,9 +81,6 @@ $pagination-disabled-border: $btnActiveBgCol;
       background-color: transparent !important;
       border-bottom: 3px solid $secondaryColor;
     }
-  }
-  .navbar-brand {
-    color: $headerTextCol !important;
   }
 }
 
