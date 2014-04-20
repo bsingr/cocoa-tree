@@ -85,6 +85,17 @@ $pagination-disabled-border: $btnActiveBgCol;
   }
 }
 
+.btn {
+  &.active,
+  &:active {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-filter: none;
+    filter: none;
+  }
+}
+
 .empty {
   @extend .jumbotron;
 
