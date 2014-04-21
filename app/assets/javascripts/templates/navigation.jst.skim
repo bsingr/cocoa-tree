@@ -1,22 +1,23 @@
-.navbar.navbar-inverse
-  .container
-    .navbar-header
-      button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"
-        span class="sr-only" Toggle navigation
-        span class="icon-bar"
-        span class="icon-bar"
-        span class="icon-bar"
-      a.navbar-brand
-        | CocoaTree
-    #main-nav.collapse.navbar-collapse
-      ul.nav.navbar-nav
-        li
-          a href="#" Categories
-        li
-          a href="#pods/all" All
-      ul.nav.navbar-nav.navbar-right
-        li
-          a href="#about" About
-        li
-          a href="#contribute" Contribute
-        
+.navbar-container
+  .navbar.navbar-inverse data-spy="affix" data-offset-top="50"
+    .container
+      .navbar-header
+        button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"
+          span class="sr-only" Toggle navigation
+          span class="icon-bar"
+          span class="icon-bar"
+          span class="icon-bar"
+        a.navbar-brand
+          | CocoaTree
+      #main-nav.collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li
+            a href="#" Categories
+          li
+            a href="#pods/all" All
+        ul.nav.navbar-nav.navbar-right
+          li
+            a href="#about" About
+          li
+            a href="#contribute" Contribute
+          
