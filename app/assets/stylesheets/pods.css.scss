@@ -73,7 +73,7 @@ $pagination-disabled-border: $btnActiveBgCol;
 }
 
 .navbar-container {
-  height: 50px;
+  height: 53px;
   background-color: $navbar-inverse-bg;
 }
 
@@ -212,22 +212,33 @@ $pagination-disabled-border: $btnActiveBgCol;
   @extend .container-fluid;
   background: lighten($primaryColor, 20%);
 
+  $head-vertical-margin: 8px;
+
   .pods-container-head {
     @extend .container;
     padding: 0;
 
     .sort-ctrl {
-      @extend .pull-right;
-      margin-top: 18px;
-      margin-right: 20px;
+      margin: 0;
+      margin-top: $head-vertical-margin;
+      vertical-align: top;
+      a { 
+        padding: 7px 12px;
+      }
     }
 
     .pagination {
       @extend .pull-right;
+      margin: 0;
+      margin-top: $head-vertical-margin;
+      a {
+        padding: 8px 10px;
+      }
     }
 
     .breadcrumb {
-      margin-top: 20px;
+      margin: 0;
+      margin-top: $head-vertical-margin;
       a {
         color: $btnTextCol;
       }
@@ -240,6 +251,7 @@ $pagination-disabled-border: $btnActiveBgCol;
 
   .pods {
     @extend .container;
+    margin-top: ($head-vertical-margin - 1px);
     padding-bottom: 20px;
   }
 
