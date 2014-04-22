@@ -15,7 +15,7 @@ class @PodsList
   previous_offset: ->
     @index - @maxPerPage
   paginationPosition: (index) ->
-    innerPadding = 3
+    innerPadding = 2
     outerPadding = 1
     if index == @index
       'current'
