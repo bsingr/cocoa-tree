@@ -257,7 +257,8 @@ $pagination-disabled-border: $btnActiveBgCol;
       }
 
       .badge {
-        background-color: lighten($btnActiveBgCol, 10%);
+        background-color: $btnActiveBgCol;
+        color: $btnActiveTextCol;
       }
     }
   }
