@@ -18,9 +18,9 @@ $podLinksDisabledTextCol: lighten($secondaryColor, 10%);
 $podLinksHoverTextCol: lighten($secondaryColor, 30%);
 
 $btnTextCol: lighten($primaryColor, 10%);
-$btnBgCol: desaturate(lighten($primaryColor, 40%), 30%);
+$btnBgCol: desaturate(lighten($primaryColor, 30%), 5%);
 $btnActiveTextCol: lighten($primaryColor, 50%);
-$btnActiveBgCol: lighten($primaryColor, 10%);
+$btnActiveBgCol: lighten($primaryColor, 15%);
 
 // bootstrap variables
 
@@ -30,6 +30,7 @@ $body-bg: darken($primaryColor, 10%);
 
 $component-active-color: $btnActiveTextCol;
 $component-active-bg: $btnActiveBgCol;
+
 $border-radius-base: 0;
 $border-radius-small: 0;
 
@@ -115,13 +116,23 @@ $pagination-disabled-border: $btnActiveBgCol;
 
 .btn {
   &.active,
-  &:active {
+  &:active,
+  &.active:hover {
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     -ms-filter: none;
     filter: none;
+    border-color: $btnActiveBgCol;
+    background-color: $btnActiveBgCol;
+    color: $btnActiveTextCol;
   }
+  &:hover {
+    background-color: $btnBgCol;
+    border-color: $btnBgCol;
+    color: $btnTextCol;
+  }
+  color: $btnTextCol;
 }
 
 .logo {
