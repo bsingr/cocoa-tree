@@ -6,7 +6,7 @@
 $primaryColor: #21610B;
 $secondaryColor: #DBA901;
 
-$listBgCol: lighten($primaryColor, 60%);
+$listBgCol: saturate(lighten($primaryColor, 60%), 20%);
 $listHoverBgCol: lighten($listBgCol, 5%);
 
 $headerTextCol: #ddd;
@@ -270,7 +270,7 @@ $pagination-disabled-border: $btnActiveBgCol;
   }
 
   .pod {
-    margin-top: 1px;
+    margin-bottom: 6px;
     cursor: pointer;
     background: $listBgCol;
 
