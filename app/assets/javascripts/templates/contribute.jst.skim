@@ -31,14 +31,14 @@
         h2 Report an Issue
         p
           | Please file bugs, proposals or questions on  
-          a href='https://github.com/dpree/cocoa-tree/issues' this GitHub Issues page
+          a href='https://github.com/bsingr/cocoa-tree/issues' this GitHub Issues page
           | .
         h2 Site and data sources
         p
           | This site is is built via 
-          a href='https://github.com/dpree/cocoa-tree' github.com/dpree/cocoa-tree
+          a href='https://github.com/bsingr/cocoa-tree' github.com/bsingr/cocoa-tree
           | . Basically, it is just a static site with a development environment based on 
-          a href='https://github.com/dpree/rails-zero#readme' RailsZero
+          a href='https://github.com/bsingr/rails-zero#readme' RailsZero
           | .
         p
           | The data is fetched from 
@@ -46,5 +46,5 @@
           |  and 
           a href='https://developer.github.com/v3/' GitHub API
           | . Synchronization and preprocessing is done via 
-          a href='https://github.com/dpree/cocoa-tree-seeds' github.com/dpree/cocoa-tree-seeds
+          a href='https://github.com/bsingr/cocoa-tree-seeds' github.com/bsingr/cocoa-tree-seeds
           | .
