@@ -38,6 +38,6 @@ For phantomjs buildpack:
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-This project uses [MIT-LICENSE](LICENSE.txt).
+Copyright © 2013 - 2014 Jens Bissinger. This project uses [MIT-LICENSE](LICENSE.txt).
 
 Logo made with :heart: by [fabric8](http://fabric8.de/).
