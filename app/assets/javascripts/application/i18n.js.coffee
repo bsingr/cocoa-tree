@@ -27,7 +27,7 @@ class @I18n
     "camera": "Camera"
     "charts": "Charts"
     "colors": "Colors"
-    "compression": 
+    "compression": "Compression"
     "concurrency": "Concurreny"
     "configuration": "Configuration"
     "contacts": "Contacts"
