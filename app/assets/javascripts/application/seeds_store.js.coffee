@@ -59,7 +59,8 @@ class @SeedsStore
   updatePods: (pods) ->
     @db.put('pod', pods)
   findCategories: () ->
-    @db.values 'category'
+    iterator = new ydn.db.ValueIterator("category")
+    @db.values iterator, 1000
   findCategory: (name) ->
     keyRange = ydn.db.KeyRange.only(name)
     @db.values 'category', keyRange
