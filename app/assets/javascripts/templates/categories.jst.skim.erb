@@ -32,10 +32,11 @@
           - i = categoriesPerColumn * column
           - while i < (categoriesPerColumn * (column + 1)) && i < @categories.length
             - category = @categories[i]
-            a href="#pods/#{category.get('name')}"
-              span = category.displayName()
-              ' 
-              span.badge.badge-yellow = category.get('cocoa_pods_count')
+            li
+              a.list-group-item href="#pods/#{category.get('name')}"
+                span = category.displayName()
+                ' 
+                span.badge.badge-yellow = category.get('cocoa_pods_count')
             - i++
         - column++
     .row

@@ -205,8 +205,11 @@ $pagination-disabled-border: $btnActiveBgCol;
     @extend .row;
     .categories-col {
       @extend .col-xs-12, .col-md-4, .list-group;
+
+      li {
+        list-style-type: none;
+      }
       a {
-        @extend .list-group-item;
         border: 0 none transparent;
         background-color: $listBgCol;
 
