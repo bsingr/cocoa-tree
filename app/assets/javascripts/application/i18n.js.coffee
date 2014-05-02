@@ -154,7 +154,7 @@ class @I18n
     "payment": "Payment"
     "phone_numbers": "Phone Numbers"
     "photo_browser": "Photo Browser" 
-    "plist": "PList"
+    "plist": "Plist"
     "prettyfier": "Prettyfier"
     "promises": "Promises"
     "proprietary_api": "Proprietary API"
