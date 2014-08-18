@@ -57,7 +57,7 @@ class @SeedsStore
   countPods: () ->
     @db.count('pod')
   updatePods: (pods) ->
-    #@db.put('pod', pods)
+    @db.put('pod', pods)
   findCategories: () ->
     iterator = new ydn.db.ValueIterator("category")
     @db.values iterator, 1000
@@ -65,5 +65,5 @@ class @SeedsStore
     keyRange = ydn.db.KeyRange.only(name)
     @db.values 'category', keyRange
   updateCategories: (categories) ->
-    #@db.clear('category')
-    #@db.put('category', categories)
+    @db.clear('category')
+    @db.put('category', categories)
