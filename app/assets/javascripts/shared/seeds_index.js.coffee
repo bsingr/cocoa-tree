@@ -4,9 +4,10 @@ class @SeedsIndex
   load: (callback) ->
     index = @
     xhr = new XMLHttpRequest()
-    xhr.open('GET', @seedsURL + '.mpac', true)
-    xhr.responseType = 'arraybuffer'
+    xhr.open('GET', @seedsURL + '.json', true)
+    # xhr.responseType = 'arraybuffer'
     xhr.onload = (e) ->
-      index.index = msgpack.decode(@response)
+      index.index = JSON.parse(@response)
+      # index.index = msgpack.decode(@response)
       callback(index)
     xhr.send()
