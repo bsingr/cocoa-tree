@@ -4,7 +4,7 @@ class @SeedsStore
   constructor: (name='seeds') ->
     @initDb(name)
   initDb: (name) ->
-    podsSchema = 
+    podsSchema =
       name: 'pod'
       keyPath: 'name'
       type: 'TEXT'
@@ -22,7 +22,7 @@ class @SeedsStore
       indexes: []
     @db = new ydn.db.Storage name, stores: [podsSchema, categoriesSchema]
   clear: () ->
-    @db.clear() 
+    @db.clear()
   # this reads from _all_ pods and uses ydn internal capabilities for sorting
   # and pagination
   findPods: (sortBy, asc=true, offset=0, limit=50) ->
@@ -57,7 +57,7 @@ class @SeedsStore
   countPods: () ->
     @db.count('pod')
   updatePods: (pods) ->
-    #@db.put('pod', pods)
+    @db.put('pod', pods)
   findCategories: () ->
     iterator = new ydn.db.ValueIterator("category")
     @db.values iterator, 1000
@@ -65,5 +65,5 @@ class @SeedsStore
     keyRange = ydn.db.KeyRange.only(name)
     @db.values 'category', keyRange
   updateCategories: (categories) ->
-    #@db.clear('category')
-    #@db.put('category', categories)
+    @db.clear('category')
+    @db.put('category', categories)
