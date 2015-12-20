@@ -13,7 +13,7 @@ class @SeedsStore
       },{
         keyPath: 'pushed_at'
       },{
-        keyPath: 'category'
+        keyPath: 'category_name'
       }]
     categoriesSchema =
       name: 'category'
@@ -38,7 +38,7 @@ class @SeedsStore
   findPodsByCategory: (category, sortBy, asc=true, offset=0, limit=50) ->
     logger.verbose 'PodsStore#readCategory'
     keyRange = ydn.db.KeyRange.only(category)
-    @db.values('pod', 'category', keyRange).then (allPods) ->
+    @db.values('pod', 'category_name', keyRange).then (allPods) ->
       sorter = new ObjectSorter()
       sorter.sortBy = sortBy
       allSortedPods = sorter.sort(allPods)

@@ -44,7 +44,7 @@ class @AppController
     @current = 'pods'
     @podsController.load().then (result) =>
       if result.pods.length
-        @podsController.render(result.count, result.pods)
+        @podsController.render(result.pods.length, result.pods)
       else
         @renderEmptyView()
   displayCategories: () ->

@@ -7,16 +7,16 @@
         .col-md-7.col-lg-8
           p.alert.alert-warning
             | We need your help to add missing categories. Just send us your
-            ' 
+            '
             a href="https://github.com/cocoa-tree/categories/edit/master/cocoa_pods_categories.json"
               | pull-request
             | .
           h1 CocoaTree
           p
             | The CocoaTree is a comprehensive catalog of open source Objective-C projects. In essence, it is based on the popular
-            ' 
+            '
             a href="http://cocoapods.org" CocoaPods repository
-            | . Additionally, popularity and activity ratings are calculated using data provided by 
+            | . Additionally, popularity and activity ratings are calculated using data provided by
             a href="https://github.com" GitHub
             | .
 .categories-container
@@ -35,15 +35,14 @@
             li
               a.list-group-item href="#pods/#{category.get('name')}"
                 span = category.displayName()
-                ' 
-                span.badge.badge-yellow = category.get('cocoa_pods_count')
+                '
+                span.badge.badge-yellow = (category.get('cocoa_pods').length + 1)
             - i++
         - column++
     .row
       .col-xs-12
         h1
           = @categories.length
-          |  Categories. 
+          |  Categories.
           = @totalPodsCount
           |  CocoaPods.
-          
